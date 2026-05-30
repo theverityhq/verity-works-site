@@ -1,15 +1,15 @@
 :root {
-  --bg: #121417;
-  --bg-soft: #1a1d21;
-  --surface: rgba(25, 29, 34, 0.84);
-  --surface-strong: rgba(31, 36, 42, 0.96);
-  --text: #f4efe8;
-  --muted: #c6bbb0;
-  --border: rgba(198, 179, 159, 0.16);
-  --accent: #d8b07a;
-  --accent-soft: rgba(216, 176, 122, 0.14);
-  --accent-warm: #c47a4d;
-  --glow: rgba(216, 176, 122, 0.18);
+  --bg: #0c1116;
+  --bg-soft: #121920;
+  --surface: rgba(18, 25, 32, 0.88);
+  --surface-strong: rgba(24, 33, 41, 0.96);
+  --text: #f0f4f1;
+  --muted: #b8c3c2;
+  --border: rgba(123, 192, 214, 0.14);
+  --accent: #7bc0d6;
+  --accent-soft: rgba(123, 192, 214, 0.12);
+  --accent-warm: #3f86c7;
+  --glow: rgba(123, 192, 214, 0.16);
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
   --radius-lg: 8px;
   --radius-md: 4px;
@@ -29,9 +29,9 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top left, rgba(216, 176, 122, 0.12), transparent 28%),
-    radial-gradient(circle at 82% 10%, rgba(196, 122, 77, 0.1), transparent 24%),
-    linear-gradient(180deg, #0d0f12 0%, var(--bg) 42%, #15181c 100%);
+    radial-gradient(circle at top left, rgba(123, 192, 214, 0.11), transparent 28%),
+    radial-gradient(circle at 82% 10%, rgba(63, 134, 199, 0.1), transparent 24%),
+    linear-gradient(180deg, #080c10 0%, var(--bg) 42%, #11191f 100%);
   color: var(--text);
   font-family: "Avenir Next", "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
@@ -70,8 +70,8 @@ img {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(14px);
-  background: rgba(14, 16, 19, 0.78);
-  border-bottom: 1px solid rgba(198, 179, 159, 0.1);
+  background: rgba(7, 11, 16, 0.78);
+  border-bottom: 1px solid rgba(123, 192, 214, 0.1);
 }
 
 .header-inner,
@@ -155,18 +155,18 @@ img {
 
 .nav-cta {
   padding: 0.8rem 1.1rem;
-  border: 1px solid rgba(216, 176, 122, 0.22);
+  border: 1px solid rgba(123, 192, 214, 0.22);
   border-radius: 4px;
-  background: rgba(216, 176, 122, 0.08);
-  color: #fbf4eb;
+  background: rgba(123, 192, 214, 0.08);
+  color: #f4fbff;
 }
 
 .hero {
   padding: 6rem 0 3rem;
 }
 
-#services,
-#process,
+#deliverables,
+#pricing,
 #faq,
 #contact {
   scroll-margin-top: 6.5rem;
@@ -263,13 +263,13 @@ h3 {
 }
 
 .button-primary {
-  background: linear-gradient(135deg, #d8b07a, #d19a66 52%, #c47a4d);
-  color: #1b130b;
-  box-shadow: 0 14px 34px rgba(92, 52, 26, 0.28);
+  background: linear-gradient(135deg, #c3edf2, #78c3da 52%, #3f86c7);
+  color: #061116;
+  box-shadow: 0 14px 34px rgba(20, 87, 118, 0.28);
 }
 
 .button-secondary {
-  border: 1px solid rgba(198, 179, 159, 0.2);
+  border: 1px solid rgba(123, 192, 214, 0.18);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -277,37 +277,9 @@ h3 {
   width: 100%;
 }
 
-.hero-strip {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  width: 100%;
-  max-width: 58rem;
-}
-
-.hero-strip-item {
-  padding: 1rem 1.1rem;
-  border-top: 1px solid rgba(216, 176, 122, 0.26);
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.hero-strip-label {
-  margin: 0 0 0.45rem;
-  color: var(--accent);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.hero-strip-body {
-  margin: 0;
-  color: var(--text);
-  font-size: 1rem;
-}
-
-.service-card,
-.process-step,
+.deliverable-card,
+.problem-card,
+.pricing-card,
 .contact-card,
 .faq-list details {
   background: var(--surface);
@@ -334,7 +306,7 @@ h3 {
   inset-inline: 0;
   top: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(198, 179, 159, 0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(123, 192, 214, 0.07), transparent);
 }
 
 .section {
@@ -353,8 +325,26 @@ h3 {
   align-items: start;
 }
 
+.problem-shell,
+.pricing-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 2rem;
+  align-items: center;
+}
+
 .fit-copy {
   max-width: 40rem;
+}
+
+.problem-copy,
+.pricing-copy {
+  max-width: 42rem;
+}
+
+.problem-grid {
+  display: grid;
+  gap: 1rem;
 }
 
 .section-lead {
@@ -368,10 +358,10 @@ h3 {
 
 .fit-card {
   padding: 1.35rem 1.4rem 1.45rem;
-  border: 1px solid rgba(198, 179, 159, 0.14);
+  border: 1px solid rgba(123, 192, 214, 0.13);
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(180deg, rgba(28, 32, 37, 0.88), rgba(19, 22, 26, 0.94)),
+    linear-gradient(180deg, rgba(19, 28, 35, 0.88), rgba(11, 16, 21, 0.94)),
     rgba(255, 255, 255, 0.02);
   position: relative;
   overflow: hidden;
@@ -383,10 +373,9 @@ h3 {
   inset: 0 auto auto 0;
   width: 72px;
   height: 1px;
-  background: rgba(216, 176, 122, 0.48);
+  background: rgba(123, 192, 214, 0.42);
 }
 
-.service-kicker,
 .fit-title {
   margin: 0 0 0.95rem;
   color: var(--accent);
@@ -405,45 +394,64 @@ h3 {
   color: var(--muted);
 }
 
-.service-grid,
-.process-grid,
+.deliverables-grid,
 .contact-shell {
   display: grid;
   gap: 1.4rem;
 }
 
-.service-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.deliverables-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: 2rem;
+  align-items: start;
 }
 
-.service-card,
-.process-step {
+.deliverables .section-heading {
+  margin-bottom: 0;
+  max-width: 40rem;
+  text-align: left;
+}
+
+.deliverables h2 {
+  max-width: 13ch;
+}
+
+.deliverables-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.problem-card,
+.deliverable-card {
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.03);
   position: relative;
   overflow: hidden;
 }
 
-.service-card::before,
-.process-step::before,
+.deliverable-card::before,
+.problem-card::before,
+.pricing-card::before,
 .faq-list details::before {
   content: "";
   position: absolute;
   inset: 0 auto auto 0;
   width: 56px;
   height: 1px;
-  background: rgba(216, 176, 122, 0.44);
+  background: rgba(123, 192, 214, 0.4);
 }
 
-.service-card,
-.process-step,
+.deliverable-card,
+.problem-card,
+.pricing-card,
 .faq-list details,
 .fit-card {
   box-shadow: none;
 }
 
-.service-card p,
-.process-step p,
+.deliverable-card p,
+.problem-card p,
+.pricing-card p,
 .faq-list p,
 .contact-note,
 .footer-copy,
@@ -452,21 +460,112 @@ h3 {
   color: var(--muted);
 }
 
-.service-kicker {
-  margin-bottom: 0.7rem;
+.problem-label,
+.pricing-kicker {
+  margin: 0 0 0.7rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.process-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.pricing-card {
+  padding: 1.6rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(123, 192, 214, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.03);
+  border-color: rgba(123, 192, 214, 0.22);
 }
 
-.process-step span {
+.pricing-title {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+.pricing-meta {
+  margin: 0.8rem 0 1.1rem;
+  color: var(--text);
+}
+
+.pricing-list {
+  margin: 0 0 1.3rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.pricing-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.pricing-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--accent-warm);
+}
+
+.deliverable-card span {
   display: inline-block;
   margin-bottom: 1rem;
   color: var(--accent);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.16em;
+}
+
+.deliverable-card-strong {
+  background:
+    linear-gradient(180deg, rgba(123, 192, 214, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.03);
+  border-color: rgba(123, 192, 214, 0.22);
+}
+
+.specific-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1.15fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.specific-shell .section-heading {
+  margin-bottom: 0;
+}
+
+.specific-tags {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, max-content));
+  gap: 0.65rem;
+  justify-content: center;
+  justify-self: center;
+  width: 100%;
+}
+
+.specific-tags span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(123, 192, 214, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 0.9rem;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .faq-list {
@@ -477,7 +576,7 @@ h3 {
 .faq-list details {
   padding: 1.05rem 1.2rem;
   background:
-    linear-gradient(180deg, rgba(28, 32, 37, 0.9), rgba(19, 22, 26, 0.92)),
+    linear-gradient(180deg, rgba(19, 28, 35, 0.9), rgba(11, 16, 21, 0.92)),
     rgba(255, 255, 255, 0.02);
   position: relative;
   overflow: hidden;
@@ -555,10 +654,10 @@ summary::-webkit-details-marker {
   padding: 2.2rem;
   border-radius: calc(var(--radius-lg) + 4px);
   background:
-    radial-gradient(circle at 10% 10%, rgba(216, 176, 122, 0.11), transparent 34%),
-    linear-gradient(135deg, #17191d, #1d2025 58%, #22262b);
+    radial-gradient(circle at 10% 10%, rgba(123, 192, 214, 0.12), transparent 34%),
+    linear-gradient(135deg, #0b1218, #121b23 58%, #18242e);
   color: #eef3ef;
-  border: 1px solid rgba(216, 176, 122, 0.12);
+  border: 1px solid rgba(123, 192, 214, 0.12);
   box-shadow: none;
 }
 
@@ -571,7 +670,7 @@ summary::-webkit-details-marker {
 .contact-card {
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(216, 176, 122, 0.14);
+  border-color: rgba(123, 192, 214, 0.14);
   box-shadow: none;
   border-radius: 4px;
 }
@@ -593,9 +692,9 @@ summary::-webkit-details-marker {
 }
 
 .contact-direct a {
-  color: #f7d8b4;
+  color: #bde5ec;
   text-decoration: underline;
-  text-decoration-color: rgba(247, 216, 180, 0.45);
+  text-decoration-color: rgba(189, 229, 236, 0.42);
   text-underline-offset: 0.18em;
 }
 
@@ -661,21 +760,25 @@ summary:focus-visible {
   }
 
   .hero-grid,
+  .problem-shell,
+  .pricing-shell,
+  .specific-shell,
+  .deliverables-shell,
   .fit-shell,
   .contact-shell,
-  .service-grid,
-  .process-grid {
+  .deliverables-grid {
     grid-template-columns: 1fr;
   }
 
-  .service-grid,
-  .process-grid {
+  .deliverables-grid {
     gap: 1rem;
   }
 
-  .hero-strip {
-    grid-template-columns: 1fr;
+  .specific-tags {
+    justify-content: flex-start;
+    justify-self: stretch;
   }
+
 }
 
 @media (max-width: 720px) {
@@ -708,8 +811,17 @@ summary:focus-visible {
     width: 100%;
   }
 
-  .service-card,
-  .process-step,
+  .specific-tags {
+    grid-template-columns: 1fr;
+  }
+
+  .specific-tags span {
+    white-space: normal;
+  }
+
+  .deliverable-card,
+  .problem-card,
+  .pricing-card,
   .fit-card,
   .contact-shell,
   .faq-list details {
