@@ -297,57 +297,84 @@
         line-height: 1.45;
       }
 
-      .table-wrap {
-        overflow-x: auto;
+      .targets {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 0.95rem;
       }
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        min-width: 880px;
+      .target-card {
+        display: grid;
+        gap: 0.85rem;
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
       }
 
-      thead th {
-        padding: 0.85rem 0.85rem;
-        text-align: left;
-        color: var(--muted);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        border-bottom: 1px solid var(--border);
+      .target-head {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 0.75rem;
       }
 
-      tbody td {
-        padding: 0.95rem 0.85rem;
-        vertical-align: top;
-        border-bottom: 1px solid rgba(123, 192, 214, 0.08);
-        font-size: 0.98rem;
-      }
-
-      tbody tr:last-child td {
-        border-bottom: none;
-      }
-
-      .rank {
-        width: 3ch;
+      .target-rank {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 11px;
+        background: rgba(123, 192, 214, 0.12);
         color: var(--accent);
-        font-weight: 700;
+        font-weight: 800;
+        flex: 0 0 auto;
       }
 
-      .biz {
+      .target-name {
         display: grid;
         gap: 0.18rem;
       }
 
-      .biz strong {
-        font-size: 1rem;
+      .target-name strong {
+        font-size: 1.04rem;
       }
 
-      .biz span,
-      .gap {
+      .target-name span {
         color: var(--muted);
-        font-size: 0.92rem;
+        font-size: 0.9rem;
+      }
+
+      .score-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.6rem;
+      }
+
+      .score-box {
+        padding: 0.72rem 0.8rem 0.78rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .score-box .summary-label {
+        margin-bottom: 0.35rem;
+      }
+
+      .score-box .summary-value {
+        font-size: 1.45rem;
+      }
+
+      .score-box .summary-help {
+        margin-top: 0.25rem;
+      }
+
+      .target-gap {
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.45;
       }
 
       .tier {
@@ -363,11 +390,6 @@
         letter-spacing: 0.08em;
         text-transform: uppercase;
         white-space: nowrap;
-      }
-
-      .score {
-        font-size: 1.25rem;
-        font-weight: 700;
       }
 
       .footer {
@@ -405,6 +427,10 @@
         }
 
         .summary-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .score-row {
           grid-template-columns: 1fr;
         }
       }
@@ -501,86 +527,142 @@
               main issue on one screen.
             </p>
           </div>
-          <div class="table-wrap" role="region" aria-label="Top five outreach targets">
-            <table>
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Business</th>
-                  <th>Opportunity</th>
-                  <th>Audit</th>
-                  <th>Tier</th>
-                  <th>Main gap</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="rank">1</td>
-                  <td>
-                    <div class="biz">
-                      <strong>Specialty Grading Inc.</strong>
-                      <span>Excavation Companies, Prescott Valley</span>
-                    </div>
-                  </td>
-                  <td class="score">87</td>
-                  <td class="score">10</td>
-                  <td><span class="tier">Best First</span></td>
-                  <td class="gap">No JSON-LD detected</td>
-                </tr>
-                <tr>
-                  <td class="rank">2</td>
-                  <td>
-                    <div class="biz">
-                      <strong>Redrock Precision Motors</strong>
-                      <span>Auto Repair Shops, Sedona</span>
-                    </div>
-                  </td>
-                  <td class="score">78</td>
-                  <td class="score">30</td>
-                  <td><span class="tier">Best First</span></td>
-                  <td class="gap">No JSON-LD detected</td>
-                </tr>
-                <tr>
-                  <td class="rank">3</td>
-                  <td>
-                    <div class="biz">
-                      <strong>J&amp;J Antiques</strong>
-                      <span>Antique Stores, Cottonwood</span>
-                    </div>
-                  </td>
-                  <td class="score">78</td>
-                  <td class="score">30</td>
-                  <td><span class="tier">Best First</span></td>
-                  <td class="gap">No JSON-LD detected</td>
-                </tr>
-                <tr>
-                  <td class="rank">4</td>
-                  <td>
-                    <div class="biz">
-                      <strong>Layla’s Bakery</strong>
-                      <span>Bakers, Sedona</span>
-                    </div>
-                  </td>
-                  <td class="score">78</td>
-                  <td class="score">30</td>
-                  <td><span class="tier">Best First</span></td>
-                  <td class="gap">No JSON-LD detected</td>
-                </tr>
-                <tr>
-                  <td class="rank">5</td>
-                  <td>
-                    <div class="biz">
-                      <strong>Cornish Pastry Co.</strong>
-                      <span>Bakers, Jerome</span>
-                    </div>
-                  </td>
-                  <td class="score">67</td>
-                  <td class="score">30</td>
-                  <td><span class="tier">Strong Pitch</span></td>
-                  <td class="gap">No JSON-LD detected</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="targets" aria-label="Top five outreach targets">
+            <article class="target-card">
+              <div class="target-head">
+                <div class="target-name">
+                  <strong>Specialty Grading Inc.</strong>
+                  <span>Excavation Companies, Prescott Valley</span>
+                </div>
+                <span class="target-rank">1</span>
+              </div>
+              <div class="score-row">
+                <div class="score-box">
+                  <span class="summary-label">Opportunity</span>
+                  <span class="summary-value">87</span>
+                  <span class="summary-help">Higher = review sooner</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Audit</span>
+                  <span class="summary-value">10</span>
+                  <span class="summary-help">Lower = clearer gap</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Tier</span>
+                  <span class="summary-value" style="font-size: 1rem;">Best First</span>
+                  <span class="summary-help">Top outreach priority</span>
+                </div>
+              </div>
+              <div class="target-gap">No JSON-LD detected</div>
+            </article>
+            <article class="target-card">
+              <div class="target-head">
+                <div class="target-name">
+                  <strong>Redrock Precision Motors</strong>
+                  <span>Auto Repair Shops, Sedona</span>
+                </div>
+                <span class="target-rank">2</span>
+              </div>
+              <div class="score-row">
+                <div class="score-box">
+                  <span class="summary-label">Opportunity</span>
+                  <span class="summary-value">78</span>
+                  <span class="summary-help">Higher = review sooner</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Audit</span>
+                  <span class="summary-value">30</span>
+                  <span class="summary-help">Lower = clearer gap</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Tier</span>
+                  <span class="summary-value" style="font-size: 1rem;">Best First</span>
+                  <span class="summary-help">Top outreach priority</span>
+                </div>
+              </div>
+              <div class="target-gap">No JSON-LD detected</div>
+            </article>
+            <article class="target-card">
+              <div class="target-head">
+                <div class="target-name">
+                  <strong>J&amp;J Antiques</strong>
+                  <span>Antique Stores, Cottonwood</span>
+                </div>
+                <span class="target-rank">3</span>
+              </div>
+              <div class="score-row">
+                <div class="score-box">
+                  <span class="summary-label">Opportunity</span>
+                  <span class="summary-value">78</span>
+                  <span class="summary-help">Higher = review sooner</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Audit</span>
+                  <span class="summary-value">30</span>
+                  <span class="summary-help">Lower = clearer gap</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Tier</span>
+                  <span class="summary-value" style="font-size: 1rem;">Best First</span>
+                  <span class="summary-help">Top outreach priority</span>
+                </div>
+              </div>
+              <div class="target-gap">No JSON-LD detected</div>
+            </article>
+            <article class="target-card">
+              <div class="target-head">
+                <div class="target-name">
+                  <strong>Layla’s Bakery</strong>
+                  <span>Bakers, Sedona</span>
+                </div>
+                <span class="target-rank">4</span>
+              </div>
+              <div class="score-row">
+                <div class="score-box">
+                  <span class="summary-label">Opportunity</span>
+                  <span class="summary-value">78</span>
+                  <span class="summary-help">Higher = review sooner</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Audit</span>
+                  <span class="summary-value">30</span>
+                  <span class="summary-help">Lower = clearer gap</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Tier</span>
+                  <span class="summary-value" style="font-size: 1rem;">Best First</span>
+                  <span class="summary-help">Top outreach priority</span>
+                </div>
+              </div>
+              <div class="target-gap">No JSON-LD detected</div>
+            </article>
+            <article class="target-card">
+              <div class="target-head">
+                <div class="target-name">
+                  <strong>Cornish Pastry Co.</strong>
+                  <span>Bakers, Jerome</span>
+                </div>
+                <span class="target-rank">5</span>
+              </div>
+              <div class="score-row">
+                <div class="score-box">
+                  <span class="summary-label">Opportunity</span>
+                  <span class="summary-value">67</span>
+                  <span class="summary-help">Higher = review sooner</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Audit</span>
+                  <span class="summary-value">30</span>
+                  <span class="summary-help">Lower = clearer gap</span>
+                </div>
+                <div class="score-box">
+                  <span class="summary-label">Tier</span>
+                  <span class="summary-value" style="font-size: 1rem;">Strong Pitch</span>
+                  <span class="summary-help">Worth a follow-up</span>
+                </div>
+              </div>
+              <div class="target-gap">No JSON-LD detected</div>
+            </article>
           </div>
         </section>
 
