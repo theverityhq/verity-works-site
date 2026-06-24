@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="theme-color" content="#0c1116" />
+    <title>Nick 86315 Beta Run - Verity Works</title>
+    <meta
+      name="description"
+      content="Private beta summary for the 86315 Signal Foundry run."
+    />
+    <link rel="icon" href="../../favicon.ico" sizes="any" />
+    <style>
+      :root {
+        --bg: #0c1116;
+        --bg-soft: #121920;
+        --surface: rgba(18, 25, 32, 0.9);
+        --surface-strong: rgba(24, 33, 41, 0.98);
+        --text: #f0f4f1;
+        --muted: #b8c3c2;
+        --border: rgba(123, 192, 214, 0.16);
+        --accent: #7bc0d6;
+        --accent-soft: rgba(123, 192, 214, 0.12);
+        --accent-warm: #3f86c7;
+        --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+        --radius-xl: 22px;
+        --radius-lg: 14px;
+        --radius-md: 10px;
+        --container: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(123, 192, 214, 0.12), transparent 28%),
+          radial-gradient(circle at 80% 12%, rgba(63, 134, 199, 0.12), transparent 24%),
+          linear-gradient(180deg, #080c10 0%, var(--bg) 45%, #11191f 100%);
+        font-family: "Avenir Next", "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: radial-gradient(circle at center, black 36%, transparent 100%);
+        opacity: 0.08;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .container {
+        width: min(calc(100% - 2.5rem), var(--container));
+        margin: 0 auto;
+      }
+
+      .shell {
+        padding: 2rem 0 3.5rem;
+      }
+
+      .hero,
+      .panel,
+      .card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .hero {
+        padding: 1.35rem 1.35rem 1.6rem;
+      }
+
+      .hero-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--surface-strong);
+      }
+
+      .brand-mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .brand-text {
+        display: grid;
+        gap: 0.1rem;
+      }
+
+      .brand-name {
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .brand-sub {
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      .beta-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0 12px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(123, 192, 214, 0.1);
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+        gap: 1.2rem;
+        align-items: start;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.6rem;
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Avenir Next", "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.03;
+        letter-spacing: -0.04em;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 4.2vw, 4rem);
+        max-width: 14ch;
+      }
+
+      h2 {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        max-width: 18ch;
+      }
+
+      .subtitle,
+      .panel-copy,
+      .muted {
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .formula {
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .subtitle {
+        max-width: 50ch;
+        margin: 1rem 0 0;
+      }
+
+      .hero-copy {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem;
+      }
+
+      .summary-card {
+        padding: 1rem 1.05rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .summary-label {
+        display: block;
+        margin-bottom: 0.6rem;
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .summary-value {
+        display: block;
+        font-family: "Avenir Next", "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+
+      .summary-help {
+        display: block;
+        margin-top: 0.45rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.35;
+      }
+
+      .panel {
+        margin-top: 1.2rem;
+        padding: 1.2rem;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .guide-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.9rem;
+      }
+
+      .guide-card {
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .guide-card strong {
+        display: block;
+        margin-bottom: 0.45rem;
+        font-size: 0.95rem;
+      }
+
+      .guide-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.45;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 880px;
+      }
+
+      thead th {
+        padding: 0.85rem 0.85rem;
+        text-align: left;
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--border);
+      }
+
+      tbody td {
+        padding: 0.95rem 0.85rem;
+        vertical-align: top;
+        border-bottom: 1px solid rgba(123, 192, 214, 0.08);
+        font-size: 0.98rem;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .rank {
+        width: 3ch;
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .biz {
+        display: grid;
+        gap: 0.18rem;
+      }
+
+      .biz strong {
+        font-size: 1rem;
+      }
+
+      .biz span,
+      .gap {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .tier {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: rgba(123, 192, 214, 0.1);
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .score {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .footer {
+        margin-top: 1.2rem;
+        padding: 0.9rem 0.1rem 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .footer a {
+        color: var(--accent);
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .guide-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-top,
+        .panel-head {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          padding-top: 1rem;
+        }
+
+        .hero,
+        .panel {
+          padding: 1rem;
+        }
+
+        .summary-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="container">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-top">
+            <a class="brand" href="../../" aria-label="Verity Works home">
+              <span class="brand-mark" aria-hidden="true">
+                <img src="../../VerityFavicon.png" alt="" />
+              </span>
+              <span class="brand-text">
+                <span class="brand-name">Verity Works</span>
+                <span class="brand-sub">Signal Foundry private share</span>
+              </span>
+            </a>
+            <span class="beta-pill">Private beta</span>
+          </div>
+
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">Nick 86315</p>
+              <h1 id="page-title">Signal Foundry beta run</h1>
+              <p class="subtitle">
+                A private summary of the 86315 market pass, tuned for mobile and
+                quick review. The numbers below are the latest opportunity
+                rankings from the run.
+              </p>
+            </div>
+            <div class="summary-grid" aria-label="Run summary">
+              <div class="summary-card">
+                <span class="summary-label">Reviewed</span>
+                <span class="summary-value">16</span>
+                <span class="summary-help">Businesses in the current pass.</span>
+              </div>
+              <div class="summary-card">
+                <span class="summary-label">Verified</span>
+                <span class="summary-value">10</span>
+                <span class="summary-help">Sites we could fetch and score.</span>
+              </div>
+              <div class="summary-card">
+                <span class="summary-label">Needs review</span>
+                <span class="summary-value">6</span>
+                <span class="summary-help">Sites with fetch or verification issues.</span>
+              </div>
+              <div class="summary-card">
+                <span class="summary-label">Best first</span>
+                <span class="summary-value">4</span>
+                <span class="summary-help">Top outreach candidates to review first.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="score-title">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">How to read it</p>
+              <h2 id="score-title">Opportunity score is the main ranking</h2>
+            </div>
+            <p class="panel-copy">
+              <span class="formula">Opportunity = Fit + Gap + Confidence</span>.
+              <span class="formula">Site Audit</span> is separate and shows
+              current technical strength.
+            </p>
+          </div>
+          <div class="guide-grid">
+            <article class="guide-card">
+              <strong>Opportunity Score</strong>
+              <p>Higher means a better first outreach target. It combines business fit, visible gap, and confidence.</p>
+            </article>
+            <article class="guide-card">
+              <strong>Site Audit Score</strong>
+              <p>Higher means the site is technically stronger right now. Lower means the fix is easier to explain.</p>
+            </article>
+            <article class="guide-card">
+              <strong>Tiers</strong>
+              <p>Best First: 75+. Strong Pitch: 55-74. Secondary: 30-54. Low Priority: below 30.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="top-five-title">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Top targets</p>
+              <h2 id="top-five-title">Best 5 opportunities from the run</h2>
+            </div>
+            <p class="panel-copy">
+              This is the short version for Nick. It keeps the score and the
+              main issue on one screen.
+            </p>
+          </div>
+          <div class="table-wrap" role="region" aria-label="Top five outreach targets">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Business</th>
+                  <th>Opportunity</th>
+                  <th>Audit</th>
+                  <th>Tier</th>
+                  <th>Main gap</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="rank">1</td>
+                  <td>
+                    <div class="biz">
+                      <strong>Specialty Grading Inc.</strong>
+                      <span>Excavation Companies, Prescott Valley</span>
+                    </div>
+                  </td>
+                  <td class="score">87</td>
+                  <td class="score">10</td>
+                  <td><span class="tier">Best First</span></td>
+                  <td class="gap">No JSON-LD detected</td>
+                </tr>
+                <tr>
+                  <td class="rank">2</td>
+                  <td>
+                    <div class="biz">
+                      <strong>Redrock Precision Motors</strong>
+                      <span>Auto Repair Shops, Sedona</span>
+                    </div>
+                  </td>
+                  <td class="score">78</td>
+                  <td class="score">30</td>
+                  <td><span class="tier">Best First</span></td>
+                  <td class="gap">No JSON-LD detected</td>
+                </tr>
+                <tr>
+                  <td class="rank">3</td>
+                  <td>
+                    <div class="biz">
+                      <strong>J&amp;J Antiques</strong>
+                      <span>Antique Stores, Cottonwood</span>
+                    </div>
+                  </td>
+                  <td class="score">78</td>
+                  <td class="score">30</td>
+                  <td><span class="tier">Best First</span></td>
+                  <td class="gap">No JSON-LD detected</td>
+                </tr>
+                <tr>
+                  <td class="rank">4</td>
+                  <td>
+                    <div class="biz">
+                      <strong>Layla’s Bakery</strong>
+                      <span>Bakers, Sedona</span>
+                    </div>
+                  </td>
+                  <td class="score">78</td>
+                  <td class="score">30</td>
+                  <td><span class="tier">Best First</span></td>
+                  <td class="gap">No JSON-LD detected</td>
+                </tr>
+                <tr>
+                  <td class="rank">5</td>
+                  <td>
+                    <div class="biz">
+                      <strong>Cornish Pastry Co.</strong>
+                      <span>Bakers, Jerome</span>
+                    </div>
+                  </td>
+                  <td class="score">67</td>
+                  <td class="score">30</td>
+                  <td><span class="tier">Strong Pitch</span></td>
+                  <td class="gap">No JSON-LD detected</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <p class="footer">
+          Private share page for Nick’s 86315 beta run. No main-nav link, noindex, and nofollow.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
