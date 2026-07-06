@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>A to Z Sleep Solutions Verity Scan | Verity Scan</title>
+  <style>
+    :root {
+      --paper: #f3f5f2;
+      --ink: #151816;
+      --muted: #5f675f;
+      --line: rgba(21, 24, 22, 0.14);
+      --surface: #ffffff;
+      --surface-tint: #fbfcfa;
+      --signal: #1f6470;
+      --signal-dark: #164c55;
+      --signal-soft: #e4f0ef;
+      --green: #2f6f4e;
+      --green-soft: #e7f2ea;
+      --amber: #8a621f;
+      --amber-soft: #f2eadb;
+      --red: #8f463b;
+      --red-soft: #f1e4e0;
+      --shadow: 0 18px 44px rgba(21, 24, 22, 0.09);
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--signal-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page {
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-initials {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .brand-text {
+      display: grid;
+      gap: 2px;
+    }
+    .brand-name {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .brand-sub {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .report-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.64);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.72fr);
+      gap: 22px;
+      align-items: stretch;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcfa 100%);
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--signal-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: 3.85rem;
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 0.98;
+    }
+    .hero-copy {
+      margin: 16px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .score-panel {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      min-height: 280px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+      text-align: center;
+    }
+    .score-ring {
+      --pct: 205.2deg;
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 178px;
+      height: 178px;
+      border-radius: 50%;
+      background: conic-gradient(var(--signal) var(--pct), #dce2dd 0);
+      margin-bottom: 18px;
+    }
+    .score-ring::before {
+      content: "";
+      position: absolute;
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      background: var(--surface-tint);
+    }
+    .score-ring span {
+      position: relative;
+      z-index: 1;
+      font-size: 42px;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+    .score-value {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 0;
+    }
+    .score-value strong {
+      font-size: 42px;
+      line-height: 0.95;
+    }
+    .score-value small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .score-band {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .band-strong { color: var(--green); background: var(--green-soft); }
+    .band-clear { color: var(--signal-dark); background: var(--signal-soft); }
+    .band-watch { color: var(--amber); background: var(--amber-soft); }
+    .band-gap { color: var(--red); background: var(--red-soft); }
+    .score-note {
+      max-width: 260px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .score-scale {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      width: 100%;
+      max-width: 340px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+    }
+    .score-scale span {
+      display: grid;
+      place-items: center;
+      min-height: 44px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #eef2ee;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      line-height: 1.05;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .score-scale .active {
+      color: var(--ink);
+      border: 2px solid var(--signal);
+      background: var(--surface);
+      box-shadow: 0 8px 18px rgba(31, 100, 112, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      font-weight: 850;
+    }
+    .scan-nav {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+    }
+    .nav-tile {
+      display: block;
+      min-height: 86px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--ink);
+    }
+    .nav-tile:hover {
+      border-color: rgba(31, 100, 112, 0.44);
+      text-decoration: none;
+    }
+    .nav-tile strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .nav-tile span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .scan-section {
+      margin-top: 18px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .summary-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    .summary-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    .summary-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .priority-list {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .priority-list li {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .priority-list strong {
+      color: var(--ink);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 22px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 740;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+    .section-lead {
+      margin: 10px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .business-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: #edf1ec;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .dimension {
+      display: grid;
+      gap: 12px;
+      min-height: 190px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    .dimension-priority {
+      border-color: rgba(138, 98, 31, 0.34);
+      background: #fbf7ed;
+    }
+    .dimension-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .dimension h3 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    .mini-ring {
+      --pct: 0deg;
+      position: relative;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: conic-gradient(var(--signal) var(--pct), #dce2dd 0);
+    }
+    .mini-ring::before {
+      content: "";
+      position: absolute;
+      width: 39px;
+      height: 39px;
+      border-radius: 50%;
+      background: var(--surface-tint);
+    }
+    .mini-ring span {
+      position: relative;
+      z-index: 1;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .dimension p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.46;
+    }
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.35fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .evidence-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .panel {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    .panel-review {
+      display: grid;
+      align-content: start;
+      min-height: 100%;
+    }
+    .panel-compact {
+      min-height: 168px;
+    }
+    .panel h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+    .panel a {
+      overflow-wrap: anywhere;
+    }
+    .review-list {
+      display: grid;
+      gap: 6px;
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .review-list li::before {
+      content: "Checked";
+      display: inline-block;
+      margin-right: 8px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .fix-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .fix-item {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    .fix-rank {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(31, 100, 112, 0.28);
+      background: var(--signal-soft);
+      color: var(--signal-dark);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 6px 14px rgba(31, 100, 112, 0.1);
+    }
+    .fix-rank span {
+      display: block;
+      color: var(--signal-dark);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1;
+      text-align: center;
+    }
+    .fix-copy strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+    .fix-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .next-step {
+      margin-top: 18px;
+      padding: 22px;
+      border: 1px solid rgba(31, 100, 112, 0.24);
+      border-radius: var(--radius);
+      background: var(--signal-soft);
+    }
+    .next-step h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+    .next-step p {
+      margin: 0;
+      color: #274353;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .next-step strong {
+      color: var(--ink);
+    }
+    .pilot-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border: 1px dashed rgba(23, 23, 23, 0.22);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.56);
+    }
+    .pilot-note p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    details {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    summary {
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .internal-body {
+      display: grid;
+      gap: 14px;
+      padding: 0 16px 16px;
+    }
+    pre {
+      overflow: auto;
+      margin: 0;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: #181818;
+      color: #f6f2ea;
+      font: 500 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    @media (max-width: 980px) {
+      .hero,
+      .section-head,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+      .evidence-grid,
+      .evidence-stack {
+        grid-template-columns: 1fr;
+      }
+      .dashboard-grid,
+      .scan-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .page {
+        width: min(100vw - 24px, 100%);
+        padding-top: 18px;
+      }
+      .hero,
+      .scan-section {
+        padding: 18px;
+      }
+      .dashboard-grid,
+      .scan-nav {
+        grid-template-columns: 1fr;
+      }
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      h1 {
+        font-size: 2.25rem;
+      }
+      h2 {
+        font-size: 1.75rem;
+      }
+      .score-scale {
+        grid-template-columns: 1fr 1fr;
+      }
+      .priority-list li {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEKklEQVR4nO2VfUxbVRTAz3339bVlbeWrH3ytK4UJDbAxkK1DKBjj1BVI1Jdp/NjGFhQ0i4nZH9PMyrZssmgi6iRzajJZttD6hdGZYBAawYVF5pwyFgJujSMwKGwQWPl4fce8VvfBlK8ZYhy/5Nzk3XPOPeeed8+9AIss8t/EwQTl3wMRydy9eCcNCMzDGZE4nU6KiOxc3Ig0KFMKMxX5LxlvVNgaGtgZdyHpnUgDMgVnS4thFvEdgbKzy/JWM5nF/ezTVdX6re/Y7Q5HyM1mDez1qjgYsNnYqb8M0cH+6PWu6Rv17e/1jZ1q6vLkBOfxJjtyaxI8BXD5mdCVDlhb9FpIlhV0avJbfEJ0rZkT3j73+osX3W63MNVLWij34JeRl5kwqzImpjDVZCjckKTUZYji6IDPtzdRpdorBSeEiDMkAASAZ8DWR0irt0Ve8NQKrb2IxiWaIFYc/KrvzM9fdJPQROW55t1nausFjlUYRaUmn0TGPQxLTXkkY7VGHR0KiXpVXfaS0TrDQI9ne/49nzgQmfIpwQPV/psEMDC63QI15r4wfvzTJkEfMeFfpkOfSv1QgjnmaNf5iW2D5uxwtrP8yIQ23Q0aDiBkEsjIaC90tn9uHpaf3qoxG80mY8kVFXMIEakL5oyNlWpBTQ9Ugn4dpu2q8b06hFjRcel4UlX9E+qjHRhSWpkB6vRGWLr+LM0sfoOzbuKLnt+d90330EAzIlb+PnxSWkna/T9Ue1okByaiuEJN737UA0nPiI98UD/+CyK2e7oKuHebm7iKb5vCATRsmv1e3X2P6yWnktZLh7ZcQLS39A7Ff9SYSK4nMA946UACKHNLCmjaJoTcl8de+a5D9COe1O08bFW8+T1ypQcK/jK3HmnOtdS0oeWzTkx9v2G7NGcLdMztYJNaDEC+6slj1LoNYcN7vn2tXkTEx2DjgQ+5Zw/28jxPeaeTana4flLua8SwHTUnAIDywftg2tKTmTOQ+rscjHyZrvvX/rOi3qQWk1YxWx60dEa2N6/b33LlPDvSU8yFRU2OKsKqiXB1nL06tGaytvx0oIIul/82E4BgFdxuQZ5sf27Cr6jCaPMYLF+p0C/Xbu6vPqxFmWIPUJkXl4RF04nBPf6mqp1gc7DgLr/lvphfAgF4CugUmdg8t6jU5hC9SWAMeq85RZ3a8fHXJ0CmTCAypg1HfsiErKxJcLnEay09DSzMGgsCIUjjsktxuOcU+gXwj40YLgzINsJQdxlwmjrKCmXCRc8YeLLobILPg+CBJBHpuyByLYIhf5LE3n9Znro+Hu6ybP7TaB7P7uyRFqeQkCAn6qQ2UCX7QZ2CJGLFW0F1hgwWACoNbGhyDshiELhYhFBLYfARC+oWAjYwclHHgNXW3pjYQkECorGEgyoq8tr3nQi5Y3e+yP+HPwCaIYwTb2dhxAAAAABJRU5ErkJggg==" alt="" loading="lazy"></span>
+        <span class="brand-text">
+          <span class="brand-name">Verity Works</span>
+          <span class="brand-sub">Verity Scan</span>
+        </span>
+      </div>
+      <span class="report-pill">Pilot scan</span>
+    </header>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Verity Scan</p>
+        <h1>A to Z Sleep Solutions Verity Scan</h1>
+        <p class="hero-copy">A pilot Verity Scan showing how clearly the business appears to customers, search engines, and AI tools, and what to fix first.</p>
+        <p class="hero-copy">This scan translates technical website and structured-data findings into a plain-language view of business clarity, search visibility, AI readability, trust signals, and the first fixes worth making.</p>
+      </div>
+      <aside class="score-panel" aria-label="Overall scan score">
+        <div class="score-ring"><span class="score-value"><strong>57</strong><small>/ 100</small></span></div>
+        <span class="score-band band-watch">Needs Work</span>
+        <p class="score-note">A directional clarity score for A to Z Sleep Solutions. It shows how clearly the business can be understood by customers, search engines, and AI tools. It is not a ranking promise.</p>
+        <div class="score-scale" aria-label="Score scale">
+          <span>Missing / Unclear</span>
+<span class="active">Needs Work</span>
+<span>Clear</span>
+<span>Strong</span>
+        </div>
+      </aside>
+    </section>
+    <nav class="scan-nav" aria-label="Verity Scan sections">
+      <a class="nav-tile" href="#search-visibility"><strong>Search Visibility</strong><span>Local signals, business basics, and crawl status.</span></a>
+      <a class="nav-tile" href="#ai-visibility"><strong>AI Visibility</strong><span>How clearly machines can understand the business.</span></a>
+      <a class="nav-tile" href="#trust-signals"><strong>Trust Signals</strong><span>Proof, identity, and confidence cues.</span></a>
+      <a class="nav-tile" href="#content-gaps"><strong>Content Gaps</strong><span>Questions and service details that need clarity.</span></a>
+      <a class="nav-tile" href="#fix-plan"><strong>Fix Plan</strong><span>The first practical moves to make.</span></a>
+    </nav>
+    <section class="scan-section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Business Scan</p>
+      <h2>A to Z Sleep Solutions</h2>
+      <p class="section-lead">The site has a real foundation, but it does not yet explain the business and service offer clearly enough for local search and AI systems.</p>
+      <div class="business-meta">
+        <span class="chip">Pediatric sleep consulting / baby and toddler sleep support</span>
+        <span class="chip">Glendale / Phoenix area AZ</span>
+        <span class="chip">Verified</span>
+        <span class="chip">Recommended: LocalBusiness + Service</span>
+      </div>
+    </div>
+    <span class="report-pill">Needs Work</span>
+  </div>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <h3>Bottom Line</h3>
+      <p>A to Z Sleep Solutions has a real website foundation, but this scan does not yet find a clean enough package of who the business helps, what service it provides, and where that service is available. For parents looking for baby or toddler sleep help, that clarity is what helps search and AI systems connect the business to the right questions.</p>
+    </div>
+    <div class="summary-card">
+      <h3>What To Focus On First</h3>
+      <p>The scan is not saying the business is broken. It is showing where the clearest visibility gains should start.</p>
+      <ul class="priority-list"><li><strong>Service clarity</strong><span>Make the pediatric sleep consulting offer easier for people and machines to understand.</span></li>
+<li><strong>Business identity</strong><span>Make the business type, contact path, website, and service area explicit in structured data.</span></li>
+<li><strong>Service area</strong><span>Clarify where the business serves customers and whether support is local, remote, or both.</span></li></ul>
+    </div>
+  </div>
+  <div class="dashboard-grid">
+    <article class="dimension" id="search-visibility">
+  <div class="dimension-top">
+    <h3>Search Visibility</h3>
+    <span class="mini-ring" style="--pct:208.8deg"><span>58</span></span>
+  </div>
+  <span class="score-band band-watch">Needs Work</span>
+  <p>The website was reachable, but the scanned pages did not make the service location clear enough.</p>
+</article>
+<article class="dimension dimension-priority" id="ai-visibility">
+  <div class="dimension-top">
+    <h3>AI Visibility</h3>
+    <span class="mini-ring" style="--pct:118.8deg"><span>33</span></span>
+  </div>
+  <span class="score-band band-gap">Missing / Unclear</span>
+  <p>Some structured data exists, but the business and services are not defined clearly enough.</p>
+</article>
+<article class="dimension" id="trust-signals">
+  <div class="dimension-top">
+    <h3>Trust Signals</h3>
+    <span class="mini-ring" style="--pct:273.6deg"><span>76</span></span>
+  </div>
+  <span class="score-band band-clear">Clear</span>
+  <p>The site has basic identity and contact signals, but trust can be made more explicit.</p>
+</article>
+<article class="dimension dimension-priority" id="content-gaps">
+  <div class="dimension-top">
+    <h3>Content Gaps</h3>
+    <span class="mini-ring" style="--pct:151.2deg"><span>42</span></span>
+  </div>
+  <span class="score-band band-gap">Missing / Unclear</span>
+  <p>The service offer needs to be translated into clearer structured and plain-language answers.</p>
+</article>
+<article class="dimension" id="fix-plan-score">
+  <div class="dimension-top">
+    <h3>Fix Plan</h3>
+    <span class="mini-ring" style="--pct:266.4deg"><span>74</span></span>
+  </div>
+  <span class="score-band band-clear">Clear</span>
+  <p>The first fix path is clear: strengthen LocalBusiness + Service signals and customer-facing clarity.</p>
+</article>
+  </div>
+  <div class="evidence-grid">
+    <div class="panel panel-review">
+      <h3>What We Reviewed</h3>
+      <p>Website: <a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">www.atozsleepsolutions.com</a><br>Phone: 602-842-2055<br>Location: Glendale / Phoenix area AZ</p>
+      <ul class="review-list"><li>Website reachability and crawl status</li>
+<li>4 scanned page path(s)</li>
+<li>Visible business name, phone, and location cues</li>
+<li>Service clarity and buyer-question coverage</li>
+<li>Structured business and service signals</li>
+<li>Trust, contact, and identity cues</li></ul>
+    </div>
+    <div class="evidence-stack">
+      <div class="panel panel-compact">
+        <h3>Main Finding</h3>
+        <p>The site includes some website-level schema, but it does not clearly define the business as a local/service provider.</p>
+      </div>
+      <div class="panel panel-compact">
+        <h3>Location Confidence</h3>
+        <p>The scanned pages did not make a city or service area clear enough for the system to verify.</p>
+      </div>
+      <div class="panel panel-compact">
+        <h3>Plain-English Example</h3>
+        <p>A person may understand from the site that A to Z Sleep Solutions can help parents looking for baby or toddler sleep help, but AI/search systems need that same idea stated more directly: business type, core services, service area, trust signals, and the next booking/contact action.</p>
+      </div>
+      <div class="panel panel-compact">
+        <h3>Why It Matters</h3>
+        <p>Customers, search engines, and AI tools need clear signals about what the business does, who it helps, where it serves, and why it can be trusted.</p>
+      </div>
+    </div>
+  </div>
+  <section class="next-step" id="fix-plan">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Fix Plan</p>
+        <h2>Top Moves</h2>
+        <p class="section-lead">These are the first fixes we would consider before deeper design or marketing work. They are ordered around the clarity gaps most likely to affect how buyers and AI/search systems understand the business.</p>
+      </div>
+    </div>
+    <ol class="fix-list"><li class="fix-item">
+  <span class="fix-rank"><span>1</span></span>
+  <span class="fix-copy"><strong>Add clear LocalBusiness structure</strong><span>Define the business name, phone, website, service area, and business identity in machine-readable form.</span></span>
+</li>
+<li class="fix-item">
+  <span class="fix-rank"><span>2</span></span>
+  <span class="fix-copy"><strong>Define the core services</strong><span>Turn the main services into clear page copy and structured Service data so machines understand the offer.</span></span>
+</li>
+<li class="fix-item">
+  <span class="fix-rank"><span>3</span></span>
+  <span class="fix-copy"><strong>Clarify location and service area</strong><span>Make the city, service area, and remote/local availability explicit in visible copy and structured signals.</span></span>
+</li>
+<li class="fix-item">
+  <span class="fix-rank"><span>4</span></span>
+  <span class="fix-copy"><strong>Add answer blocks</strong><span>Create short answers to the questions customers are likely to ask before hiring or booking.</span></span>
+</li>
+<li class="fix-item">
+  <span class="fix-rank"><span>5</span></span>
+  <span class="fix-copy"><strong>Create before/after proof</strong><span>Use the current scan as the baseline, then show what changed after cleanup.</span></span>
+</li></ol>
+  </section>
+  <div class="next-step">
+    <h3>What happens next</h3>
+    <p><strong>Verity Works can turn this scan into a cleanup sprint:</strong> clarify the business and service signals, add structured service data, improve answer-ready copy, then run a follow-up scan so the before/after is visible. For this pilot, the right next step is a review conversation: confirm whether the findings feel accurate, decide which fixes belong in the first cleanup sprint, and use the feedback to make the Verity Scan stronger before sharing it with outside customers.</p>
+  </div>
+  <div class="pilot-note">
+    <p><strong>Pilot note:</strong> This draft is built for feedback. It should be reviewed for accuracy, usefulness, and sales clarity before being used as a customer-facing example.</p>
+  </div>
+</section>
+  </main>
+</body>
+</html>
