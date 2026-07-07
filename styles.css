@@ -704,6 +704,102 @@ summary::-webkit-details-marker {
   color: rgba(238, 243, 239, 0.78);
 }
 
+.legal-hero {
+  padding: 5.6rem 0 2.4rem;
+}
+
+.legal-shell {
+  max-width: 58rem;
+}
+
+.legal-shell h1 {
+  max-width: 14ch;
+  margin-inline: 0;
+}
+
+.legal-updated {
+  margin: 1.1rem 0 0;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.legal-intro {
+  max-width: 58rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.legal-section {
+  padding-top: 2.2rem;
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.legal-card {
+  padding: 1.45rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(19, 28, 35, 0.88), rgba(11, 16, 21, 0.94)),
+    rgba(255, 255, 255, 0.02);
+}
+
+.legal-card-strong {
+  grid-column: 1 / -1;
+  background:
+    linear-gradient(180deg, rgba(123, 192, 214, 0.09), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.03);
+  border-color: rgba(123, 192, 214, 0.22);
+}
+
+.legal-card h2 {
+  max-width: none;
+  margin-bottom: 0.85rem;
+  font-size: 1.25rem;
+}
+
+.legal-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.legal-card a {
+  color: #bde5ec;
+  text-decoration: underline;
+  text-decoration-color: rgba(189, 229, 236, 0.42);
+  text-underline-offset: 0.18em;
+}
+
+.legal-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legal-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.legal-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--accent-warm);
+}
+
 .site-footer {
   padding: 1.8rem 0 3rem;
 }
@@ -720,6 +816,14 @@ summary::-webkit-details-marker {
 .site-footer a,
 .site-nav a {
   transition: color 180ms ease, opacity 180ms ease, background 180ms ease;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.2rem;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .site-nav a:hover,
@@ -766,6 +870,7 @@ summary:focus-visible {
   .deliverables-shell,
   .fit-shell,
   .contact-shell,
+  .legal-grid,
   .deliverables-grid {
     grid-template-columns: 1fr;
   }
@@ -824,8 +929,18 @@ summary:focus-visible {
   .pricing-card,
   .fit-card,
   .contact-shell,
-  .faq-list details {
+  .faq-list details,
+  .legal-card {
     padding: 1.4rem;
+  }
+
+  .legal-hero {
+    padding-top: 4rem;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   h1 {
