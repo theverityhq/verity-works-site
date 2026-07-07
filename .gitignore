@@ -1,2 +1,9 @@
 .DS_Store
 ChatGPT Image Mar 14, 2026, 08_57_51 PM.png
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
