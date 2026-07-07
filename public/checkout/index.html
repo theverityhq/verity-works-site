@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkout Terms | Verity Works</title>
+    <title>Payments | Verity Works</title>
     <meta
       name="description"
-      content="Draft Verity Works checkout acknowledgement and payment expectations."
+      content="Verity Works payment expectations, Stripe checkout setup, and client acknowledgement language."
     />
     <meta name="robots" content="noindex,nofollow,noarchive" />
     <meta name="theme-color" content="#121417" />
@@ -39,12 +39,12 @@
       <section class="legal-hero">
         <div class="container legal-shell">
           <p class="eyebrow">Payment expectations</p>
-          <h1>Checkout Terms</h1>
-          <p class="legal-updated">Draft version. Last updated July 6, 2026.</p>
+          <h1>Payments</h1>
+          <p class="legal-updated">Draft version. Last updated July 7, 2026.</p>
           <p class="legal-intro">
-            This page captures the acknowledgement language and payment
-            expectations that should appear before a Verity Works client pays
-            for an audit, scan, walkthrough, cleanup sprint, or related service.
+            Verity Works uses Stripe for invoices and hosted checkout. Most
+            first engagements begin with a written scope, then a Stripe invoice
+            or payment link after the fit and deliverables are clear.
           </p>
         </div>
       </section>
@@ -52,6 +52,15 @@
       <section class="section legal-section">
         <div class="container legal-grid">
           <article class="legal-card legal-card-strong">
+            <h2>Recommended Payment Flow</h2>
+            <p>
+              The first Verity Scan payment should be collected through a
+              Stripe invoice or hosted payment page after Verity Works confirms
+              scope, price, timeline, and client responsibilities in writing.
+            </p>
+          </article>
+
+          <article class="legal-card">
             <h2>Checkout Acknowledgement</h2>
             <p>
               By purchasing, you agree to the Verity Works
@@ -62,6 +71,17 @@
               rankings, traffic, leads, revenue, AI placement, or third-party
               platform outcomes.
             </p>
+          </article>
+
+          <article class="legal-card">
+            <h2>Stripe Setup</h2>
+            <ul class="legal-list">
+              <li>Create or confirm the Verity Works Stripe account.</li>
+              <li>Add https://verityworks.dev/terms/ as the terms URL.</li>
+              <li>Add https://verityworks.dev/refund-policy/ as the refund policy URL.</li>
+              <li>Enable terms acceptance on invoices or payment links.</li>
+              <li>Enable ACH where appropriate for larger invoices.</li>
+            </ul>
           </article>
 
           <article class="legal-card">
@@ -109,8 +129,10 @@
           <article class="legal-card">
             <h2>Internal Launch Checklist</h2>
             <ul class="legal-list">
-              <li>Confirm first paid offer name and price.</li>
+              <li>Confirm first paid offer name: Verity Scan.</li>
               <li>Confirm whether payment is full upfront or deposit-first.</li>
+              <li>Create the first Stripe invoice template.</li>
+              <li>Create a reusable Stripe Payment Link after the offer stabilizes.</li>
               <li>Add terms acknowledgement to Stripe/payment flow.</li>
               <li>Save payment receipt and agreement evidence.</li>
               <li>Send confirmation email with scope and next steps.</li>
