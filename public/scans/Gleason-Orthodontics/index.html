@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Gleason Orthodontics Verity Scan | Verity Scan</title>
+  <style>
+    :root {
+      --paper: #f3f5f2;
+      --ink: #151816;
+      --muted: #5f675f;
+      --line: rgba(21, 24, 22, 0.14);
+      --surface: #ffffff;
+      --surface-tint: #fbfcfa;
+      --signal: #1f6470;
+      --signal-dark: #164c55;
+      --signal-soft: #e4f0ef;
+      --green: #2f6f4e;
+      --green-soft: #e7f2ea;
+      --amber: #8a621f;
+      --amber-soft: #f2eadb;
+      --red: #8f463b;
+      --red-soft: #f1e4e0;
+      --shadow: 0 18px 44px rgba(21, 24, 22, 0.09);
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--signal-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page {
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-initials {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .brand-text {
+      display: grid;
+      gap: 2px;
+    }
+    .brand-name {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .brand-sub {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .report-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.64);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.72fr);
+      gap: 22px;
+      align-items: stretch;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcfa 100%);
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--signal-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: 3.85rem;
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 0.98;
+    }
+    .hero-copy {
+      margin: 16px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .score-panel {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      min-height: 280px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+      text-align: center;
+    }
+    .score-panel > .score-band {
+      min-height: 38px;
+      margin-bottom: 16px;
+      padding: 0 16px;
+      font-size: 15px;
+    }
+    .score-ring {
+      --pct: 291.6deg;
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      background: conic-gradient(var(--signal) var(--pct), #dce2dd 0);
+      margin-bottom: 18px;
+    }
+    .score-ring::before {
+      content: "";
+      position: absolute;
+      width: 98px;
+      height: 98px;
+      border-radius: 50%;
+      background: var(--surface-tint);
+    }
+    .score-ring span {
+      position: relative;
+      z-index: 1;
+      font-size: 42px;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+    .score-value {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 0;
+    }
+    .score-value strong {
+      font-size: 28px;
+      line-height: 0.95;
+    }
+    .score-value small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .score-band {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .band-strong { color: var(--green); background: var(--green-soft); }
+    .band-clear { color: var(--signal-dark); background: var(--signal-soft); }
+    .band-watch { color: var(--amber); background: var(--amber-soft); }
+    .band-gap { color: var(--red); background: var(--red-soft); }
+    .score-note {
+      max-width: 260px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .score-scale {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      width: 100%;
+      max-width: 420px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+    }
+    .score-scale span {
+      display: grid;
+      place-items: center;
+      min-height: 44px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #eef2ee;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      line-height: 1.05;
+      text-align: center;
+      overflow-wrap: normal;
+    }
+    .score-scale .active {
+      color: var(--ink);
+      border: 2px solid var(--signal);
+      background: var(--surface);
+      box-shadow: 0 8px 18px rgba(31, 100, 112, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      font-weight: 850;
+    }
+    .scan-nav {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+    }
+    .nav-tile {
+      display: block;
+      min-height: 86px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--ink);
+    }
+    .nav-tile:hover {
+      border-color: rgba(31, 100, 112, 0.44);
+      text-decoration: none;
+    }
+    a:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 3px;
+    }
+    .nav-tile strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .nav-tile span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .scan-section {
+      margin-top: 18px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .summary-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    .summary-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    .summary-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .priority-list {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .priority-list li {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .priority-list strong {
+      color: var(--ink);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 22px;
+    }
+    .business-title-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .customer-logo {
+      display: grid;
+      place-items: center;
+      width: min(210px, 100%);
+      min-height: 64px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .customer-logo img {
+      display: block;
+      width: 100%;
+      max-width: 180px;
+      max-height: 54px;
+      object-fit: contain;
+    }
+    h2 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 740;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+    .section-lead {
+      margin: 10px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .business-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: #edf1ec;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .dimension {
+      display: grid;
+      gap: 12px;
+      min-height: 190px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    .dimension-priority {
+      border-color: rgba(138, 98, 31, 0.34);
+      background: #fbf7ed;
+    }
+    .dimension-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .dimension-score {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .dimension h3 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    .dimension p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.46;
+    }
+    .dimension-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.35fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .evidence-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .panel {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    .panel-review {
+      display: grid;
+      align-content: start;
+      min-height: 100%;
+    }
+    .panel-compact {
+      min-height: 168px;
+    }
+    .panel h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+    .panel a {
+      overflow-wrap: anywhere;
+    }
+    .review-list {
+      display: grid;
+      gap: 6px;
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .review-list li::before {
+      content: "Checked";
+      display: inline-block;
+      margin-right: 8px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .fix-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .fix-item {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    .fix-rank {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(31, 100, 112, 0.28);
+      background: var(--signal-soft);
+      color: var(--signal-dark);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 6px 14px rgba(31, 100, 112, 0.1);
+    }
+    .fix-rank span {
+      display: block;
+      color: var(--signal-dark);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1;
+      text-align: center;
+    }
+    .fix-copy strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+    .fix-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .next-step {
+      margin-top: 18px;
+      padding: 22px;
+      border: 1px solid rgba(31, 100, 112, 0.24);
+      border-radius: var(--radius);
+      background: var(--signal-soft);
+    }
+    .next-step h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+    .next-step p {
+      margin: 0;
+      color: #274353;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .next-step strong {
+      color: var(--ink);
+    }
+    .pilot-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border: 1px dashed rgba(23, 23, 23, 0.22);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.56);
+    }
+    .pilot-note p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    details {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-tint);
+    }
+    summary {
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .internal-body {
+      display: grid;
+      gap: 14px;
+      padding: 0 16px 16px;
+    }
+    pre {
+      overflow: auto;
+      margin: 0;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: #181818;
+      color: #f6f2ea;
+      font: 500 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    @media (max-width: 980px) {
+      .hero,
+      .section-head,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+      .evidence-grid,
+      .evidence-stack {
+        grid-template-columns: 1fr;
+      }
+      .dashboard-grid,
+      .scan-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .page {
+        width: min(100vw - 24px, 100%);
+        padding-top: 18px;
+      }
+      .hero,
+      .scan-section {
+        padding: 18px;
+      }
+      .dashboard-grid,
+      .scan-nav {
+        grid-template-columns: 1fr;
+      }
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .business-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      h1 {
+        font-size: 2.25rem;
+      }
+      h2 {
+        font-size: 1.75rem;
+      }
+      .score-scale {
+        grid-template-columns: 1fr 1fr;
+      }
+      .priority-list li {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEKklEQVR4nO2VfUxbVRTAz3339bVlbeWrH3ytK4UJDbAxkK1DKBjj1BVI1Jdp/NjGFhQ0i4nZH9PMyrZssmgi6iRzajJZttD6hdGZYBAawYVF5pwyFgJujSMwKGwQWPl4fce8VvfBlK8ZYhy/5Nzk3XPOPeeed8+9AIss8t/EwQTl3wMRydy9eCcNCMzDGZE4nU6KiOxc3Ig0KFMKMxX5LxlvVNgaGtgZdyHpnUgDMgVnS4thFvEdgbKzy/JWM5nF/ezTVdX6re/Y7Q5HyM1mDez1qjgYsNnYqb8M0cH+6PWu6Rv17e/1jZ1q6vLkBOfxJjtyaxI8BXD5mdCVDlhb9FpIlhV0avJbfEJ0rZkT3j73+osX3W63MNVLWij34JeRl5kwqzImpjDVZCjckKTUZYji6IDPtzdRpdorBSeEiDMkAASAZ8DWR0irt0Ve8NQKrb2IxiWaIFYc/KrvzM9fdJPQROW55t1nausFjlUYRaUmn0TGPQxLTXkkY7VGHR0KiXpVXfaS0TrDQI9ne/49nzgQmfIpwQPV/psEMDC63QI15r4wfvzTJkEfMeFfpkOfSv1QgjnmaNf5iW2D5uxwtrP8yIQ23Q0aDiBkEsjIaC90tn9uHpaf3qoxG80mY8kVFXMIEakL5oyNlWpBTQ9Ugn4dpu2q8b06hFjRcel4UlX9E+qjHRhSWpkB6vRGWLr+LM0sfoOzbuKLnt+d90330EAzIlb+PnxSWkna/T9Ue1okByaiuEJN737UA0nPiI98UD/+CyK2e7oKuHebm7iKb5vCATRsmv1e3X2P6yWnktZLh7ZcQLS39A7Ff9SYSK4nMA946UACKHNLCmjaJoTcl8de+a5D9COe1O08bFW8+T1ypQcK/jK3HmnOtdS0oeWzTkx9v2G7NGcLdMztYJNaDEC+6slj1LoNYcN7vn2tXkTEx2DjgQ+5Zw/28jxPeaeTana4flLua8SwHTUnAIDywftg2tKTmTOQ+rscjHyZrvvX/rOi3qQWk1YxWx60dEa2N6/b33LlPDvSU8yFRU2OKsKqiXB1nL06tGaytvx0oIIul/82E4BgFdxuQZ5sf27Cr6jCaPMYLF+p0C/Xbu6vPqxFmWIPUJkXl4RF04nBPf6mqp1gc7DgLr/lvphfAgF4CugUmdg8t6jU5hC9SWAMeq85RZ3a8fHXJ0CmTCAypg1HfsiErKxJcLnEay09DSzMGgsCIUjjsktxuOcU+gXwj40YLgzINsJQdxlwmjrKCmXCRc8YeLLobILPg+CBJBHpuyByLYIhf5LE3n9Znro+Hu6ybP7TaB7P7uyRFqeQkCAn6qQ2UCX7QZ2CJGLFW0F1hgwWACoNbGhyDshiELhYhFBLYfARC+oWAjYwclHHgNXW3pjYQkECorGEgyoq8tr3nQi5Y3e+yP+HPwCaIYwTb2dhxAAAAABJRU5ErkJggg==" alt="" loading="lazy"></span>
+        <span class="brand-text">
+          <span class="brand-name">Verity Works</span>
+          <span class="brand-sub">Verity Scan</span>
+        </span>
+      </div>
+      <span class="report-pill">Verity Scan</span>
+    </header>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Verity Scan</p>
+        <h1>Gleason Orthodontics Verity Scan</h1>
+        <p class="hero-copy">A practical review of local visibility, website trust signals, and AI-readiness opportunities for Gleason Orthodontics.</p>
+        <p class="hero-copy">This scan translates technical website and structured-data findings into a plain-language view of business clarity, search visibility, AI readability, trust signals, and the first fixes worth making.</p>
+      </div>
+      <aside class="score-panel" aria-label="Overall scan score">
+        <span class="score-band band-clear">Clear</span>
+        <div class="score-ring"><span class="score-value"><strong>81</strong><small>/ 100</small></span></div>
+        <p class="score-note">A directional clarity score for Gleason Orthodontics. It is not a promise of rankings, traffic, leads, conversions, or placement in AI answers.</p>
+        <div class="score-scale" aria-label="Score scale">
+          <span>Missing / Unclear</span>
+<span>Needs Work</span>
+<span class="active">Clear</span>
+<span>Strong</span>
+        </div>
+      </aside>
+    </section>
+    <nav class="scan-nav" aria-label="Verity Scan sections">
+      <a class="nav-tile" href="#search-visibility"><strong>Search Visibility</strong><span>Local signals, business basics, and crawl status.</span></a>
+      <a class="nav-tile" href="#ai-visibility"><strong>AI Visibility</strong><span>How clearly machines can understand the business.</span></a>
+      <a class="nav-tile" href="#trust-signals"><strong>Trust Signals</strong><span>Proof, identity, and confidence cues.</span></a>
+      <a class="nav-tile" href="#content-gaps"><strong>Content Gaps</strong><span>Questions and service details that need clarity.</span></a>
+      <a class="nav-tile" href="#fix-plan"><strong>Fix Plan</strong><span>The first practical moves to make.</span></a>
+    </nav>
+    <section class="scan-section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Business Scan</p>
+      <div class="business-title-row">
+        <h2>Gleason Orthodontics</h2>
+        <span class="customer-logo"><img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgMjUwIDY0IiB3aWR0aD0iMjUwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9Im5vbmUiPjxnIGZpbGw9IiMyNjMwNjkiPjxwYXRoIGQ9Im05My41NTcwNTM2IDMyLjYyNTIzNjVjOC4xNzI0Nzg0LTEuNTk0NzUyOCAxOS4xMzY0NDE0LTIuOTkwMDgwMSAyOS40MzU4NDk0LTIuOTkwMDgwMSAxLjEyOTUwNSAwIDIuMjU5MDExIDAgMy41MjExOS4wNjYzOTYyLjUzMTg4MSAwIDEuMTMwMDk4LjMzMjI3NzIgMS41Mjg3MTIuODYzODYxNS4yNjUzNDguNTMxNTI1LjA2NjMzNy45MzAxOTg0LS4zMzIyNzcuOTMwMTk4NC0uOTk2ODMxIDAtMi4xMjYzMzctLjA2NjM5NjItMy4xODk1MDUtLjA2NjM5NjItMS4wNjMxNjkgMC0yLjE5MjY3NC4wNjYzOTYyLTMuMjU1ODQzLjA2NjM5NjItLjA2NjMzNy4wNjY0NTU0LS4wNjYzMzcuMTMyOTEwOS0uMDY2MzM3LjEzMjkxMDkuMzk4NjE0IDEuODYwNTE1My0uMDY2OTI5IDQuMjUyNTU1Ni0uOTMwNDk0IDYuODQ0MDIxNWwtLjE5OTYwNC4xOTkzMDcxLS4xMzI2NzQuOTMwMjU3NmMtLjE5OTAxMSA0LjQ1MTkyMi0uNTMxMjg4IDguNDM4NzE1MS0uNTMxMjg4IDEyLjU1ODQxOTIgMCAzLjI1NTg0MjUuMjY1MzQ4IDYuNTc3OTAzNi45Mjk5MDMgMTAuMzY1NjI2Ni4wNjYzMzYuMzk4NjE0MS0uMzMyMjc4LjU5ODIxNzQtLjkyOTkwMy4zMzIyNzcyLS42NjQ1NTQtLjI2NTk0MDItMS4xOTY0MzUtLjczMDg5MTQtMS4yNjI3NzItMS4xOTU4NDI1LS41OTgyMTctMy4xMjMxNjg2LS45Mjk5MDItNy41MDg2OTQ0LS45Mjk5MDItMTIuMDkzNDY4IDAtMS45OTM0MjYyLjA2NjMzNy0zLjk4Njc5MzEuMTk5MDExLTUuOTEzNzYzOWwtLjMzMjI3Ny41MzE1ODQzYy0zLjk4NjczNCA1LjMxNTcyNDItMTEuMDk2NjM2IDEwLjg5NzIxMDktMTkuNjY4MzIxNyAxMS4xNjI5NzM0LTExLjQ5NTI1MDYuMzMyMjc3Mi0yMC4wMDAwMDY1LTguNjM4MDIyMi0xOS40MDIzODE0LTI0LjM4NTgyODQuNTMxODgwNC0xMy42MjE1ODc3IDEwLjYzMTY4NTMtMjkuMTcwMDU3MjQgMjUuNTgyMzgyMS0zMC4wMzM4NTk0NiA0Ljc4Mzk2Mi0uMjY1Nzg2MjEgOS4zMDE5ODQgMS4zMjg5MzEwNSAxMi4yMjYxNDEgNS41ODE1MTYzMi45Mjk5MDMgMS40NjE4NDE5MiAxLjUyODEyIDMuMzIyMjk4IDEuNTI4MTIgNS4yNDkyNjg3NCAwIDIuOTkwMDgwMS0xLjMyOTEwOSA2LjMxMjQzNzMtNC40NTE2ODUgOC43NzA5MzMxLTEuNzI3NzIzIDEuNDYxODQxOS0zLjQ1NTQ0Ni44NjM4MDIyLTIuNTI1NTQzLjEzMjkxMDggMy41MjE3ODItMi44NTcyMjg0IDQuOTE3MjI4LTYuNTExNzQ0MyA0LjkxNzIyOC05LjU2ODMzOSAwLTEuMTk2MDIwMi0uMjY1OTQtMi4zMjU1ODQ5NC0uNTk4MjE3LTMuMjU1ODQyNi0xLjQ2MTc4My0zLjU4ODExOTc0LTUuMzE1MjUxLTQuOTE3MDUwNzktOS4zMDE5ODUtNC45MTcwNTA3OS0uNTk4MjE3IDAtMS4xMzAwOTcgMC0xLjcyNzcyMi4wNjY0NTU0NC0xMi4zNTk0MDg3IDEuMjYyNDc1NjEtMjIuNTI1NTUwNSAxNC45NTA0NTk0NS0yMy4zMjI3Nzg4IDI3Ljg0MTA5NjU1LS4wNjYzMzcuODYzODAyMi0uMDY2MzM3IDEuNjYxMTQ5LS4wNjYzMzcgMi41MjQ5NTEyIDAgMTIuMDI2ODM0OSA2LjA0NjczNCAyMC4yNjYxODM2IDE1Ljk0NjkzNTYgMjAuMTk5Nzg3NCA5LjIzNjIzOTItLjA2NjQ1NTQgMTguMDczMjczMi04LjM3MjMxODkgMjEuMzk2MDQ0Mi0xNS4zNDkxOTJsLjMzMjI3OC0uODYzODAyM2guMDY2MzM3Yy4wNjYzMzYtMS4wNjMxMDkzLjE5OTAxLTIuMDU5ODIyNC4zMzIyNzctMi44NTcxNjkxLjEzMjY3NC0xLjE5NjA3OTQuMzMyMjc3LTIuMjU5MTg4Ny4zOTg2MTQtMi45MjM2ODM5LTguMzA1NzQ1LjM5ODY3MzQtMTYuODc3NDMgMS41OTQ3NTI4LTIzLjQ1NjA0NDcgMi45MjM2ODM5LS40NjQ5NTEyLjA2NjM5NjItMS4yNjIxNzk1LS4zMzIyNzcyLTEuNTk0NDU2Ny0uNzk3NDA2LS41OTgyMTc0LS40NjUxMjg5LS41OTgyMTc0LS45MzAxOTg1LS4xMzI2NzQtMS4wNjMxMDkzeiIvPjxwYXRoIGQ9Im0xMzIuODkzNjk3IDQxLjcyODM4NzVjLTEuMTI5NTA2LTEuNzk0MDU5OS0xLjU5NDQ1Ny02LjA0NjYxNTYtMS41OTQ0NTctMTEuMDk2NTc3MiAwLTkuOTY2OTUzMyAxLjY2MDc5NC0yMi45MjQwNDU3NyAyLjQ1ODYxNS0yNS40NDg5OTY5OS4wNjYzMzYtLjMzMjI3NzE4LjM5ODYxNC0uMzk4NzMyNjIuOTk2MjM5LS4xOTkzNjYzMS41OTgyMTcuMzMyMjE3OTYgMS4wNjMxNjguNzk3MzQ2NzggMS4wNjMxNjggMS4wNjMxNjg1My0uMzMyMjc3IDEuMTI5NTY0NzQtMi4xMjYzMzcgMTUuNjE0ODk1MzctMi4xMjYzMzcgMjUuOTgwNTgxMjcgMCA1LjM4MjE3OTYuNDY1NTQ0IDkuNjM0NzM1MiAxLjc5NDA2IDEwLjQ5ODUzNzUgMy4xMjMxNjkgMS45MjY5NzA3IDEwLjQzMjA4Mi03LjkwNzEzMDkgMTEuMjk2MjQtOS4wMzY2OTU2LjU5NzYyNS0uODYzODYxNS43MzA4OTEuNjY0NDM1OS40NjQ5NTEgMS4zOTUzMjcyLTEuMDYzMTY5IDIuOTkwMTM5My01LjkxMzQ2OCA5LjUwMTg4MzctOS43MDExOTEgOS41MDE4ODM3LTEuNzI3NzIzLjEzMjkxMDgtMy40NTU0NDYtLjk5NjcxMzEtNC42NTEyODgtMi42NTc4NjIxeiIvPjxwYXRoIGQ9Im0xNDYuNjQ3MzY2IDM3LjI3NjQ2NTVjLS4xOTkwMTEtLjUzMTU4NDMtLjMzMjI3Ny0xLjEyOTYyNC0uMzMyMjc3LTEuNzI3NjA0NCAwLTIuNjU3ODYyMSAxLjc5NDA2LTUuMzgyMTc5NyA0Ljc4NDU1NS01LjQ0ODYzNTEgMS44NjAzOTYgMCAzLjU4ODExOSAxLjc5NDA1OTkgMi45MjM1NjUgMy41MjE2NjQzLS43OTc4MjEgMS45MjY5NzA4LTMuMzg5MTA5IDMuMzg4NzUzNS01LjQ0ODUxNyAzLjM4ODc1MzUuMTk5MDExIDEuMTI5NjIzOSAyLjI1OTAxMSAzLjA1NjUzNTQgNC4zODUzNDggMy4wNTY1MzU0IDUuNjQ3NTI4IDAgOS45MDAyMDItNC4xODYxMDAyIDEyLjQyNTE1My02Ljg0Mzk2MjMgMS4zOTU0NDYtMS40NjE4NDE5IDEuMTI5NTA2LS4wNjY0NTU0LjMzMjI3NyAxLjU5NDY5MzYtMS42NjA3OTMgMy41MjE2NjQzLTUuNTE0ODUzIDYuNDQ1MzQ4MS05LjcwMTE5IDYuNzExMTEwNy0zLjU4ODEyLjEzMjkxMDgtOC4xNzI0NzktLjUzMTU4NDMtOS4zNjg5MTQtNC4yNTI1NTU3em0xLjg2MDM5Ny0xLjcyNzYwNDRjMi41MjQ5NTEtMS4xMjk2MjQgNC4xODYzMzctMi43OTA3NzMgMy41MjE3ODMtMy40NTUyMDg5LTEuMjYyMTgtMS4yNjI1MzQ4LTMuNTg4MTIgMS45MjY5MTE1LTMuNTIxNzgzIDMuNDU1MjA4OXoiLz48cGF0aCBkPSJtMTYzLjMyNTc4NiAzNi40MTI2NjMzYzAtMS4zMjg5MzExLjY2NDU1NC0yLjY1Nzg2MjEgMi4xOTI2NzQtMy42NTQ1NzUyIDEuNTk1MDQ4LTEuMDYzMTA5MyAzLjY1NDQ1Ni0xLjU5NDY5MzYgNS43ODA3OTMtMS41OTQ2OTM2IDEuNjYxMzg2IDAgMy4zODkxMDkuMzMyMjE4IDQuODUwODkyLjk5NjcxMzFoLjA2NjMzN2wuOTk2ODMxLTEuMzk1Mzg2NWMuMzMyMjc4LS42NjQ0OTUxIDIuMzkxNjg1LjY2NDQzNiAxLjk5MzA3MSAxLjM5NTM4NjUtLjMzMjI3Ny45MzAxOTg1LS44NjM1NjUgMS45OTMzNjctLjkyOTkwMiAzLjEyMjk5MDktLjA2NjkyOS45OTY2NTM5LjI2NTM0OCAyLjI1OTEyOTUgMS4zMjg1MTYgMi41MjQ5NTEzIDMuMDU2ODMyLjU5Nzk4MDQgOC4yMzk0MDgtMi40NTg1NTUgMTAuNDMyMDgyLTQuODUwNTk1NC45OTY4MzItLjk5NjcxMzEgMS45MjczMjcuNDY1MTI4OC0xLjM5NTQ0NSAzLjc4NzQyNjgtMS41MjgxMiAxLjUyODI5NzQtNS42NDc1MjggMy40NTUyMDg5LTguMTcyNDc5IDIuODU3MjI4NC0xLjk5MzY2My0uNDY1MTI4OC0zLjUyMTc4My0xLjU5NDc1MjgtNC4yNTI2NzQtMy43ODc0ODYtMS42NjEzODYgMS41MjgyOTczLTUuNjQ4MTIgNC41ODQ4MzI4LTguODM3NjI2IDQuNTg0ODMyOC0uNzk3MjI4IDAtMS41MjgxMTktLjE5OTM2NjMtMi4xOTI2NzQtLjU5ODAzOTctMS4yNjIxNzktLjk5NjY1MzgtMS44NjAzOTYtMi4xMjYyNzc4LTEuODYwMzk2LTMuMzg4NzUzNHptMTEuNzYxMTktMy4xMjI5OTA5Yy0uNTk4MjE3LS4xOTkzNjYzLTEuNDYxNzgyLS4zMzIyMTgtMi4zMjU5NC0uMzMyMjE4LTIuOTg5OTAyIDAtNi45NzY2MzYgMS4xMjk1NjQ3LTcuNjQxMTkxIDMuOTIwMzM3Ny0uMTk5NjAzLjczMDg5MTQuMTk5NjA0IDEuMzk1Mzg2NSAxLjA2MzE2OSAxLjQ2MTg0MTkgMi44NTcyMjgtLjMzMjI3NzIgNi43Nzc2MjUtMi43OTA3NzI5IDguOTAzOTYyLTUuMDQ5OTYxNnoiLz48cGF0aCBkPSJtMTg5LjIzOTg1MiAzOS4zMzYzNDcxYy41MzE4OC4xMzI5MTA5IDEuMTk2NDM1LjE5OTM2NjMgMS45OTM2NjMuMTk5MzY2MyAxLjkyNjczNCAwIDQuMzE5MDExLS4zMzIyNzcyIDUuOTEzNDY4LS42NjQ0OTUxLTEuNTI4MTItLjc5NzM0NjgtMy43ODcxMzEtMS45MjY5NzA4LTQuOTgzNTY2LTIuNTkxNDA2Ny0xLjU5NDQ1Ni0uOTMwMjU3Ni0zLjI1NTg0Mi0xLjUyODI5NzMtMy41MjExOS0zLjMyMjM1NzItLjQ2NTU0My0zLjE4OTM4NzEgNi4wNDY3MzQtNS4xMTYzNTc5IDkuMTY5MzEtNS41MTUwMzEzLjkzMDQ5NS0uMTMyOTEwOCAyLjE5MjY3NC45OTY3MTMxIDEuNjYxMzg2IDEuNTk0NjkzNi0yLjI1OTAxMS43OTc0MDYtNy43MDgxMiAxLjc5NDA1OTktOC4zNzIwODIgMy4zODg4MTI3LS4zMzIyNzcuODYzODAyMi45OTYyMzkgMS40NjE3ODI3IDIuMjU5MDExIDIuMTkyNzMzMiAyLjI1OTAxMSAxLjI2MjQ3NTYgNC4xMTk0MDggMi4xOTI3MzMzIDUuMzE1ODQzIDMuMTIyOTkxIDEuMzI4NTE2IDEuMTI5NTY0Ny4xOTkwMTEgMi44NTcxNjkxLTEuMzk1NDQ2IDMuMjU1ODQyNS0xLjA2MzE2OC4zMzIyNzcyLTIuNjU4MjE3LjQ2NTEyODktNC4xODYzMzcuNDY1MTI4OXMtMi45MjM1NjUtLjE5OTMwNzEtMy44NTQwNi0uNTMxNTg0M2MtLjc5NzIyOC0uMzk4NjczNC0xLjMyODUxNi0xLjkyNjkxMTUgMC0xLjU5NDY5MzZ6Ii8+PHBhdGggZD0ibTIxMy42OTIxMzYgMzQuMzUyODQwOWMuMjY1OTQuNzk3MzQ2OC4zMzIyNzcgMS42NjExNDkuMTMzMjY2IDIuNTkxNDA2Ni0uNTMxODggMi45OTAwODAxLTIuOTg5OTAyIDQuNTE4Mzc3NS01Ljc4MDc5NCA0LjMxOTAxMTEtMi4yNTk2MDMtLjEzMjg1MTYtMy43MjEzODYtMS45OTMzNjY5LTQuMDUzNjYzLTMuNjU0NTE1OS0uMzk4NjE0LTIuNTI1MDEwNSAxLjEzMDA5OC01LjQ0ODYzNTEgMi41MjU1NDQtNS45MTM3NjM5LjEzMjY3NCAwIC4xOTkwMTEtLjA2NjQ1NTQuMzMxNjg1LS4wNjY0NTU0LjI2NTk0LS44NjM4MDIzLjY2NDU1NC0xLjUyODI5NzQgMS44NjA5ODktMS40NjE4NDIgMS41OTQ0NTYuMjY1ODIxOCAyLjkyMzU2NS45OTY3MTMxIDMuODUzNDY3IDIuMTI2MzM3MSAxLjUyODcxMi4xOTkzMDcxIDMuMDU2ODMyLjI2NTc2MjUgNC40NTIyNzguMjY1NzYyNSAyLjg1NzIyOCAwIDUuMTgyNTc2LS4yNjU3NjI1IDUuNzE0NDU3LS4yNjU3NjI1IDEuNzI3MTMtLjA2NjQ1NTQgMS4zMjg1MTYuNzMwODkxMy0uMTMzMjY3IDEuMTk2MDIwMi0xLjMyODUxNi40NjUxMjg4LTUuMjQ4OTEzLjk5NjcxMzEtOC45MDM5NjIuODYzODAyMnptLTcuNjQxMTkxIDMuMDU2NTM1NWMuMzMyMjc3IDEuNzI3NjA0NC45MzA0OTUgMi4zOTIwOTk2IDIuMTI2MzM3IDIuMzI1NjQ0MSAyLjY1ODIxOC0uMTMyOTEwOSAzLjk4NjczNC0zLjUyMTY2NDMgMi45ODk5MDMtNS43MTQzOTc2LTEuMzk0ODU0LS4yNjU4MjE3LTIuNTI0OTUyLS41OTgwMzk3LTMuMzg4NTE3LTEuMTI5NjIzOWwtLjEzMjY3NC4xMzI5MTA4Yy0uNzMwODkxLjU5ODAzOTctMS44NjA5ODkgMi43MjQzMTc2LTEuNTk1MDQ5IDQuMzg1NDY2NnoiLz48cGF0aCBkPSJtMjIyLjA2NDIxOCAzNy4zNDI5MjA5LjU5ODIxNy02LjA0NjYxNTVjMC0uMzk4NjczNC41OTc2MjUtLjQ2NTEyODggMS4xOTU4NDMtLjI2NTgyMTcuNDY0OTUxLjMzMjIxNzkuOTk2ODMxLjg2MzgwMjIuOTMwNDk0IDEuMTk2MDc5NGwtLjEzMzI2NiAyLjA1OTgyMjRjMi4wNi0xLjUyODI5NzQgNi4zNzkwMTEtMy42NTQ1NzUyIDkuNzY3NTI4LTMuMzIyMzU3MyAxLjEzMDA5OC4xMzI5MTA5IDIuMjU5NjAzIDEuMTk2MDc5NCAyLjI1OTYwMyAyLjEyNjMzNzEgMCAuOTk2NjUzOC0uNjY0NTU0IDMuMzIyMjk4LjEzMjY3NCA0LjQ1MTkyMTkuNTk4MjE3LjQ2NTA2OTYgMS4yNjI3NzIuNjY0NDM2IDIuMDYuNjY0NDM2IDMuNzIwNzk0IDAgOC45NzAzLTQuNzg0MTQgMTAuODk3MDMzLTUuNzE0Mzk3Ni4yNjU5NDEtLjEzMjkxMDkuNDY0OTUxIDEuMTk2MDIwMi0uMzk4NjE0IDIuMzI1NjQ0MS0xLjQ2MTc4MyAxLjg2MDQ1NjEtNS4zODIxNzkgNS4wNDk5MDI1LTkuNTY4NTE3IDUuMDQ5OTAyNS0xLjcyNzEzIDAtMy42NTQ0NTYtLjczMDg5MTQtNC43ODM5NjItMi4yNTkxODg3LS41OTgyMTctLjkzMDI1NzctLjc5NzIyOC0xLjkyNjkxMTYtLjc5NzIyOC0yLjk5MDA4MDEgMC0uNjY0NDM1OS4wNjYzMzctMS4zMjg5MzEuMTk5MDExLTIuMDU5ODIyNC00LjQ1MTY4NS40NjUxMjg4LTkuMDM2NjM3IDMuMzg4NzUzNS0xMC4xNjYxNDIgNS45MTM3MDQ3bC0uMDY2MzM3IDEuMzk1Mzg2NWMuMDY2MzM3Ljc5NzM0NjctMi4wNi4yNjU4MjE3LTIuMTI2MzM3LS43MzA4OTE0LS4wNjYzMzctLjQ2NTEyODgtLjA2NjMzNy0xLjA2MzE2ODUgMC0xLjc5NDA1OTl6Ii8+PHBhdGggZD0ibTEzMC42MzI5MDkgNTIuNDkyODA1OWMxLjk5MzY2MyAwIDMuNTIxNzgzIDEuNTI4Mjk3NCAzLjUyMTc4MyAzLjY1NDU3NTIgMCAyLjA1OTc2MzItMS41MjgxMiAzLjY1NDgxMjEtMy41MjE3ODMgMy42NTQ4MTIxLTEuOTkzMDcxIDAtMy41MjE3ODMtMS41Mjg3MTE5LTMuNTIxNzgzLTMuNjU0ODEyMSAwLTIuMTI2Mjc3OCAxLjQ2MTc4My0zLjY1NDU3NTIgMy41MjE3ODMtMy42NTQ1NzUyem0yLjMyNTk0IDMuNTg4MTE5OGMwLTEuNjYxMTQ5LTEuMTI5NTA1LTIuNTkxNDA2Ny0yLjM5MjI3Ny0yLjU5MTQwNjdzLTIuMzkyMjc3LjkzMDI1NzctMi4zOTIyNzcgMi41OTE0MDY3YzAgMS42NjEyNjc0IDEuMTI5NTA1IDIuNTkxMTY5NyAyLjM5MjI3NyAyLjU5MTE2OTdzMi4zOTIyNzctLjkyOTkwMjMgMi4zOTIyNzctMi41OTExNjk3eiIvPjxwYXRoIGQ9Im0xMzkuNTM2ODcxIDUyLjYyNTcxNjhoMS45OTMwNzFjMS42NjEzODYgMCAyLjUyNDk1MS44NjM4MDIyIDIuNTI0OTUxIDIuMTI2Mjc3OCAwIC45OTY3MTMxLS41OTc2MjUgMS45MjcwMy0yLjA1OTQwNyAyLjEyNjA0MWwyLjM5MTY4NSAyLjcyNDU1NDRoLTEuMzk0ODU0bC0yLjI1OTYwMy0yLjY1NzYyNTJoLS4wNjYzMzd2Mi42NTc2MjUyaC0xLjEyOTUwNnptMS45MjY3MzQgMy4zODg3NTM1YzEuMDYzMTY5IDAgMS41Mjg3MTItLjQ2NTEyODkgMS41Mjg3MTItMS4xOTYwMjAyIDAtLjczMDg5MTQtLjUzMTg4LTEuMTI5NjI0LTEuNDYyMzc1LTEuMTI5NjI0aC0uNzk3MjI4djIuMzI1NjQ0MnoiLz48cGF0aCBkPSJtMTUwLjk2NTc4NSA1My42MjI0Mjk5aC0yLjEyNjMzN3YtLjk5NjcxMzFoNS4zODIxOHYuOTk2NzEzMWgtMi4xMjYzMzd2NS45MTM4MjMxaC0xLjEyOTUwNnoiLz48cGF0aCBkPSJtMTYzLjkyMjIyNiA1Ni41NDYzNTA3aC0zLjM4ODUxN3YyLjk4OTkwMjNoLTEuMTI5NTA1di02LjkxMDUzNjJoMS4xMjk1MDV2Mi45MjM2MjQ2aDMuMzg4NTE3di0yLjkyMzYyNDZoMS4xMzAwOTh2Ni45NzY4NzMyaC0xLjEzMDA5OHoiLz48cGF0aCBkPSJtMTczLjk1NjI4NiA1Mi40OTI4MDU5YzEuOTkzMDcxIDAgMy41MjE3ODMgMS41MjgyOTc0IDMuNTIxNzgzIDMuNjU0NTc1MiAwIDIuMDU5NzYzMi0xLjUyODcxMiAzLjY1NDgxMjEtMy41MjE3ODMgMy42NTQ4MTIxLTEuOTkzNjYzIDAtMy41MjE3ODMtMS41Mjg3MTE5LTMuNTIxNzgzLTMuNjU0ODEyMSAwLTIuMTI2Mjc3OCAxLjUyODEyLTMuNjU0NTc1MiAzLjUyMTc4My0zLjY1NDU3NTJ6bTIuMzkxNjg1IDMuNTg4MTE5OGMwLTEuNjYxMTQ5LTEuMTI5NTA1LTIuNTkxNDA2Ny0yLjM5MTY4NS0yLjU5MTQwNjctMS4yNjI3NzIgMC0yLjM5MjI3Ny45MzAyNTc3LTIuMzkyMjc3IDIuNTkxNDA2NyAwIDEuNjYxMjY3NCAxLjEyOTUwNSAyLjU5MTE2OTcgMi4zOTIyNzcgMi41OTExNjk3IDEuMjYyMTggMCAyLjM5MTY4NS0uOTI5OTAyMyAyLjM5MTY4NS0yLjU5MTE2OTd6Ii8+PHBhdGggZD0ibTE4OC41MDcxODQgNTYuMDgwOTI1N2MwIDIuMTI2MjE4Ni0xLjUyODEyIDMuNDU1MzI3My0zLjcyMDc5NCAzLjQ1NTMyNzNoLTEuNzk0MDZ2LTYuOTEwNTM2MmgxLjc5NDA2YzIuMTkyNjc0IDAgMy43MjA3OTQgMS4zOTUzODY1IDMuNzIwNzk0IDMuNDU1MjA4OXptLTMuNzIwNzk0IDIuNDU4NDk1OGMxLjUyODEyIDAgMi41MjQ5NTEtLjg2MzU2NTMgMi41MjQ5NTEtMi40NTg0OTU4IDAtMS41OTQ2OTM2LTEuMDYzMTY4LTIuNDU4NDk1OC0yLjUyNDk1MS0yLjQ1ODQ5NThoLS43MzA4OTF2NC45MTY5OTE2eiIvPjxwYXRoIGQ9Im0xOTcuMDEzMTI0IDUyLjQ5MjgwNTljMS45OTM2NjMgMCAzLjUyMTc4MyAxLjUyODI5NzQgMy41MjE3ODMgMy42NTQ1NzUyIDAgMi4wNTk3NjMyLTEuNTI4MTIgMy42NTQ4MTIxLTMuNTIxNzgzIDMuNjU0ODEyMS0xLjk5MzA3IDAtMy41MjExOS0xLjUyODcxMTktMy41MjExOS0zLjY1NDgxMjEgMC0yLjEyNjI3NzggMS41MjgxMi0zLjY1NDU3NTIgMy41MjExOS0zLjY1NDU3NTJ6bTIuMzkyMjc4IDMuNTg4MTE5OGMwLTEuNjYxMTQ5LTEuMTI5NTA2LTIuNTkxNDA2Ny0yLjM5MjI3OC0yLjU5MTQwNjctMS4yNjIxNzkgMC0yLjM5MTY4NS45MzAyNTc3LTIuMzkxNjg1IDIuNTkxNDA2NyAwIDEuNjYxMjY3NCAxLjEyOTUwNiAyLjU5MTE2OTcgMi4zOTE2ODUgMi41OTExNjk3IDEuMTk2NDM1IDAgMi4zOTIyNzgtLjkyOTkwMjMgMi4zOTIyNzgtMi41OTExNjk3eiIvPjxwYXRoIGQ9Im0yMTEuNjk3ODgxIDU5LjYwMjU5aC0xLjA2MzE2OWwtMy41ODgxMi01LjE4MjgxMzN2NS4xODI4MTMzaC0xLjA2MzE2OHYtNi45NzY4NzMyaDEuMTMwMDk4bDMuNTIxMTkgNS4wNTAxMzk0di01LjA1MDEzOTRoMS4wNjMxNjl6Ii8+PHBhdGggZD0ibTIxOS4wMDY3OTQgNTMuNjIyNDI5OWgtMi4xMjYzMzd2LS45OTY3MTMxaDUuMzgyMTh2Ljk5NjcxMzFoLTIuMTI2MzM4djUuOTEzODIzMWgtMS4xMjk1MDV6Ii8+PHBhdGggZD0ibTIyNy40NDU4MDUgNTIuNjI1NzE2OGgxLjEyOTUwNnY2Ljk3Njg3MzJoLTEuMTI5NTA2eiIvPjxwYXRoIGQ9Im0yMzcuNDc5MjczIDU5LjczNTI2NGMtMS44NjAzOTcgMC0zLjUyMTc4My0xLjM5NTQ0NTgtMy41MjE3ODMtMy42NTQzMzgzIDAtMi4xOTI3MzMzIDEuNjYxMzg2LTMuNTg4MTE5OCAzLjUyMTc4My0zLjU4ODExOTguNzk3MjI4IDAgMS4zOTU0NDYuMTk5MzY2NCAxLjg2MDM5Ny40NjUxMjg5djEuMTI5NjIzOWMtLjUzMTg4LS4zMzIyNzcxLTEuMDYzMTY5LS41OTgwMzk3LTEuNzk0MDYtLjU5ODAzOTctMS4yNjI3NzIgMC0yLjQ1ODYxNC45OTY3MTMxLTIuNDU4NjE0IDIuNTkxNDA2NyAwIDEuNTk0OTMwNSAxLjE5NTg0MiAyLjU5MTE2OTcgMi40NTg2MTQgMi41OTExNjk3LjczMDg5MSAwIDEuMjYyMTgtLjE5OTAxMDkgMS43OTQwNi0uNTk3NjI1MXYxLjEyOTUwNTVjLS4zOTg2MTQuMjY1OTQwMi0xLjA2MzE2OS41MzEyODgyLTEuODYwMzk3LjUzMTI4ODJ6Ii8+PHBhdGggZD0ibTI0OC41MDg5OCA1Mi44OTE0NzkzdjEuMDYzMTY4NmMtLjQ2NDk1MS0uMzMyMjE4LTEuMTI5NTA1LS41MzE1ODQzLTEuNjYxMzg2LS41MzE1ODQzLS42NjM5NjIgMC0xLjE5NTg0Mi4zMzIyMTgtMS4xOTU4NDIuOTMwMjU3NyAwIC41MzE1ODQyLjQ2NDk1MS43OTczNDY3IDEuMzI5MTA5IDEuMTk2MDIwMS45OTY4MzEuNDY1MTI4OSAxLjk5MzA3Ljg2Mzc0MyAxLjk5MzA3IDIuMTI2NTE0OCAwIDEuMjYyMTc5NC0uOTk2MjM5IDIuMDU5NDA3OC0yLjM5MTY4NSAyLjA1OTQwNzgtLjg2NDE1NyAwLTEuNTk1MDQ4LS4zMzIyNzcyLTEuOTkzNjYzLS42NjM5NjIxdi0xLjEzMDA5NzhjLjQ2NDk1MS40NjU1NDM0IDEuMTk1ODQzLjc5NzgyMDYgMS45MjczMjYuNzk3ODIwNi43MzA4OTIgMCAxLjMyODUxNy0uMzk5MjA2NSAxLjMyODUxNy0uOTk2ODMxNiAwLS41OTgyMTczLS41MzEyODgtLjg2NDE1NzUtMS4zOTU0NDYtMS4yNjI3NzE3LS45Mjk5MDItLjM5ODQ5NTctMS44NjAzOTctLjg2MzYyNDUtMS44NjAzOTctMS45OTMxODkzIDAtMS4xOTYwNzk0LjkzMDQ5NS0xLjk5MzQyNjIgMi4yNTkwMTEtMS45OTM0MjYyLjU5ODIxOCAwIDEuMjYyNzcyLjE5OTM2NjQgMS42NjEzODYuMzk4NjczNHoiLz48L2c+PHBhdGggZD0ibTQ0LjkxNzg5MzEgMjAuMTMzMzMyYy0uMzMyMjE4Ljk5NjcxMzEtLjkzMDI1NzcgMS44NjA1MTUzLTEuNjYxMTQ5IDIuNjU3ODYyMWwtNy4xMDk3ODQxIDcuMTA5Nzg0MS00LjUxODM3NzQtNC41MTgzNzc0LTcuMTA5Nzg0MS03LjEwOTc4NDFjLTEuMTk2MDIwMS0xLjE5NjAyMDItMi42NTc4NjIxLTEuOTkzMzY3LTQuMTg2MTAwMi0yLjQ1ODQ5NTgtLjQ2NTEyODguNzk3MzQ2OC0uMzk4NzMyNiAxLjg2MDUxNTMtLjI2NTgyMTcgMi41OTE0MDY3Ljk5NjcxMzEuMzMyMjE3OSAxLjg2MDUxNTMuOTMwMjU3NiAyLjY1Nzg2MjEgMS42NjExNDlsNy4xMDk3ODQgNy4xMDk3ODQtNC41MTgzNzc0IDQuNTE4Mzc3NC03LjEwOTc4NCA3LjA0MzMyODdjLTEuMTk2MDIwMiAxLjE5NjAyMDEtMS45OTMzNjcgMi42NTc4NjItMi40NTg0OTU4IDQuMTg2MTAwMi43OTczNDY4LjQ2NTEyODggMS44NjA1MTUzLjM5ODczMjYgMi41OTE0MDY2LjI2NTgyMTcuMzMyMjE4LS45OTY3MTMxLjkzMDI1NzctMS44NjA1MTUzIDEuNjYxMTQ5LTIuNjU3ODYyMWw3LjEwOTc4NDEtNy4xMDk3ODQgNC41MTgzNzc0IDQuNTE4Mzc3NCA3LjEwOTc4NDEgNy4xMDk3ODRjMS4xOTYwMjAxIDEuMTk2MDIwMiAyLjY1Nzg2MiAxLjk5MzM2NyA0LjE4NjEwMDIgMi40NTg0OTU4LjQ2NTEyODgtLjc5NzM0NjguMzk4NzMyNi0xLjg2MDUxNTMuMjY1ODIxNy0yLjU5MTQwNjYtLjk5NjcxMzEtLjMzMjIxOC0xLjg2MDUxNTMtLjkzMDI1NzctMi42NTc4NjIxLTEuNjYxMTQ5bC03LjEwOTc4NC03LjA0MzMyODcgNC41MTgzNzc0LTQuNTE4Mzc3NCA3LjEwOTc4NC03LjEwOTc4NGMxLjE5NjAyMDItMS4xOTYwMjAyIDEuOTkzMzY3LTIuNjU3ODYyMSAyLjQ1ODQ5NTgtNC4xODYxNTk1LS44NjM4MDIyLS41MzE1MjUtMS44NjA1MTUzLS40NjUxMjg4LTIuNTkxNDA2Ni0uMjY1NzYyNXptLTEzLjI4OTMxMDUgMTQuMjE5NTY4MS0yLjcyNDMxNzUtMi43MjQzMTc1IDIuNzI0MzE3NS0yLjcyNDMxNzUgMi43MjQzMTc1IDIuNzI0MzE3NXoiIGZpbGw9IiM1M2JlOTMiLz48cGF0aCBkPSJtNTIuNzU4NzQ2MSAxOC4yNzI3NTc1Yy0xLjQ2MTg0MTktMS40NjE4NDItMy4xODk0NDYzLTIuMzI1NjQ0Mi01LjA0OTk2MTYtMi43MjQzMTc2LS4zOTg2NzM0LTEuODYwNDU2LTEuMjYyNDc1Ni0zLjU4ODExOTctMi42NTc4NjIxLTUuMDQ5OTAyNC0zLjY1NDUxNi0zLjY1NDU3NTE5LTkuNTAxODI0NC0zLjg1Mzk0MTUtMTMuNDIyMTYyMS0uNTk4MDM5Ny0zLjkyMDMzNzctMy4yNTU5MDE4LTkuNzY3NjQ2Mi0zLjA1NjUzNTQ5LTEzLjQyMjIyMTQuNTk4MDM5Ny0xLjQ2MTg0MTkgMS40NjE3ODI3LTIuMzI1NjQ0MSAzLjE4OTQ0NjQtMi43MjQzMTc1IDUuMDQ5OTAyNC0xLjg2MDUxNTMuMzk4NjczNC0zLjU4ODExOTcgMS4yNjI0NzU2LTUuMDQ5OTAyNCAyLjY1Nzg2MjEtMy42NTQ1NzUyMSAzLjY1NDU3NTItMy44NTM5NDE1MiA5LjUwMTg4MzctLjU5ODAzOTcyIDEzLjQyMjIyMTQtMy4yNTU5MDE4IDMuOTIwMzM3Ny0zLjA1NjUzNTQ5IDkuNzY3NjQ2MS41OTgwMzk3MiAxMy40MjIyMjEzIDEuNDYxNzgyNyAxLjQ2MTc4MjcgMy4xODkzODcxIDIuMzI1NTg0OSA1LjA0OTkwMjQgMi43MjQyNTgzLjM5ODY3MzQgMS44NjA1MTUzIDEuMjYyNDc1NiAzLjU4ODExOTcgMi42NTc4NjIxIDUuMDQ5OTYxNyAzLjY1NDU3NTIgMy42NTQ0NTY3IDkuNTAxODgzNiAzLjg1NDA1OTkgMTMuNDIyMjIxMy41OTgwMzk3IDMuOTIwMzM3NyAzLjI1NjAyMDIgOS43Njc2NDYyIDMuMDU2NDE3IDEzLjQyMjE2MjItLjU5ODAzOTcgMS40NjE4NDE5LTEuNDYxODQyIDIuMzI1NjQ0MS0zLjE4OTQ0NjQgMi43MjQzMTc1LTUuMDQ5OTYxNyAxLjg2MDUxNTMtLjM5ODY3MzQgMy41ODgxMTk3LTEuMjYyNDc1NiA1LjA0OTk2MTYtMi42NTc4NjIxIDMuNjU0MzM4My0zLjY1NDUxNTkgMy44NTM5NDE1LTkuNTAxODI0NC41OTc5ODA1LTEzLjQyMjE2MjEgMy4yNTU5NjEtMy45MjAzMzc3IDMuMDU2MzU3OC05Ljc2NzY0NjItLjU5Nzk4MDUtMTMuNDIyMjIxM3ptLTEuNzk0MDU5OCAxNC41NTE3ODZjMi44NTcxNjkxIDIuODU3MjI4NCAyLjg1NzE2OTEgNy41NzQ5MTI5IDAgMTAuNDMyMTQxMy0uODYzODAyMi44NjM4MDIyLTEuOTkzNDI2MiAxLjQ2MTc4MjctMy4xMjI5OTA5IDEuNzk0MDU5OS0uMTMyOTEwOS0yLjMyNTY0NDEtMS4wNjMxNjg2LTQuNTg0ODMyOC0yLjg1NzIyODQtNi4zMTI0MzczbC01LjM4MjEyMDQtNS4zODIxNzk2LTEuNzk0MDU5OSAxLjc5NDA1OTkgNS40NDg1NzU4IDUuNDQ4NjM1YzIuODU3MjI4NCAyLjg1NzE2OTIgMi44NTcyMjg0IDcuNTc0OTEyOSAwIDEwLjQzMjA4MjEtMS40NjE3ODI3IDEuNDYxODQxOS0zLjMyMjI5OCAyLjE5MjczMzMtNS4yNDkyNjg3IDIuMTkyNzMzMy0xLjkyNjkxMTYgMC0zLjc4NzQyNjktLjczMDg5MTQtNS4yNDkyNjg4LTIuMTkyNzMzM2wtMS4xMjk1NjQ3LTEuMTI5NTY0Ny0xLjEyOTYyNCAxLjEyOTU2NDdjLTIuODU3MTY5MiAyLjg1NzIyODQtNy41NzQ5MTI5IDIuODU3MjI4NC0xMC40MzIwODIgMC0uODYzODAyMy0uODYzODAyMi0xLjQ2MTg0Mi0xLjk5MzM2Ny0xLjc5NDA1OTktMy4xMjI5OTA5IDIuMzI1NjQ0MS0uMTMyODUxNyA0LjU4NDgzMjgtMS4wNjMxMDkzIDYuMzEyNDM3My0yLjg1NzE2OTJsNS40NDg1NzU4LTUuNDQ4NjM1MS0xLjc5NDA1OTktMS43OTQwNTk4LTUuNDQ4NTc1OCA1LjQ0ODYzNWMtMi44NTcyMjg0IDIuODU3MTY5Mi03LjU3NDkxMjkgMi44NTcxNjkyLTEwLjQzMjE0MTMgMC0xLjQ2MTc4MjctMS40NjE4NDE5LTIuMTkyNzMzMy0zLjMyMjM1NzItMi4xOTI3MzMzLTUuMjQ5MjY4NyAwLTEuOTI2OTcwOC43MzA5NTA2LTMuNzg3NDg2MSAyLjE5MjczMzMtNS4yNDkzMjhsMS4xMjk2MjQtMS4xMjk1NjQ3LTEuMTI5NjI0LTEuMTI5NTY0OGMtMi44NTcxNjkxOC0yLjg1NzIyODQtMi44NTcxNjkxOC03LjU3NDkxMjkgMC0xMC40MzIxNDEzLjg2MzgwMjItLjg2MzgwMjIgMS45OTM0MjYyLTEuNDYxODQxOSAzLjEyMjk5MDktMS43OTQwNTk4LjEzMjkxMDkgMi4zMjU2NDQxIDEuMDYzMTY4NSA0LjU4NDgzMjggMi44NTcyMjg0IDYuMzEyNDM3Mmw1LjQ0ODU3NTggNS40NDg2MzUxIDEuNzk0MDU5OS0xLjc5NDA1OTktNS41ODE0ODY3LTUuNDQ4NjM1Yy0yLjg1NzIyODQtMi44NTcyMjg0LTIuODU3MjI4NC03LjU3NDkxMjkgMC0xMC40MzIwODIxIDEuNDYxODQxOS0xLjQ2MTg0MTkgMy4zMjIyOTgtMi4xOTI3OTI1IDUuMjQ5MjY4OC0yLjE5Mjc5MjUgMS44NjA1MTUzIDAgMy43ODc0ODYuNzMwOTUwNiA1LjI0OTI2ODcgMi4xOTI3OTI1bDEuMTI5NjI0IDEuMTI5NTY0NyAxLjEyOTU2NDctMS4xMjk1NjQ3YzIuODU3MjI4NC0yLjg1NzIyODQgNy41NzQ5MTI5LTIuODU3MjI4NCAxMC40MzIxNDEzIDAgLjg2MzgwMjIuODYzODAyMiAxLjQ2MTc4MjcgMS45OTMzNjcgMS43OTQwMDA3IDMuMTIyOTMxNy0yLjMyNTU4NS4xMzI5MTA5LTQuNTg0NzczNyAxLjA2MzE2ODUtNi4zMTIzNzgxIDIuODU3MjI4NGwtNS4zODIxNzk2IDUuMzgyMTc5NiAxLjc5NDA1OTkgMS43OTQwNTk5IDUuNDQ4NjM1LTUuNDQ4NjM1MWMyLjg1NzE2OTItMi44NTcxNjkxIDcuNTc0ODUzNy0yLjg1NzE2OTEgMTAuNDMyMDgyMSAwIDEuNDYxODQxOSAxLjQ2MTg0MiAyLjE5MjczMzIgMy4zMjIzNTczIDIuMTkyNzMzMiA1LjI0OTI2ODggMCAxLjg2MDUxNTMtLjczMDg5MTMgMy43ODc0ODYtMi4xOTI3MzMyIDUuMjQ5MjY4N2wtMS4xMjk1NjQ4IDEuMTI5NjI0eiIgZmlsbD0iIzUzYmU5MyIvPjxwYXRoIGQ9Im0zMS42Mjg1MjM0IDBjLTE3LjQ3NTQxMDcgMC0zMS42Mjg1MjM0IDE0LjIxOTU2ODEtMzEuNjI4NTIzNCAzMS42Mjg1ODI2IDAgMTcuNDA4OTU1MiAxNC4yMTk1NjgxIDMxLjYyODQ2NDEgMzEuNjI4NTIzNCAzMS42Mjg0NjQxIDE3LjQwOTAxNDQgMCAzMS42Mjg1MjMzLTE0LjIxOTUwODkgMzEuNjI4NTIzMy0zMS42Mjg0NjQxIDAtMTcuNDA5MDE0NS0xNC4xNTMwNTM0LTMxLjYyODU4MjYtMzEuNjI4NTIzMy0zMS42Mjg1ODI2em0wIDYwLjc5ODQzMjVjLTE2LjAxMzU2ODggMC0yOS4xMDM1NTQ0MS0xMy4wMjMzNzAzLTI5LjEwMzU1NDQxLTI5LjEwMzQ1MzcgMC0xNi4wMTM1Njg4IDEzLjAyMzUzMDIxLTI5LjEwMzU2MDMgMjkuMTAzNTU0NDEtMjkuMTAzNTYwMyAxNi4wMTM2MjggMCAyOS4xMDM1NzIxIDEzLjAyMzUzNjEgMjkuMTAzNTcyMSAyOS4xMDM1NjAzIDAgMTYuMDEzNjI4LTEzLjA4OTk0NDEgMjkuMTAzNDUzNy0yOS4xMDM1NzIxIDI5LjEwMzQ1Mzd6IiBmaWxsPSIjNTNiZTkzIi8+PC9nPjwvc3ZnPg==" alt="Gleason Orthodontics logo"></span>
+      </div>
+      <p class="section-lead">The site has a solid foundation, with improvement opportunities around consistency and proof.</p>
+      <div class="business-meta">
+        <span class="chip">Orthodontist</span>
+        <span class="chip">Webster</span>
+        <span class="chip">Website scan: Verified</span>
+        <span class="chip">Recommended: Orthodontist</span>
+      </div>
+    </div>
+    <span class="report-pill">Clear</span>
+  </div>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <h3>Bottom Line</h3>
+      <p>Gleason Orthodontics has a strong foundation: the site clearly identifies the practice, doctor, Webster location, and orthodontic focus, and it already includes meaningful structured information. The opportunity is refinement rather than repair—make treatment options, patient questions, and trust proof easier to reuse in search and AI answers while preserving the consultation path.</p>
+    </div>
+    <div class="summary-card">
+      <h3>What To Focus On First</h3>
+      <p>The scan is not saying the business is broken. It is showing where the clearest visibility gains should start.</p>
+      <ul class="priority-list"><li><strong>Consistency</strong><span>Tighten the signals already present so the business is described the same way across key pages.</span></li>
+<li><strong>Proof</strong><span>Use the scan as a baseline, then rescan after cleanup to show what changed.</span></li></ul>
+    </div>
+  </div>
+  <div class="dashboard-grid">
+    <article class="dimension" id="search-visibility" aria-label="Search Visibility: Strong, directional score 88 out of 100">
+  <div class="dimension-top">
+    <h3>Search Visibility</h3>
+    <span class="score-band band-strong">Strong</span>
+  </div>
+  <span class="dimension-score">Directional score: 88 / 100</span>
+  <p><span class="dimension-label">What this measures</span>Whether search engines can reach the site, locate the business, and classify what it offers.</p>
+  <p><span class="dimension-label">What we found</span>The website was reachable and includes basic contact/location signals.</p>
+</article>
+<article class="dimension" id="ai-visibility" aria-label="AI Visibility: Clear, directional score 80 out of 100">
+  <div class="dimension-top">
+    <h3>AI Visibility</h3>
+    <span class="score-band band-clear">Clear</span>
+  </div>
+  <span class="dimension-score">Directional score: 80 / 100</span>
+  <p><span class="dimension-label">What this measures</span>Whether AI tools receive enough clear, consistent context to understand and accurately describe the business.</p>
+  <p><span class="dimension-label">What we found</span>The site has a stronger machine-readable foundation than many local businesses.</p>
+</article>
+<article class="dimension" id="trust-signals" aria-label="Trust Signals: Strong, directional score 90 out of 100">
+  <div class="dimension-top">
+    <h3>Trust Signals</h3>
+    <span class="score-band band-strong">Strong</span>
+  </div>
+  <span class="dimension-score">Directional score: 90 / 100</span>
+  <p><span class="dimension-label">What this measures</span>Whether the site provides visible proof that the business, people, expertise, and contact path are credible.</p>
+  <p><span class="dimension-label">What we found</span>The site clearly identifies the practice and doctor. The next opportunity is to make patient reviews, credentials, treatment proof, and consultation expectations easier to verify at decision points.</p>
+</article>
+<article class="dimension" id="content-gaps" aria-label="Content Gaps: Clear, directional score 72 out of 100">
+  <div class="dimension-top">
+    <h3>Content Gaps</h3>
+    <span class="score-band band-clear">Clear</span>
+  </div>
+  <span class="dimension-score">Directional score: 72 / 100</span>
+  <p><span class="dimension-label">What this measures</span>Whether the site directly answers the practical questions customers, search engines, and AI tools are likely to ask.</p>
+  <p><span class="dimension-label">What we found</span>The main content appears readable, with room to strengthen direct customer questions.</p>
+</article>
+<article class="dimension" id="fix-plan-score" aria-label="Fix Plan: Clear">
+  <div class="dimension-top">
+    <h3>Fix Plan</h3>
+    <span class="score-band band-clear">Clear</span>
+  </div>
+  
+  <p><span class="dimension-label">What this measures</span>Whether the first improvement path is clear enough to prioritize and scope responsibly.</p>
+  <p><span class="dimension-label">What we found</span>The first fix path is clear: define the business, services, service area, proof, and customer answers more consistently.</p>
+</article>
+  </div>
+  <div class="evidence-grid">
+    <div class="panel panel-review">
+      <h3>What We Reviewed</h3>
+      <p>Website: <a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">gleasonorthodontics.com</a><br>Phone: 585-872-3355<br>Location: Webster</p>
+      <ul class="review-list"><li>Targeted scan only; this was not a full website crawl</li>
+<li>Pages reviewed: homepage, /about-us, /contact-us</li>
+<li>Website reachability and crawl status</li>
+<li>Visible business name, phone, and location cues</li>
+<li>Service clarity and buyer-question coverage</li>
+<li>Structured business and service signals</li>
+<li>Trust, contact, and identity cues</li></ul>
+    </div>
+    <div class="evidence-stack">
+      <div class="panel panel-compact">
+        <h3>Main Finding</h3>
+        <p>The site has a useful structured-data foundation.</p>
+      </div>
+      <div class="panel panel-compact">
+        <h3>Location Confidence</h3>
+        <p><strong>Supplied market:</strong> Webster<br><strong>Found on scanned pages:</strong> Location signals were detected: Webster.</p>
+      </div>
+      <div class="panel panel-compact">
+        <h3>Plain-English Example</h3>
+        <p>The site has useful signals, but the opportunity is to make the same business story easier to repeat across search results, AI answers, and customer decision points.</p>
+      </div>
+      <div class="panel panel-compact">
+        <h3>Why It Matters</h3>
+        <p>Customers, search engines, and AI tools need clear signals about what the business does, who it helps, where it serves, and why it can be trusted.</p>
+      </div>
+    </div>
+  </div>
+  <section class="next-step" id="fix-plan">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Fix Plan</p>
+        <h2>Top Moves</h2>
+        <p class="section-lead">These are the first fixes we would consider before deeper design or marketing work. They are ordered around the clarity gaps most likely to affect how buyers and AI/search systems understand the business.</p>
+      </div>
+    </div>
+    <ol class="fix-list"><li class="fix-item">
+  <span class="fix-rank"><span>1</span></span>
+  <span class="fix-copy"><strong>Standardize the practice story</strong><span>Keep the practice, doctor, location, and treatment descriptions consistent across the key pages and structured information already in place.</span></span>
+</li>
+<li class="fix-item">
+  <span class="fix-rank"><span>2</span></span>
+  <span class="fix-copy"><strong>Answer consultation questions directly</strong><span>Add concise answers about treatment options, age ranges, first visits, timing, and what patients should expect before they contact the office.</span></span>
+</li>
+<li class="fix-item">
+  <span class="fix-rank"><span>3</span></span>
+  <span class="fix-copy"><strong>Strengthen decision-point proof</strong><span>Review where credentials, patient experiences, treatment examples, and the consultation path appear so trust is clear when a patient is ready to act.</span></span>
+</li></ol>
+  </section>
+  <div class="next-step">
+    <h3>What happens next</h3>
+    <p><strong>Review this scan with Verity Works:</strong> confirm which patient questions and treatment priorities matter most, then scope a focused refinement sprint that standardizes existing practice signals, improves answer-ready content, and documents the before/after. The work improves clarity; it does not guarantee rankings, traffic, leads, conversions, or AI placement.</p>
+  </div>
+  <div class="pilot-note">
+    <p><strong>Human review required:</strong> Confirm the findings against the live site and business priorities before agreeing on implementation scope.</p>
+  </div>
+</section>
+  </main>
+</body>
+</html>
