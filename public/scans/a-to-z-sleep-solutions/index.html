@@ -144,13 +144,19 @@
       background: var(--surface-tint);
       text-align: center;
     }
+    .score-panel > .score-band {
+      min-height: 38px;
+      margin-bottom: 16px;
+      padding: 0 16px;
+      font-size: 15px;
+    }
     .score-ring {
       --pct: 205.2deg;
       position: relative;
       display: grid;
       place-items: center;
-      width: 178px;
-      height: 178px;
+      width: 132px;
+      height: 132px;
       border-radius: 50%;
       background: conic-gradient(var(--signal) var(--pct), #dce2dd 0);
       margin-bottom: 18px;
@@ -158,8 +164,8 @@
     .score-ring::before {
       content: "";
       position: absolute;
-      width: 132px;
-      height: 132px;
+      width: 98px;
+      height: 98px;
       border-radius: 50%;
       background: var(--surface-tint);
     }
@@ -177,7 +183,7 @@
       gap: 0;
     }
     .score-value strong {
-      font-size: 42px;
+      font-size: 28px;
       line-height: 0.95;
     }
     .score-value small {
@@ -212,7 +218,7 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 8px;
       width: 100%;
-      max-width: 340px;
+      max-width: 420px;
       margin-top: 16px;
       color: var(--muted);
       font-size: 12px;
@@ -229,7 +235,7 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
       line-height: 1.05;
       text-align: center;
-      overflow-wrap: anywhere;
+      overflow-wrap: normal;
     }
     .score-scale .active {
       color: var(--ink);
@@ -256,6 +262,10 @@
     .nav-tile:hover {
       border-color: rgba(31, 100, 112, 0.44);
       text-decoration: none;
+    }
+    a:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 3px;
     }
     .nav-tile strong {
       display: block;
@@ -327,6 +337,29 @@
       align-items: start;
       margin-bottom: 22px;
     }
+    .business-title-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .customer-logo {
+      display: grid;
+      place-items: center;
+      width: min(210px, 100%);
+      min-height: 82px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .customer-logo img {
+      display: block;
+      width: 100%;
+      max-width: 180px;
+      max-height: 70px;
+      object-fit: contain;
+    }
     h2 {
       margin: 0;
       font-size: 2.4rem;
@@ -384,42 +417,30 @@
       justify-content: space-between;
       gap: 10px;
     }
+    .dimension-score {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
     .dimension h3 {
       margin: 0;
       font-size: 17px;
       line-height: 1.15;
       letter-spacing: 0;
     }
-    .mini-ring {
-      --pct: 0deg;
-      position: relative;
-      flex: 0 0 auto;
-      display: grid;
-      place-items: center;
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: conic-gradient(var(--signal) var(--pct), #dce2dd 0);
-    }
-    .mini-ring::before {
-      content: "";
-      position: absolute;
-      width: 39px;
-      height: 39px;
-      border-radius: 50%;
-      background: var(--surface-tint);
-    }
-    .mini-ring span {
-      position: relative;
-      z-index: 1;
-      font-size: 13px;
-      font-weight: 800;
-    }
     .dimension p {
       margin: 0;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.46;
+    }
+    .dimension-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
     }
     .evidence-grid {
       display: grid;
@@ -623,6 +644,10 @@
         align-items: flex-start;
         flex-direction: column;
       }
+      .business-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
       h1 {
         font-size: 2.25rem;
       }
@@ -649,7 +674,7 @@
           <span class="brand-sub">Verity Scan</span>
         </span>
       </div>
-      <span class="report-pill">Pilot scan</span>
+      <span class="report-pill">Verity Scan</span>
     </header>
     <section class="hero">
       <div>
@@ -659,9 +684,9 @@
         <p class="hero-copy">This scan translates technical website and structured-data findings into a plain-language view of business clarity, search visibility, AI readability, trust signals, and the first fixes worth making.</p>
       </div>
       <aside class="score-panel" aria-label="Overall scan score">
-        <div class="score-ring"><span class="score-value"><strong>57</strong><small>/ 100</small></span></div>
         <span class="score-band band-watch">Needs Work</span>
-        <p class="score-note">A directional clarity score for A to Z Sleep Solutions. It shows how clearly the business can be understood by customers, search engines, and AI tools. It is not a ranking promise.</p>
+        <div class="score-ring"><span class="score-value"><strong>57</strong><small>/ 100</small></span></div>
+        <p class="score-note">A directional clarity score for A to Z Sleep Solutions. It is not a promise of rankings, traffic, leads, conversions, or placement in AI answers.</p>
         <div class="score-scale" aria-label="Score scale">
           <span>Missing / Unclear</span>
 <span class="active">Needs Work</span>
@@ -681,12 +706,15 @@
   <div class="section-head">
     <div>
       <p class="eyebrow">Business Scan</p>
-      <h2>A to Z Sleep Solutions</h2>
+      <div class="business-title-row">
+        <h2>A to Z Sleep Solutions</h2>
+        <span class="customer-logo"><img src="data:image/png;base64,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" alt="A to Z Sleep Solutions logo"></span>
+      </div>
       <p class="section-lead">The site has a real foundation, but it does not yet explain the business and service offer clearly enough for local search and AI systems.</p>
       <div class="business-meta">
         <span class="chip">Pediatric sleep consulting / baby and toddler sleep support</span>
         <span class="chip">Glendale / Phoenix area AZ</span>
-        <span class="chip">Verified</span>
+        <span class="chip">Website scan: Verified</span>
         <span class="chip">Recommended: LocalBusiness + Service</span>
       </div>
     </div>
@@ -695,7 +723,7 @@
   <div class="summary-grid">
     <div class="summary-card">
       <h3>Bottom Line</h3>
-      <p>A to Z Sleep Solutions has a real website foundation, but this scan does not yet find a clean enough package of who the business helps, what service it provides, and where that service is available. For parents looking for baby or toddler sleep help, that clarity is what helps search and AI systems connect the business to the right questions.</p>
+      <p>A to Z Sleep Solutions is built around a sensible human goal: help tired parents understand the offer and move toward a free consultation. That customer path should be preserved. The gap is that the scanned pages do not package the business identity, services, service area, and trust proof as clearly for search and AI systems. The first fixes should strengthen those machine-readable signals without making the parent experience more complicated.</p>
     </div>
     <div class="summary-card">
       <h3>What To Focus On First</h3>
@@ -706,53 +734,59 @@
     </div>
   </div>
   <div class="dashboard-grid">
-    <article class="dimension" id="search-visibility">
+    <article class="dimension" id="search-visibility" aria-label="Search Visibility: Needs Work, directional score 58 out of 100">
   <div class="dimension-top">
     <h3>Search Visibility</h3>
-    <span class="mini-ring" style="--pct:208.8deg"><span>58</span></span>
+    <span class="score-band band-watch">Needs Work</span>
   </div>
-  <span class="score-band band-watch">Needs Work</span>
-  <p>The website was reachable, but the scanned pages did not make the service location clear enough.</p>
+  <span class="dimension-score">Directional score: 58 / 100</span>
+  <p><span class="dimension-label">What this measures</span>Whether search engines can reach the site, locate the business, and classify what it offers.</p>
+  <p><span class="dimension-label">What we found</span>The website was reachable, but the scanned pages did not make the service location clear enough.</p>
 </article>
-<article class="dimension dimension-priority" id="ai-visibility">
+<article class="dimension dimension-priority" id="ai-visibility" aria-label="AI Visibility: Missing / Unclear, directional score 33 out of 100">
   <div class="dimension-top">
     <h3>AI Visibility</h3>
-    <span class="mini-ring" style="--pct:118.8deg"><span>33</span></span>
+    <span class="score-band band-gap">Missing / Unclear</span>
   </div>
-  <span class="score-band band-gap">Missing / Unclear</span>
-  <p>Some structured data exists, but the business and services are not defined clearly enough.</p>
+  <span class="dimension-score">Directional score: 33 / 100</span>
+  <p><span class="dimension-label">What this measures</span>Whether AI tools receive enough clear, consistent context to understand and accurately describe the business.</p>
+  <p><span class="dimension-label">What we found</span>Some structured data exists, but the business and services are not defined clearly enough.</p>
 </article>
-<article class="dimension" id="trust-signals">
+<article class="dimension" id="trust-signals" aria-label="Trust Signals: Clear, directional score 76 out of 100">
   <div class="dimension-top">
     <h3>Trust Signals</h3>
-    <span class="mini-ring" style="--pct:273.6deg"><span>76</span></span>
+    <span class="score-band band-clear">Clear</span>
   </div>
-  <span class="score-band band-clear">Clear</span>
-  <p>The site has basic identity and contact signals, but trust can be made more explicit.</p>
+  <span class="dimension-score">Directional score: 76 / 100</span>
+  <p><span class="dimension-label">What this measures</span>Whether the site provides visible proof that the business, people, expertise, and contact path are credible.</p>
+  <p><span class="dimension-label">What we found</span>The site has basic identity and contact cues. Because parents are trusting someone with a child and their home routine, visible reviews, credentials, process clarity, and real-world proof should be easier to verify.</p>
 </article>
-<article class="dimension dimension-priority" id="content-gaps">
+<article class="dimension dimension-priority" id="content-gaps" aria-label="Content Gaps: Missing / Unclear, directional score 42 out of 100">
   <div class="dimension-top">
     <h3>Content Gaps</h3>
-    <span class="mini-ring" style="--pct:151.2deg"><span>42</span></span>
+    <span class="score-band band-gap">Missing / Unclear</span>
   </div>
-  <span class="score-band band-gap">Missing / Unclear</span>
-  <p>The service offer needs to be translated into clearer structured and plain-language answers.</p>
+  <span class="dimension-score">Directional score: 42 / 100</span>
+  <p><span class="dimension-label">What this measures</span>Whether the site directly answers the practical questions customers, search engines, and AI tools are likely to ask.</p>
+  <p><span class="dimension-label">What we found</span>The service offer needs to be translated into clearer structured and plain-language answers.</p>
 </article>
-<article class="dimension" id="fix-plan-score">
+<article class="dimension" id="fix-plan-score" aria-label="Fix Plan: Clear">
   <div class="dimension-top">
     <h3>Fix Plan</h3>
-    <span class="mini-ring" style="--pct:266.4deg"><span>74</span></span>
+    <span class="score-band band-clear">Clear</span>
   </div>
-  <span class="score-band band-clear">Clear</span>
-  <p>The first fix path is clear: strengthen LocalBusiness + Service signals and customer-facing clarity.</p>
+  
+  <p><span class="dimension-label">What this measures</span>Whether the first improvement path is clear enough to prioritize and scope responsibly.</p>
+  <p><span class="dimension-label">What we found</span>The first fix path is clear: define the business, services, service area, proof, and customer answers more consistently.</p>
 </article>
   </div>
   <div class="evidence-grid">
     <div class="panel panel-review">
       <h3>What We Reviewed</h3>
       <p>Website: <a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">www.atozsleepsolutions.com</a><br>Phone: 602-842-2055<br>Location: Glendale / Phoenix area AZ</p>
-      <ul class="review-list"><li>Website reachability and crawl status</li>
-<li>4 scanned page path(s)</li>
+      <ul class="review-list"><li>Targeted scan only; this was not a full website crawl</li>
+<li>Pages reviewed: homepage, /about, /contact, /services</li>
+<li>Website reachability and crawl status</li>
 <li>Visible business name, phone, and location cues</li>
 <li>Service clarity and buyer-question coverage</li>
 <li>Structured business and service signals</li>
@@ -765,7 +799,7 @@
       </div>
       <div class="panel panel-compact">
         <h3>Location Confidence</h3>
-        <p>The scanned pages did not make a city or service area clear enough for the system to verify.</p>
+        <p><strong>Supplied market:</strong> Glendale / Phoenix area AZ<br><strong>Found on scanned pages:</strong> The scanned pages did not make a city or service area clear enough for the system to verify.</p>
       </div>
       <div class="panel panel-compact">
         <h3>Plain-English Example</h3>
@@ -787,11 +821,11 @@
     </div>
     <ol class="fix-list"><li class="fix-item">
   <span class="fix-rank"><span>1</span></span>
-  <span class="fix-copy"><strong>Add clear LocalBusiness structure</strong><span>Define the business name, phone, website, service area, and business identity in machine-readable form.</span></span>
+  <span class="fix-copy"><strong>Make the business identity unmistakable</strong><span>Present the business name, phone, website, and service area consistently so customers and discovery systems reach the same conclusion.</span></span>
 </li>
 <li class="fix-item">
   <span class="fix-rank"><span>2</span></span>
-  <span class="fix-copy"><strong>Define the core services</strong><span>Turn the main services into clear page copy and structured Service data so machines understand the offer.</span></span>
+  <span class="fix-copy"><strong>Define the core services</strong><span>Explain the main services in direct customer language, then reinforce that meaning for search and AI systems.</span></span>
 </li>
 <li class="fix-item">
   <span class="fix-rank"><span>3</span></span>
@@ -808,10 +842,10 @@
   </section>
   <div class="next-step">
     <h3>What happens next</h3>
-    <p><strong>Verity Works can turn this scan into a cleanup sprint:</strong> clarify the business and service signals, add structured service data, improve answer-ready copy, then run a follow-up scan so the before/after is visible. For this pilot, the right next step is a review conversation: confirm whether the findings feel accurate, decide which fixes belong in the first cleanup sprint, and use the feedback to make the Verity Scan stronger before sharing it with outside customers.</p>
+    <p><strong>Review this scan with Verity Works:</strong> confirm that the findings match the business, choose the first clarity fixes, and define a bounded cleanup sprint followed by a comparison scan. The work improves clarity; it does not guarantee rankings, traffic, leads, conversions, or AI placement.</p>
   </div>
   <div class="pilot-note">
-    <p><strong>Pilot note:</strong> This draft is built for feedback. It should be reviewed for accuracy, usefulness, and sales clarity before being used as a customer-facing example.</p>
+    <p><strong>Human review required:</strong> Confirm the findings against the live site and business priorities before agreeing on implementation scope.</p>
   </div>
 </section>
   </main>
