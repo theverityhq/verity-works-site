@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>A to Z Sleep Solutions Verity Scan - Internal Workbench</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-accent: rgba(0, 113, 227, 0.08);
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-strong: #ffffff;
+      --surface-muted: #fbfbfd;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(29, 29, 31, 0.12);
+      --line-strong: rgba(29, 29, 31, 0.18);
+      --accent: #0071e3;
+      --accent-soft: rgba(0, 113, 227, 0.12);
+      --success: #0b7a34;
+      --success-soft: rgba(11, 122, 52, 0.12);
+      --warn: #9d5600;
+      --warn-soft: rgba(157, 86, 0, 0.12);
+      --bad: #b3261e;
+      --bad-soft: rgba(179, 38, 30, 0.12);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 16px 40px rgba(0, 0, 0, 0.05);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 12px;
+    }
+    [data-theme="dark"] {
+      --bg: #0b0d12;
+      --bg-accent: rgba(64, 156, 255, 0.12);
+      --surface: rgba(28, 31, 38, 0.82);
+      --surface-strong: #1f232b;
+      --surface-muted: #171a21;
+      --ink: #f5f5f7;
+      --muted: #a4a8b2;
+      --line: rgba(245, 245, 247, 0.13);
+      --line-strong: rgba(245, 245, 247, 0.22);
+      --accent: #6aaeff;
+      --accent-soft: rgba(106, 174, 255, 0.16);
+      --success: #5cd184;
+      --success-soft: rgba(92, 209, 132, 0.16);
+      --warn: #ffbd66;
+      --warn-soft: rgba(255, 189, 102, 0.16);
+      --bad: #ff8a80;
+      --bad-soft: rgba(255, 138, 128, 0.16);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.22), 0 18px 46px rgba(0, 0, 0, 0.28);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.92), transparent 32%),
+        radial-gradient(circle at top right, var(--bg-accent), transparent 28%),
+        linear-gradient(180deg, #fafafc 0%, var(--bg) 100%);
+      font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    [data-theme="dark"] body {
+      background:
+        radial-gradient(circle at top left, rgba(82, 92, 116, 0.26), transparent 30%),
+        radial-gradient(circle at top right, var(--bg-accent), transparent 28%),
+        linear-gradient(180deg, #11141b 0%, var(--bg) 100%);
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .shell {
+      width: min(1440px, calc(100vw - 48px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+    .hero,
+    .toolbar,
+    .spotlight,
+    .card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .hero {
+      padding: 32px;
+      border-radius: var(--radius-xl);
+    }
+    .brand-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .brand-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-strong);
+    }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .brand-text {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+    }
+    .brand-name {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .product-name {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .beta-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .theme-toggle {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-strong);
+      color: var(--ink);
+      font: 650 12px/1 "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      cursor: pointer;
+    }
+    .theme-toggle:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-muted);
+    }
+    .theme-toggle:focus-visible {
+      outline: 3px solid rgba(0, 113, 227, 0.24);
+      outline-offset: 2px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .hero-copy {
+      min-width: 0;
+    }
+    .run-summary {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.72);
+    }
+    [data-theme="dark"] .run-summary,
+    [data-theme="dark"] .stat,
+    [data-theme="dark"] .guide,
+    [data-theme="dark"] .card {
+      background: var(--surface);
+    }
+    .run-summary-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--ink);
+    }
+    .run-summary p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .run-summary strong {
+      color: var(--ink);
+      font-weight: 650;
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(2.5rem, 4vw, 4.25rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.96;
+    }
+    .subtitle {
+      width: min(720px, 100%);
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .stat {
+      min-height: 108px;
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+    }
+    .stat-helper {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .guide {
+      margin: 18px 0 14px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow);
+    }
+    .guide h2 {
+      margin: 0 0 6px;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 24px;
+      font-weight: 650;
+      letter-spacing: -0.025em;
+    }
+    .guide-intro {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .score-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .score-guide {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface-strong);
+    }
+    .score-guide strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 15px;
+    }
+    .score-guide p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.48;
+    }
+    .rubric-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .rubric-metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface-strong);
+    }
+    .rubric-metric strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 19px;
+    }
+    .rubric-table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+    .rubric-table {
+      width: 100%;
+      min-width: 940px;
+      border-collapse: collapse;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .rubric-table th,
+    .rubric-table td {
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .rubric-table th {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .rubric-source {
+      display: grid;
+      gap: 5px;
+      min-width: 240px;
+    }
+    .rubric-source a {
+      overflow-wrap: anywhere;
+    }
+    .gate-ready {
+      color: #267044;
+    }
+    .gate-blocked {
+      color: #9b4b22;
+    }
+    .stat-label {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .stat-value {
+      display: block;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 34px;
+      font-weight: 650;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1.8fr repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0 18px;
+      padding: 18px;
+      border-radius: var(--radius-xl);
+    }
+    .control {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .control label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .control input,
+    .control select {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      color: var(--ink);
+      font: 500 15px/1.35 "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      appearance: none;
+    }
+    .control input::placeholder {
+      color: #8e8e93;
+    }
+    .control input:focus-visible,
+    .control select:focus-visible,
+    .artifact-links a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid rgba(0, 113, 227, 0.24);
+      outline-offset: 2px;
+    }
+    .spotlight {
+      margin: 18px 0 14px;
+      padding: 20px;
+      border-radius: var(--radius-xl);
+    }
+    .spotlight-title {
+      margin: 0 0 14px;
+      color: var(--ink);
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .spotlight-note {
+      margin: -6px 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .spotlight-item {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      min-height: 122px;
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+    }
+    .spotlight-rank {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 22px;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+    .spotlight-copy strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+    .spotlight-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .results-meta {
+      margin: 8px 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 20px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.88);
+    }
+    .card-top {
+      display: grid;
+      gap: 14px;
+    }
+    .card-heading {
+      display: grid;
+      gap: 9px;
+    }
+    .card h2 {
+      margin: 0;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 25px;
+      font-weight: 650;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+    }
+    .card-subtitle {
+      margin: -2px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: #f1f2f6;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .chip {
+      background: rgba(245, 245, 247, 0.08);
+    }
+    .status-verified { background: var(--success-soft); color: var(--success); }
+    .status-needs_manual_review { background: var(--warn-soft); color: var(--warn); }
+    .status-no_website { background: var(--bad-soft); color: var(--bad); }
+    .score-stack {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .score {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      text-align: left;
+    }
+    .score-secondary {
+      background: var(--surface-muted);
+    }
+    .score-value {
+      display: block;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 28px;
+      font-weight: 650;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .score-label {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .score-caption {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    .score-formula {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.3;
+    }
+    .score-text {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1.25;
+    }
+    .summary {
+      padding: 15px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 113, 227, 0.06);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.58;
+    }
+    [data-theme="dark"] .summary,
+    [data-theme="dark"] .section-block-primary {
+      background: rgba(106, 174, 255, 0.12);
+    }
+    .details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .contact-grid {
+      padding: 0 14px 14px;
+    }
+    .detail {
+      padding: 13px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: var(--surface-muted);
+    }
+    .detail-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .detail-value {
+      font-size: 15px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+    .section-block {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: var(--surface-muted);
+    }
+    .section-copy {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.58;
+      color: var(--ink);
+    }
+    .section-block-primary {
+      border-color: rgba(0, 113, 227, 0.18);
+      background: rgba(0, 113, 227, 0.06);
+    }
+    .compact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0 14px 14px;
+    }
+    .compact-grid-tight {
+      padding: 0;
+    }
+    .technical-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 16px;
+    }
+    .technical-column {
+      display: grid;
+      align-content: start;
+      gap: 14px;
+      min-width: 0;
+    }
+    .list-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .list-block-vertical {
+      display: grid;
+      gap: 8px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .pill-text {
+      display: block;
+      width: 100%;
+      min-height: 0;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 13px;
+      line-height: 1.38;
+    }
+    .pill-muted {
+      background: #f1f2f6;
+      color: #636366;
+    }
+    [data-theme="dark"] .pill-muted {
+      background: rgba(245, 245, 247, 0.08);
+      color: var(--muted);
+    }
+    .pill-soft {
+      background: rgba(0, 113, 227, 0.1);
+    }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .code-panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface-muted);
+    }
+    .code-panel summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .code-panel summary::-webkit-details-marker {
+      display: none;
+    }
+    .code-panel summary::after {
+      content: "+";
+      float: right;
+      color: var(--accent);
+      font-size: 15px;
+      line-height: 1;
+    }
+    .code-panel[open] summary::after {
+      content: "-";
+    }
+    .code-panel pre {
+      margin: 0;
+      padding: 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font: 500 12px/1.62 "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      color: var(--ink);
+    }
+    .artifact-links {
+      display: grid;
+      gap: 8px;
+    }
+    .artifact-links a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    details {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--surface-muted);
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    details pre {
+      margin: 0;
+      padding: 0 14px 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font: 500 12px/1.6 "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      color: var(--ink);
+    }
+    .detail-drawer {
+      border-color: var(--line);
+    }
+    .detail-drawer summary {
+      background: var(--surface-strong);
+      color: var(--muted);
+    }
+    .detail-drawer[open] > summary {
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+    }
+    [data-theme="dark"] .detail-drawer summary,
+    [data-theme="dark"] .code-panel summary {
+      background: #20242d;
+      color: #c5cad6;
+    }
+    [data-theme="dark"] .detail-drawer[open] > summary,
+    [data-theme="dark"] .code-panel[open] > summary {
+      background: #252a35;
+      color: var(--ink);
+    }
+    .drawer-body {
+      display: grid;
+      gap: 14px;
+      padding: 0 14px 14px;
+    }
+    .empty {
+      display: none;
+      margin-top: 18px;
+      padding: 28px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.68);
+      color: var(--muted);
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .score-guide-grid {
+        grid-template-columns: 1fr;
+      }
+      .toolbar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 860px) {
+      .toolbar,
+      .details,
+      .compact-grid,
+      .technical-grid,
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-top {
+        grid-template-columns: 1fr;
+      }
+      .score-stack {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 24px, 100%);
+        padding-top: 18px;
+      }
+      .hero,
+      .toolbar,
+      .spotlight,
+      .card {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      .hero {
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+      .spotlight-item {
+        grid-template-columns: 1fr;
+      }
+      .spotlight-rank {
+        width: 42px;
+        height: 42px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .card h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="brand-strip">
+        <div class="brand-lockup">
+          <span class="brand-mark"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEKklEQVR4nO2VfUxbVRTAz3339bVlbeWrH3ytK4UJDbAxkK1DKBjj1BVI1Jdp/NjGFhQ0i4nZH9PMyrZssmgi6iRzajJZttD6hdGZYBAawYVF5pwyFgJujSMwKGwQWPl4fce8VvfBlK8ZYhy/5Nzk3XPOPeeed8+9AIss8t/EwQTl3wMRydy9eCcNCMzDGZE4nU6KiOxc3Ig0KFMKMxX5LxlvVNgaGtgZdyHpnUgDMgVnS4thFvEdgbKzy/JWM5nF/ezTVdX6re/Y7Q5HyM1mDez1qjgYsNnYqb8M0cH+6PWu6Rv17e/1jZ1q6vLkBOfxJjtyaxI8BXD5mdCVDlhb9FpIlhV0avJbfEJ0rZkT3j73+osX3W63MNVLWij34JeRl5kwqzImpjDVZCjckKTUZYji6IDPtzdRpdorBSeEiDMkAASAZ8DWR0irt0Ve8NQKrb2IxiWaIFYc/KrvzM9fdJPQROW55t1nausFjlUYRaUmn0TGPQxLTXkkY7VGHR0KiXpVXfaS0TrDQI9ne/49nzgQmfIpwQPV/psEMDC63QI15r4wfvzTJkEfMeFfpkOfSv1QgjnmaNf5iW2D5uxwtrP8yIQ23Q0aDiBkEsjIaC90tn9uHpaf3qoxG80mY8kVFXMIEakL5oyNlWpBTQ9Ugn4dpu2q8b06hFjRcel4UlX9E+qjHRhSWpkB6vRGWLr+LM0sfoOzbuKLnt+d90330EAzIlb+PnxSWkna/T9Ue1okByaiuEJN737UA0nPiI98UD/+CyK2e7oKuHebm7iKb5vCATRsmv1e3X2P6yWnktZLh7ZcQLS39A7Ff9SYSK4nMA946UACKHNLCmjaJoTcl8de+a5D9COe1O08bFW8+T1ypQcK/jK3HmnOtdS0oeWzTkx9v2G7NGcLdMztYJNaDEC+6slj1LoNYcN7vn2tXkTEx2DjgQ+5Zw/28jxPeaeTana4flLua8SwHTUnAIDywftg2tKTmTOQ+rscjHyZrvvX/rOi3qQWk1YxWx60dEa2N6/b33LlPDvSU8yFRU2OKsKqiXB1nL06tGaytvx0oIIul/82E4BgFdxuQZ5sf27Cr6jCaPMYLF+p0C/Xbu6vPqxFmWIPUJkXl4RF04nBPf6mqp1gc7DgLr/lvphfAgF4CugUmdg8t6jU5hC9SWAMeq85RZ3a8fHXJ0CmTCAypg1HfsiErKxJcLnEay09DSzMGgsCIUjjsktxuOcU+gXwj40YLgzINsJQdxlwmjrKCmXCRc8YeLLobILPg+CBJBHpuyByLYIhf5LE3n9Znro+Hu6ybP7TaB7P7uyRFqeQkCAn6qQ2UCX7QZ2CJGLFW0F1hgwWACoNbGhyDshiELhYhFBLYfARC+oWAjYwclHHgNXW3pjYQkECorGEgyoq8tr3nQi5Y3e+yP+HPwCaIYwTb2dhxAAAAABJRU5ErkJggg==" alt="" loading="lazy"></span>
+          <span class="brand-text">
+            <span class="brand-name">Verity Works</span>
+            <span class="product-name">Signal Foundry</span>
+          </span>
+        </div>
+        <div class="brand-actions">
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">Light Mode</button>
+          <span class="beta-pill">Private beta report</span>
+        </div>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Signal Foundry Private Beta</p>
+          <h1>A to Z Sleep Solutions Verity Scan - Internal Workbench</h1>
+          <p class="subtitle">Customer-ready Verity Scan under Rubric v1.</p>
+        </div>
+        <div class="run-summary" aria-label="Run summary">
+          <p class="run-summary-title">How to use this report</p>
+          <p><strong>Start with Best Outreach Targets.</strong> Those are the easiest prospects to review first.</p>
+          <p><strong>Low audit score is not bad news.</strong> It usually means there is a clearer fix to explain.</p>
+          <p><strong>Needs manual review</strong> means the site could not be verified in this run, so do not make schema claims yet.</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="stat-label">Prospects Reviewed</span><span class="stat-value">1</span><span class="stat-helper">Businesses in this beta pass.</span></div>
+        <div class="stat"><span class="stat-label">Verified Audits</span><span class="stat-value">1</span><span class="stat-helper">Sites Signal Foundry could fetch and score.</span></div>
+        <div class="stat"><span class="stat-label">Manual Review</span><span class="stat-value">0</span><span class="stat-helper">Sites that need a human check before claims.</span></div>
+        <div class="stat"><span class="stat-label">Best First</span><span class="stat-value">0</span><span class="stat-helper">High-priority outreach candidates.</span></div>
+        <div class="stat"><span class="stat-label">Avg Site Audit</span><span class="stat-value">55</span><span class="stat-helper">Higher means stronger current setup.</span></div>
+      </div>
+    </section>
+
+    <section class="guide" aria-labelledby="delivery-qa-title">
+      <h2 id="delivery-qa-title">Delivery QA Gate</h2>
+      <p class="guide-intro"><strong>Internal only:</strong> A human reviewer must compare this workbench with the generated customer-facing Verity Scan and the current live website before anything is delivered or published.</p>
+      <div class="score-guide-grid">
+        <div class="score-guide">
+          <strong>Verify the evidence</strong>
+          <p>Confirm business identity, pages scanned, current schema, location signals, and every customer-facing finding against the saved artifacts and live site.</p>
+        </div>
+        <div class="score-guide">
+          <strong>Verify the claims</strong>
+          <p>Remove unsupported precision, comparisons, guarantees, and conclusions that exceed the actual scan scope.</p>
+        </div>
+        <div class="score-guide">
+          <strong>Verify the handoff</strong>
+          <p>Confirm the external report contains no internal paths, raw JSON-LD, formulas, outreach notes, implementation instructions, or unfinished-review language.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide" aria-labelledby="score-guide-title">
+      <h2 id="score-guide-title">How The Scores Work</h2>
+      <p class="guide-intro">The report separates website quality from sales opportunity. A technically weak site can be a strong outreach candidate if the business looks valuable and the gap is easy to explain.</p>
+      <div class="score-guide-grid">
+        <div class="score-guide">
+          <strong>Opportunity Score</strong>
+          <p>0-100 score for who to review first. It combines business fit, visible website gap, and audit confidence.</p>
+        </div>
+        <div class="score-guide">
+          <strong>Site Audit Score</strong>
+          <p>0-100 score for current site strength. Higher means stronger structured signals; lower means the fix is clearer.</p>
+        </div>
+        <div class="score-guide">
+          <strong>Best First</strong>
+          <p>Start with scores 75+. Strong Pitch is 55-74, Secondary is 30-54, and Low Priority is below 30.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Report filters">
+      <div class="control">
+        <label for="search">Search</label>
+        <input id="search" type="search" placeholder="Business, city, category, phone, address">
+      </div>
+      <div class="control">
+        <label for="city-filter">City</label>
+        <select id="city-filter">
+          <option value="">All cities</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="category-filter">Category</label>
+        <select id="category-filter">
+          <option value="">All categories</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="status-filter">Live Audit</label>
+        <select id="status-filter">
+          <option value="">All audit states</option>
+          <option value="verified">Verified</option>
+          <option value="needs_manual_review">Needs manual review</option>
+          <option value="no_website">No website</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="priority-filter">Prospect Fit</label>
+        <select id="priority-filter">
+          <option value="">All fit levels</option>
+          <option value="Good Fit">Good fit</option>
+          <option value="Needs Review">Needs review</option>
+          <option value="Low Fit">Low fit</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="sort-control">Sort</label>
+        <select id="sort-control">
+          <option value="opportunity">Opportunity score</option>
+          <option value="audit-low">Lowest audit score</option>
+          <option value="audit-high">Highest audit score</option>
+          <option value="source">Original order</option>
+          <option value="name">Business name</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="spotlight" aria-labelledby="spotlight-title">
+      <p id="spotlight-title" class="spotlight-title">Best Outreach Targets</p>
+      <p class="spotlight-note">These are ranked for first review, not automatic sending. Confirm the finding, then decide whether the outreach angle feels useful for Nick.</p>
+      <div class="spotlight-grid">
+        <div class="spotlight-item"><div class="spotlight-rank">1</div><div class="spotlight-copy"><strong>A to Z Sleep Solutions</strong><span>Pediatric sleep consulting / baby and toddler sleep support in Glendale / Phoenix area AZ</span><span>Strong Pitch • Opportunity score 61</span><span>Phone listed, Website present</span></div></div>
+      </div>
+    </section>
+
+    <div id="results-meta" class="results-meta"></div>
+    <section id="card-grid" class="grid">
+      <article class="card" data-city="Glendale / Phoenix area AZ" data-category="Pediatric sleep consulting / baby and toddler sleep support" data-status="verified" data-priority="Needs Review" data-search="A to Z Sleep Solutions Pediatric sleep consulting / baby and toddler sleep support https://www.atozsleepsolutions.com/ 602-842-2055 Glendale / Phoenix area AZ Moderate opportunity; some machine-readable signals exist but important gaps remain. local_business_schema menu_schema product_schema service_schema BreadcrumbList EntryPoint ImageObject ListItem Organization ReadAction SearchAction WebPage WebSite Phone listed Website present Location needs review Audit verified Needs Review Verified Strong Pitch This pediatric sleep consulting / baby and toddler sleep support already has some schema, but it is not clearly typed for its local business category. manual_review site_location_not_found No clear city was found in JSON-LD or scanned page text." data-opportunity="61" data-audit="55" data-source="1" data-name="a to z sleep solutions">
+  <div class="card-top">
+    <div class="card-heading">
+      <div class="meta">
+        <span class="chip">Pediatric sleep consulting / baby and toddler sleep support</span>
+        <span class="chip status-verified">Verified</span>
+        <span class="chip status-needs_manual_review">Manual Review</span>
+        <span class="chip">Needs Review</span>
+        <span class="chip">Strong Pitch</span>
+        <span class="chip">Rubric v1</span>
+        <span class="chip">Outreach #1</span>
+      </div>
+      <h2>A to Z Sleep Solutions</h2>
+      <p class="card-subtitle">Pediatric sleep consulting / baby and toddler sleep support in Glendale / Phoenix area AZ</p>
+    </div>
+    <div class="score-stack" aria-label="Lead scores">
+      <div class="score">
+        <span class="score-value">61</span>
+        <span class="score-label">Opportunity</span>
+        <span class="score-caption">0-100 review priority</span>
+        <span class="score-formula">Fit 21 + Gap 20 + Confidence 20</span>
+      </div>
+      <div class="score score-secondary">
+        <span class="score-value">55</span>
+        <span class="score-label">Site Audit</span>
+        <span class="score-caption">Lower = clearer gap</span>
+      </div>
+      <div class="score score-secondary">
+        <span class="score-text">Wrong or missing local business type</span>
+        <span class="score-label">Main Finding</span>
+        <span class="score-caption">What to explain first</span>
+      </div>
+    </div>
+  </div>
+  <div class="summary">Moderate opportunity; some machine-readable signals exist but important gaps remain.</div>
+  <details class="detail-drawer" open>
+  <summary>Rubric v1 Calculation</summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Publishable overall</span><strong>78</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Draft calculation</span><strong>78 · Clear</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Delivery gate</span><strong class="gate-ready">Ready</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Final approval</span><strong>Approved</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Rubric</span><strong>v1</strong></div>
+    </div>
+    <div class="compact-grid compact-grid-tight">
+      <div><span class="detail-label">Reviewer</span><div class="detail-value">Anthony</div></div>
+      <div><span class="detail-label">Reviewed at</span><div class="detail-value">2026-07-10T00:57:28Z</div></div>
+      <div><span class="detail-label">Calculated at</span><div class="detail-value">2026-07-09T23:58:00Z</div></div>
+      <div><span class="detail-label">Live-site comparison</span><div class="detail-value">Complete</div></div>
+      <div><span class="detail-label">Customer-report comparison</span><div class="detail-value">Complete</div></div>
+      <div><span class="detail-label">Reviewer notes</span><div class="detail-value">Approved by Anthony for customer delivery after Rubric v1 draft migration, red-team copy correction, customer-preview review, and safety checks. Public sharing and logo authorization remain separate from this delivery approval.</div></div>
+    </div>
+    <div class="section-block">
+      <span class="detail-label">Gate status</span>
+      <div class="list-block-vertical"><span class="pill pill-muted pill-text">No blocking reasons recorded</span></div>
+    </div>
+    <details class="detail-drawer">
+  <summary>Business Clarity
+    · 89 Strong
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>89 · Strong</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>25%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>88.75 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>22.2 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="Business Clarity indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">Business Clarity indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Business identity</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>20.0 / 20</td><td>The homepage title, logo alt text, schema Organization node, and footer identify A to Z Sleep Solutions.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Primary offer</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>20.0 / 20</td><td>The Services page is titled sleep training packages and describes customized sleep solutions by email, phone, and in-home support.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Intended audience</strong></td><td>Pass</td><td>15.0 / 15</td><td>The homepage speaks directly to parents with babies, toddlers, newborns, bedtime struggles, naps, and sleep routines.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Geography and service area</strong></td><td>Partial</td><td>7.5 / 15</td><td>The homepage references Arizona top in-home sleep specialists and the Services page lists Arizona and Cape Cod for in-home packages, but the audit did not find a structured address or verified city. Reviewer note: The 50% anchor applies because service geography is visible for some offers but local identity is incomplete.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Contact path or CTA</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>15.0 / 15</td><td>Navigation and page sections expose schedule/free consult CTAs, contact links, phone number 602-842-2055, and email.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/contact" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/contact</a><a href="artifacts/a-to-z-sleep-solutions/page-03.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-03.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Cross-page consistency</strong></td><td>Partial</td><td>11.25 / 15</td><td>Business name, phone, and sleep-consulting offer are consistent across reviewed pages; location language is less consistent because city/address were not confirmed in structured data. Reviewer note: The 75% anchor applies because the core offer is consistent while local service-area clarity remains incomplete.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/pages.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/pages.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details><details class="detail-drawer">
+  <summary>Search Readiness
+    · 70 Clear
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>70 · Clear</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>20%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>70.0 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>14.0 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="Search Readiness indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">Search Readiness indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Crawl access</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>15.0 / 15</td><td>The retained audit fetched homepage, About, Contact, and Services pages successfully and found index/follow robots meta on the homepage.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/pages.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/pages.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Indexability and metadata</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>15.0 / 15</td><td>Reviewed pages include page titles, canonical WordPress/Yoast schema graph records, and homepage index/follow robots metadata.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Identity and location consistency</strong></td><td>Partial</td><td>10.0 / 20</td><td>The name and phone are clear, but the retained location vetting returned low confidence with no verified city or address from JSON-LD or scanned page text. Reviewer note: The 50% anchor applies because identity is clear but location consistency is not fully verified.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/pages.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/pages.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Appropriate local business schema</strong></td><td>Fail</td><td>0.0 / 20</td><td>The current JSON-LD contains WebPage, WebSite, Organization, BreadcrumbList, ImageObject, and actions, but no LocalBusiness or Service entity for the actual consulting offer.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/current-schema.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/current-schema.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Service-page coverage</strong></td><td>Pass</td><td>15.0 / 15</td><td>The Services page was fetched and contains detailed sections for email, phone, in-home, overnight, weekend, and platinum sleep solutions.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Internal linking and discovery</strong></td><td>Pass</td><td>15.0 / 15</td><td>Homepage navigation and CTAs link to Services, Contact, About, testimonials, classes, and package booking paths.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details><details class="detail-drawer">
+  <summary>AI Readiness
+    · 61 Needs Work
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>61 · Needs Work</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>20%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>61.25 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>12.2 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="AI Readiness indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">AI Readiness indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Entity and schema specificity</strong> <span title="Critical indicator">Critical</span></td><td>Partial</td><td>12.5 / 25</td><td>Organization/WebSite/WebPage schema exists, but it does not define the business as a local/service provider or connect Hannah, service areas, and offerings as first-class entities. Reviewer note: The 50% anchor applies because generic entity schema exists but business-specific schema is incomplete.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/current-schema.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/current-schema.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Structured services</strong></td><td>Fail</td><td>0.0 / 20</td><td>The Services page describes multiple packages, prices, support windows, and delivery modes, but those services are not represented as Service/Offer structured data.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/current-schema.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/current-schema.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Answer-ready content</strong></td><td>Pass</td><td>20.0 / 20</td><td>The Services page answers concrete buyer questions around delivery mode, process, pricing, duration, support type, and who delivers the service.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Factual consistency</strong></td><td>Partial</td><td>11.25 / 15</td><td>Core facts are consistent, but location remains ambiguous across machine-readable and visible sources in the retained audit. Reviewer note: The 75% anchor applies because the offer facts are consistent while the local facts need cleanup.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/pages.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/pages.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Authorship and provenance</strong></td><td>Partial</td><td>7.5 / 10</td><td>The site identifies Hannah as founder/owner, mom of seven, pediatric nurse, and certified sensitive sleep consultant, but schema does not connect that person/entity relationship. Reviewer note: The 75% anchor applies because visible provenance exists but machine-readable provenance is thin.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/about" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/about</a><a href="artifacts/a-to-z-sleep-solutions/page-02.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-02.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Machine accessibility</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>10.0 / 10</td><td>The retained pages are readable HTML with extractable text, links, metadata, and JSON-LD.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/pages.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/pages.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details><details class="detail-drawer">
+  <summary>Trust Signals
+    · 78 Clear
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>78 · Clear</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>20%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>77.5 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>15.6 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="Trust Signals indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">Trust Signals indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Verifiable contact and location</strong> <span title="Critical indicator">Critical</span></td><td>Partial</td><td>7.5 / 15</td><td>Phone and email are visible, but no verified street address or city was found in the retained location-vetting pass. Reviewer note: The 50% anchor applies because contact exists while local verification is incomplete.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/contact" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/contact</a><a href="artifacts/a-to-z-sleep-solutions/page-03.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-03.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>People and credentials</strong></td><td>Pass</td><td>20.0 / 20</td><td>The homepage identifies Hannah as founder/owner, mom of seven, pediatric nurse, and certified sensitive sleep consultant.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Reviews and testimonials</strong></td><td>Pass</td><td>15.0 / 15</td><td>The homepage includes multiple named testimonials and links to read more testimonials, plus an embedded review video.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Outcomes and examples</strong></td><td>Partial</td><td>7.5 / 10</td><td>Testimonials describe specific outcomes such as independent sleep, longer naps, and sleeping through the night, but these are testimonial claims rather than structured case examples. Reviewer note: The 75% anchor applies because outcomes are present but not organized as case studies or service proof blocks.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Affiliations and awards</strong></td><td>Partial</td><td>5.0 / 10</td><td>Visible credentials are present for Hannah, but retained artifacts did not confirm independent affiliations, awards, or third-party professional memberships. Reviewer note: The 50% anchor applies because professional credentials exist while affiliations/awards are not independently established.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Process and policies</strong></td><td>Pass</td><td>15.0 / 15</td><td>Service pages explain questionnaires, personalized assessments, implementation support, follow-up windows, calls, texts, emails, app support, and fair-use support language.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Third-party corroboration</strong></td><td>Partial</td><td>7.5 / 15</td><td>The schema links to Instagram, Facebook, and YouTube profiles and the site embeds social/review assets, but this draft did not independently verify those external profiles. Reviewer note: The 50% anchor applies because external profile links exist but independent corroboration remains pending.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/current-schema.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/current-schema.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details><details class="detail-drawer">
+  <summary>Content Coverage
+    · 93 Strong
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>93 · Strong</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>15%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>92.5 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>13.9 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="Content Coverage indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">Content Coverage indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Core services</strong></td><td>Pass</td><td>25.0 / 25</td><td>The Services page covers email, phone, in-home, overnight, weekend, platinum, and newborn/dual-start sleep support offerings.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Decision questions</strong></td><td>Pass</td><td>20.0 / 20</td><td>The page helps buyers compare service mode, support level, price, duration, who delivers the service, and whether in-home is available.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Process and next steps</strong></td><td>Pass</td><td>15.0 / 15</td><td>The reviewed content explains free consult, questionnaire, personalized assessment, implementation support, follow-up, and package booking CTAs.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Cost, financing, or insurance</strong></td><td>Pass</td><td>10.0 / 10</td><td>The Services page lists package prices from phone support through in-home and premium founder-led options.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Geography</strong></td><td>Partial</td><td>5.0 / 10</td><td>The content names Arizona and Cape Cod for in-home service and general remote support elsewhere, but city/address/service-area structure remains unclear. Reviewer note: The 50% anchor applies because geography appears in service copy but is not consistently structured.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/services" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/services</a><a href="artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-04.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Audience and scenarios</strong></td><td>Pass</td><td>10.0 / 10</td><td>The site covers newborns, babies, toddlers, naps, bedtime, complex sleep challenges, Down syndrome/ADHD imagery, and different family support scenarios.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/page-01.html</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Ownership and recency</strong></td><td>Partial</td><td>7.5 / 10</td><td>Homepage schema shows a 2026 modified date and names Hannah as owner/founder, but About schema appears older and recency is not uniformly clear across pages. Reviewer note: The 75% anchor applies because there is some recent metadata but not consistent freshness across every key page.</td><td><div class="rubric-source"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a><a href="artifacts/a-to-z-sleep-solutions/current-schema.json" target="_blank" rel="noreferrer">artifacts/a-to-z-sleep-solutions/current-schema.json</a></div></td><td>retained artifact review + manual rubric mapping<br>2026-07-09T23:58:00Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details>
+  </div>
+</details>
+  <div class="section-block">
+    <span class="detail-label">Outreach Angle</span>
+    <p class="section-copy">This pediatric sleep consulting / baby and toddler sleep support already has some schema, but it is not clearly typed for its local business category.</p>
+  </div>
+  <details class="detail-drawer">
+    <summary>Business Details</summary>
+    <div class="details contact-grid">
+      <div class="detail">
+        <span class="detail-label">Website</span>
+        <div class="detail-value"><a href="https://www.atozsleepsolutions.com/" target="_blank" rel="noreferrer">https://www.atozsleepsolutions.com/</a></div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Phone</span>
+        <div class="detail-value">602-842-2055</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Address</span>
+        <div class="detail-value">None</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">City</span>
+        <div class="detail-value">Glendale / Phoenix area AZ</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Verified City</span>
+        <div class="detail-value">Unknown</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Verified Address</span>
+        <div class="detail-value">None</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Location Vetting</span>
+        <div class="detail-value">Manual Review · site location not found</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Prospect Fit</span>
+        <div class="detail-value">61</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Recommended Type</span>
+        <div class="detail-value">LocalBusiness + Service</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Live Audit</span>
+        <div class="detail-value">Verified</div>
+      </div>
+    </div>
+  </details>
+  <details class="detail-drawer">
+    <summary>Technical Findings</summary>
+    <div class="drawer-body">
+      <div class="section-block">
+        <span class="detail-label">Schema Gap Summary</span>
+        <p class="section-copy">Schema is present, but the current implementation appears incomplete for local search and AI readability.</p>
+      </div>
+      <div class="technical-grid">
+        <div class="technical-column">
+          <div>
+            <span class="detail-label">Lead Tags</span>
+            <div class="list-block"><span class="pill">Phone listed</span><span class="pill">Website present</span><span class="pill">Location needs review</span><span class="pill">Audit verified</span></div>
+          </div>
+          <div>
+            <span class="detail-label">Missing Signals</span>
+            <div class="list-block"><span class="pill pill-muted">local_business_schema</span><span class="pill pill-muted">menu_schema</span><span class="pill pill-muted">product_schema</span><span class="pill pill-muted">service_schema</span></div>
+          </div>
+        </div>
+        <div class="technical-column">
+          <div>
+            <span class="detail-label">Recommendation Reasons</span>
+            <div class="list-block-vertical"><span class="pill pill-muted pill-text">A typed LocalBusiness + Service schema would better define the business for Google and AI systems.</span><span class="pill pill-muted pill-text">Service-oriented content was found without service schema, which makes service understanding less explicit.</span></div>
+          </div>
+          <details class="detail-drawer">
+            <summary>Schema Types</summary>
+            <div class="compact-grid compact-grid-tight">
+              <div class="list-block"><span class="pill">BreadcrumbList</span><span class="pill">EntryPoint</span><span class="pill">ImageObject</span><span class="pill">ListItem</span><span class="pill">Organization</span><span class="pill">ReadAction</span><span class="pill">SearchAction</span><span class="pill">WebPage</span><span class="pill">WebSite</span></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="detail-drawer">
+    <summary>Page-Level Evidence</summary>
+    <div class="drawer-body">
+      <span class="pill pill-muted">No page-level evidence recorded; regenerate with the current audit engine.</span>
+    </div>
+  </details>
+  <details class="detail-drawer">
+    <summary>Schema & Artifacts</summary>
+    <div class="drawer-body">
+      <div class="compact-grid compact-grid-tight">
+        <div>
+          <span class="detail-label">Notes</span>
+          <div class="list-block-vertical"><span class="pill pill-muted pill-text">Scanned 4 page(s).</span></div>
+        </div>
+        <div>
+          <span class="detail-label">Audit Artifacts</span>
+          <div class="artifact-links"><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/a-to-z-sleep-solutions-verity-scan-pilot/artifacts/a-to-z-sleep-solutions/current-schema.json" target="_blank" rel="noreferrer">current-schema.json</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/a-to-z-sleep-solutions-verity-scan-pilot/artifacts/a-to-z-sleep-solutions/proposed-schema.json" target="_blank" rel="noreferrer">proposed-schema.json</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/a-to-z-sleep-solutions-verity-scan-pilot/artifacts/a-to-z-sleep-solutions/page-01.html" target="_blank" rel="noreferrer">page-01.html</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/a-to-z-sleep-solutions-verity-scan-pilot/artifacts/a-to-z-sleep-solutions/page-02.html" target="_blank" rel="noreferrer">page-02.html</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/a-to-z-sleep-solutions-verity-scan-pilot/artifacts/a-to-z-sleep-solutions/page-03.html" target="_blank" rel="noreferrer">page-03.html</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/a-to-z-sleep-solutions-verity-scan-pilot/artifacts/a-to-z-sleep-solutions/page-04.html" target="_blank" rel="noreferrer">page-04.html</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/a-to-z-sleep-solutions-verity-scan-pilot/artifacts/a-to-z-sleep-solutions/pages.json" target="_blank" rel="noreferrer">pages.json</a></div>
+        </div>
+      </div>
+      <details class="detail-drawer">
+        <summary>Pages Scanned</summary>
+        <div class="drawer-body">
+          <div class="list-block-vertical"><span class="pill pill-muted pill-text">https://www.atozsleepsolutions.com/</span><span class="pill pill-muted pill-text">https://www.atozsleepsolutions.com/about</span><span class="pill pill-muted pill-text">https://www.atozsleepsolutions.com/contact</span><span class="pill pill-muted pill-text">https://www.atozsleepsolutions.com/services</span></div>
+        </div>
+      </details>
+      <details class="detail-drawer">
+        <summary>Fetch Failures</summary>
+        <div class="drawer-body">
+          <div class="list-block-vertical"><span class="pill pill-muted pill-text">None</span></div>
+        </div>
+      </details>
+      
+      <div class="section-block section-block-primary">
+        <span class="detail-label">Schema Operator Brief</span>
+        <p class="section-copy">Internal-only schema diagnosis, implementation rationale, and delivery checklist. Keep this detail out of the customer-facing Verity Scan unless translated into plain-language findings.</p>
+        <div class="technical-grid">
+          <div class="technical-column">
+            <div>
+              <span class="detail-label">Diagnosis</span>
+              <div class="list-block-vertical"><span class="pill pill-muted pill-text">Current JSON-LD types detected: BreadcrumbList, EntryPoint, ImageObject, ListItem, Organization, ReadAction, SearchAction, WebPage, WebSite.</span><span class="pill pill-muted pill-text">The internal question is not only whether schema exists, but whether the business, website, page, person, and service entities are distinct and connected cleanly.</span><span class="pill pill-muted pill-text">Preserve useful existing entity signals, but reduce ambiguity by keeping one stable practice/business entity and linking related people, pages, and services to it.</span><span class="pill pill-muted pill-text">Visible service or treatment content should be represented only when the service is actually supported by page copy or a dedicated treatment page.</span><span class="pill pill-muted pill-text">The business should be typed more specifically as LocalBusiness + Service instead of relying on generic website or organization context alone.</span></div>
+            </div>
+            <div>
+              <span class="detail-label">Before / After Rationale</span>
+              <div class="list-block-vertical"><span class="pill pill-muted pill-text">Before: the workbench captured raw current schema and generated a thin starter object that did not fully explain the entity model.</span><span class="pill pill-muted pill-text">After: the proposed schema uses a connected @graph with one canonical business/practice entity, one WebSite entity, one homepage WebPage entity, and service entities where appropriate.</span><span class="pill pill-muted pill-text">The goal is to make the same real-world business easier to reconcile across pages, search systems, and AI answer engines without inventing unverified facts.</span></div>
+            </div>
+          </div>
+          <div class="technical-column">
+            <div>
+              <span class="detail-label">Implementation Notes</span>
+              <div class="list-block-vertical"><span class="pill pill-muted pill-text">Find the theme, plugin, or tag-manager source that currently emits JSON-LD before removing or replacing existing schema.</span><span class="pill pill-muted pill-text">Keep the canonical business @id stable and reuse it anywhere pages, services, reviews, videos, people, or offers need to point back to the business.</span><span class="pill pill-muted pill-text">Do not add sameAs, logo, geo coordinates, licenses, credentials, awards, reviews, or doctor/practitioner claims unless each value is verified from an approved source.</span><span class="pill pill-muted pill-text">For service nodes, include only services that are visible on the live site and preferably supported by a dedicated page or section.</span><span class="pill pill-muted pill-text">Deploy the schema as one clean JSON-LD graph or a small coordinated set of graphs; avoid multiple plugins emitting conflicting LocalBusiness, Organization, or practitioner records.</span></div>
+            </div>
+            <div>
+              <span class="detail-label">Validation Checklist</span>
+              <div class="list-block-vertical"><span class="pill pill-muted pill-text">Validate the final JSON-LD with Schema.org&#x27;s validator and Google Rich Results Test where relevant.</span><span class="pill pill-muted pill-text">Confirm name, address, phone, URL, and business type against the live website before delivery.</span><span class="pill pill-muted pill-text">View page source after deployment and confirm the old duplicate or conflicting schema records are removed or reconciled.</span><span class="pill pill-muted pill-text">Check that every @id reference resolves to another node in the graph or a stable canonical URL.</span><span class="pill pill-muted pill-text">Confirm the customer-facing report stays plain-language and does not expose raw JSON-LD, local paths, or operator implementation notes.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comparison-grid">
+        <details class="code-panel">
+          <summary>Current Schema</summary>
+          <pre>[
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@graph&quot;: [
+      {
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions Home Page &amp;mdash; A to Z Sleep Solutions&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#website&quot;
+        },
+        &quot;about&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;
+        },
+        &quot;datePublished&quot;: &quot;2022-08-06T19:51:50+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-06-06T15:41:42+00:00&quot;,
+        &quot;breadcrumb&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#breadcrumb&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en&quot;,
+        &quot;potentialAction&quot;: [
+          {
+            &quot;@type&quot;: &quot;ReadAction&quot;,
+            &quot;target&quot;: [
+              &quot;https://www.atozsleepsolutions.com/&quot;
+            ]
+          }
+        ]
+      },
+      {
+        &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#breadcrumb&quot;,
+        &quot;itemListElement&quot;: [
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 1,
+            &quot;name&quot;: &quot;Home&quot;
+          }
+        ]
+      },
+      {
+        &quot;@type&quot;: &quot;WebSite&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#website&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+        &quot;description&quot;: &quot;Home Of the Customized Sleep Plan&quot;,
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;
+        },
+        &quot;potentialAction&quot;: [
+          {
+            &quot;@type&quot;: &quot;SearchAction&quot;,
+            &quot;target&quot;: {
+              &quot;@type&quot;: &quot;EntryPoint&quot;,
+              &quot;urlTemplate&quot;: &quot;https://www.atozsleepsolutions.com/?s={search_term_string}&quot;
+            },
+            &quot;query-input&quot;: &quot;required name=search_term_string&quot;
+          }
+        ],
+        &quot;inLanguage&quot;: &quot;en&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;Organization&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;logo&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;inLanguage&quot;: &quot;en&quot;,
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#/schema/logo/image/&quot;,
+          &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2018/06/A-TO-Z-Sleep-Solutions-FB-profpic.jpg&quot;,
+          &quot;contentUrl&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2018/06/A-TO-Z-Sleep-Solutions-FB-profpic.jpg&quot;,
+          &quot;width&quot;: 400,
+          &quot;height&quot;: 400,
+          &quot;caption&quot;: &quot;A to Z Sleep Solutions&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#/schema/logo/image/&quot;
+        },
+        &quot;sameAs&quot;: [
+          &quot;http://www.instagram.com/atozsleepsolutions&quot;,
+          &quot;https://www.google.com/url?sa=t&amp;amp;amp;amp;rct=j&amp;amp;amp;amp;q&amp;amp;amp;amp;esrc=s&amp;amp;amp;amp;source=web&amp;amp;amp;amp;cd=2&amp;amp;amp;amp;cad=rja&amp;amp;amp;amp;uact=8&amp;amp;amp;amp;ved=2ahUKEwjw6cjJz_bjAhXCl54KHWhZA1oQFjABegQIABAB&amp;amp;amp;amp;url=https://www.youtube.com/channel/UCvO3MIEL_98nYUhQiVqGGyg&amp;amp;amp;amp;usg=AOvVaw3372Xh5lBUoIRemchq-sQi&quot;,
+          &quot;http://www.facebook.com/atozsleepsolutions&quot;
+        ]
+      }
+    ]
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@graph&quot;: [
+      {
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/about-hannah/&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/about-hannah/&quot;,
+        &quot;name&quot;: &quot;About Hannah &amp;mdash; A to Z Sleep Solutions&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#website&quot;
+        },
+        &quot;primaryImageOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/about-hannah/#primaryimage&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/about-hannah/#primaryimage&quot;
+        },
+        &quot;thumbnailUrl&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2015/12/fullsizeoutput_32d9-150x150.jpeg&quot;,
+        &quot;datePublished&quot;: &quot;2015-12-04T20:21:33+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2018-05-20T01:59:42+00:00&quot;,
+        &quot;breadcrumb&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/about-hannah/#breadcrumb&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en&quot;,
+        &quot;potentialAction&quot;: [
+          {
+            &quot;@type&quot;: &quot;ReadAction&quot;,
+            &quot;target&quot;: [
+              &quot;https://www.atozsleepsolutions.com/about-hannah/&quot;
+            ]
+          }
+        ]
+      },
+      {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;inLanguage&quot;: &quot;en&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/about-hannah/#primaryimage&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2015/12/fullsizeoutput_32d9.jpeg&quot;,
+        &quot;contentUrl&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2015/12/fullsizeoutput_32d9.jpeg&quot;,
+        &quot;width&quot;: 400,
+        &quot;height&quot;: 400
+      },
+      {
+        &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/about-hannah/#breadcrumb&quot;,
+        &quot;itemListElement&quot;: [
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 1,
+            &quot;name&quot;: &quot;Home&quot;,
+            &quot;item&quot;: &quot;https://www.atozsleepsolutions.com/&quot;
+          },
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 2,
+            &quot;name&quot;: &quot;About Hannah&quot;
+          }
+        ]
+      },
+      {
+        &quot;@type&quot;: &quot;WebSite&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#website&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+        &quot;description&quot;: &quot;Home Of the Customized Sleep Plan&quot;,
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;
+        },
+        &quot;potentialAction&quot;: [
+          {
+            &quot;@type&quot;: &quot;SearchAction&quot;,
+            &quot;target&quot;: {
+              &quot;@type&quot;: &quot;EntryPoint&quot;,
+              &quot;urlTemplate&quot;: &quot;https://www.atozsleepsolutions.com/?s={search_term_string}&quot;
+            },
+            &quot;query-input&quot;: &quot;required name=search_term_string&quot;
+          }
+        ],
+        &quot;inLanguage&quot;: &quot;en&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;Organization&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;logo&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;inLanguage&quot;: &quot;en&quot;,
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#/schema/logo/image/&quot;,
+          &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2018/06/A-TO-Z-Sleep-Solutions-FB-profpic.jpg&quot;,
+          &quot;contentUrl&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2018/06/A-TO-Z-Sleep-Solutions-FB-profpic.jpg&quot;,
+          &quot;width&quot;: 400,
+          &quot;height&quot;: 400,
+          &quot;caption&quot;: &quot;A to Z Sleep Solutions&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#/schema/logo/image/&quot;
+        },
+        &quot;sameAs&quot;: [
+          &quot;http://www.instagram.com/atozsleepsolutions&quot;,
+          &quot;https://www.google.com/url?sa=t&amp;amp;amp;amp;rct=j&amp;amp;amp;amp;q&amp;amp;amp;amp;esrc=s&amp;amp;amp;amp;source=web&amp;amp;amp;amp;cd=2&amp;amp;amp;amp;cad=rja&amp;amp;amp;amp;uact=8&amp;amp;amp;amp;ved=2ahUKEwjw6cjJz_bjAhXCl54KHWhZA1oQFjABegQIABAB&amp;amp;amp;amp;url=https://www.youtube.com/channel/UCvO3MIEL_98nYUhQiVqGGyg&amp;amp;amp;amp;usg=AOvVaw3372Xh5lBUoIRemchq-sQi&quot;,
+          &quot;http://www.facebook.com/atozsleepsolutions&quot;
+        ]
+      }
+    ]
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@graph&quot;: [
+      {
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/contact/&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/contact/&quot;,
+        &quot;name&quot;: &quot;Schedule a Free Consult &amp;mdash; A to Z Sleep Solutions&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#website&quot;
+        },
+        &quot;datePublished&quot;: &quot;2019-10-23T15:12:55+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2019-10-24T21:01:13+00:00&quot;,
+        &quot;breadcrumb&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/contact/#breadcrumb&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en&quot;,
+        &quot;potentialAction&quot;: [
+          {
+            &quot;@type&quot;: &quot;ReadAction&quot;,
+            &quot;target&quot;: [
+              &quot;https://www.atozsleepsolutions.com/contact/&quot;
+            ]
+          }
+        ]
+      },
+      {
+        &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/contact/#breadcrumb&quot;,
+        &quot;itemListElement&quot;: [
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 1,
+            &quot;name&quot;: &quot;Home&quot;,
+            &quot;item&quot;: &quot;https://www.atozsleepsolutions.com/&quot;
+          },
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 2,
+            &quot;name&quot;: &quot;Schedule a Free Consult&quot;
+          }
+        ]
+      },
+      {
+        &quot;@type&quot;: &quot;WebSite&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#website&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+        &quot;description&quot;: &quot;Home Of the Customized Sleep Plan&quot;,
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;
+        },
+        &quot;potentialAction&quot;: [
+          {
+            &quot;@type&quot;: &quot;SearchAction&quot;,
+            &quot;target&quot;: {
+              &quot;@type&quot;: &quot;EntryPoint&quot;,
+              &quot;urlTemplate&quot;: &quot;https://www.atozsleepsolutions.com/?s={search_term_string}&quot;
+            },
+            &quot;query-input&quot;: &quot;required name=search_term_string&quot;
+          }
+        ],
+        &quot;inLanguage&quot;: &quot;en&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;Organization&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;logo&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;inLanguage&quot;: &quot;en&quot;,
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#/schema/logo/image/&quot;,
+          &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2018/06/A-TO-Z-Sleep-Solutions-FB-profpic.jpg&quot;,
+          &quot;contentUrl&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2018/06/A-TO-Z-Sleep-Solutions-FB-profpic.jpg&quot;,
+          &quot;width&quot;: 400,
+          &quot;height&quot;: 400,
+          &quot;caption&quot;: &quot;A to Z Sleep Solutions&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#/schema/logo/image/&quot;
+        },
+        &quot;sameAs&quot;: [
+          &quot;http://www.instagram.com/atozsleepsolutions&quot;,
+          &quot;https://www.google.com/url?sa=t&amp;amp;amp;amp;rct=j&amp;amp;amp;amp;q&amp;amp;amp;amp;esrc=s&amp;amp;amp;amp;source=web&amp;amp;amp;amp;cd=2&amp;amp;amp;amp;cad=rja&amp;amp;amp;amp;uact=8&amp;amp;amp;amp;ved=2ahUKEwjw6cjJz_bjAhXCl54KHWhZA1oQFjABegQIABAB&amp;amp;amp;amp;url=https://www.youtube.com/channel/UCvO3MIEL_98nYUhQiVqGGyg&amp;amp;amp;amp;usg=AOvVaw3372Xh5lBUoIRemchq-sQi&quot;,
+          &quot;http://www.facebook.com/atozsleepsolutions&quot;
+        ]
+      }
+    ]
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@graph&quot;: [
+      {
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/services/&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/services/&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions Sleep Training Packages &amp;mdash; A to Z Sleep Solutions&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#website&quot;
+        },
+        &quot;datePublished&quot;: &quot;2015-12-04T20:21:49+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-06-28T22:26:59+00:00&quot;,
+        &quot;breadcrumb&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/services/#breadcrumb&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en&quot;,
+        &quot;potentialAction&quot;: [
+          {
+            &quot;@type&quot;: &quot;ReadAction&quot;,
+            &quot;target&quot;: [
+              &quot;https://www.atozsleepsolutions.com/services/&quot;
+            ]
+          }
+        ]
+      },
+      {
+        &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/services/#breadcrumb&quot;,
+        &quot;itemListElement&quot;: [
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 1,
+            &quot;name&quot;: &quot;Home&quot;,
+            &quot;item&quot;: &quot;https://www.atozsleepsolutions.com/&quot;
+          },
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 2,
+            &quot;name&quot;: &quot;A to Z Sleep Solutions Sleep Training Packages&quot;
+          }
+        ]
+      },
+      {
+        &quot;@type&quot;: &quot;WebSite&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#website&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+        &quot;description&quot;: &quot;Home Of the Customized Sleep Plan&quot;,
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;
+        },
+        &quot;potentialAction&quot;: [
+          {
+            &quot;@type&quot;: &quot;SearchAction&quot;,
+            &quot;target&quot;: {
+              &quot;@type&quot;: &quot;EntryPoint&quot;,
+              &quot;urlTemplate&quot;: &quot;https://www.atozsleepsolutions.com/?s={search_term_string}&quot;
+            },
+            &quot;query-input&quot;: &quot;required name=search_term_string&quot;
+          }
+        ],
+        &quot;inLanguage&quot;: &quot;en&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;Organization&quot;,
+        &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#organization&quot;,
+        &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+        &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+        &quot;logo&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;inLanguage&quot;: &quot;en&quot;,
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#/schema/logo/image/&quot;,
+          &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2018/06/A-TO-Z-Sleep-Solutions-FB-profpic.jpg&quot;,
+          &quot;contentUrl&quot;: &quot;https://www.atozsleepsolutions.com/wp-content/uploads/2018/06/A-TO-Z-Sleep-Solutions-FB-profpic.jpg&quot;,
+          &quot;width&quot;: 400,
+          &quot;height&quot;: 400,
+          &quot;caption&quot;: &quot;A to Z Sleep Solutions&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@id&quot;: &quot;https://www.atozsleepsolutions.com/#/schema/logo/image/&quot;
+        },
+        &quot;sameAs&quot;: [
+          &quot;http://www.instagram.com/atozsleepsolutions&quot;,
+          &quot;https://www.google.com/url?sa=t&amp;amp;amp;amp;rct=j&amp;amp;amp;amp;q&amp;amp;amp;amp;esrc=s&amp;amp;amp;amp;source=web&amp;amp;amp;amp;cd=2&amp;amp;amp;amp;cad=rja&amp;amp;amp;amp;uact=8&amp;amp;amp;amp;ved=2ahUKEwjw6cjJz_bjAhXCl54KHWhZA1oQFjABegQIABAB&amp;amp;amp;amp;url=https://www.youtube.com/channel/UCvO3MIEL_98nYUhQiVqGGyg&amp;amp;amp;amp;usg=AOvVaw3372Xh5lBUoIRemchq-sQi&quot;,
+          &quot;http://www.facebook.com/atozsleepsolutions&quot;
+        ]
+      }
+    ]
+  }
+]</pre>
+        </details>
+        <details class="code-panel">
+          <summary>Proposed Schema</summary>
+          <pre>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;A to Z Sleep Solutions&quot;,
+  &quot;url&quot;: &quot;https://www.atozsleepsolutions.com/&quot;,
+  &quot;telephone&quot;: &quot;602-842-2055&quot;,
+  &quot;makesOffer&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;itemOffered&quot;: {
+      &quot;@type&quot;: &quot;Service&quot;,
+      &quot;name&quot;: &quot;Pediatric sleep consulting / baby and toddler sleep support services&quot;
+    }
+  }
+}</pre>
+        </details>
+      </div>
+    </div>
+  </details>
+</article>
+    </section>
+    <div id="empty" class="empty">No businesses match the current filters.</div>
+  </div>
+  <script>
+    const cards = [...document.querySelectorAll('.card')];
+    const cityFilter = document.getElementById('city-filter');
+    const categoryFilter = document.getElementById('category-filter');
+    const statusFilter = document.getElementById('status-filter');
+    const priorityFilter = document.getElementById('priority-filter');
+    const sortControl = document.getElementById('sort-control');
+    const themeToggle = document.getElementById('theme-toggle');
+    const search = document.getElementById('search');
+    const cardGrid = document.getElementById('card-grid');
+    const resultsMeta = document.getElementById('results-meta');
+    const empty = document.getElementById('empty');
+
+    function fillSelect(select, attribute) {
+      const values = [...new Set(cards.map(card => card.dataset[attribute]).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+      for (const value of values) {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value;
+        select.appendChild(option);
+      }
+    }
+
+    function sortCards() {
+      const mode = sortControl.value;
+      const sorted = [...cards].sort((a, b) => {
+        if (mode === 'audit-low') return Number(a.dataset.audit) - Number(b.dataset.audit);
+        if (mode === 'audit-high') return Number(b.dataset.audit) - Number(a.dataset.audit);
+        if (mode === 'source') return Number(a.dataset.source) - Number(b.dataset.source);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return Number(b.dataset.opportunity) - Number(a.dataset.opportunity);
+      });
+      for (const card of sorted) cardGrid.appendChild(card);
+    }
+
+    function applyFilters() {
+      sortCards();
+      const city = cityFilter.value.toLowerCase();
+      const category = categoryFilter.value.toLowerCase();
+      const status = statusFilter.value.toLowerCase();
+      const priority = priorityFilter.value.toLowerCase();
+      const query = search.value.trim().toLowerCase();
+      let visible = 0;
+
+      for (const card of cards) {
+        const matchesCity = !city || card.dataset.city.toLowerCase() === city;
+        const matchesCategory = !category || card.dataset.category.toLowerCase() === category;
+        const matchesStatus = !status || card.dataset.status.toLowerCase() === status;
+        const matchesPriority = !priority || card.dataset.priority.toLowerCase() === priority;
+        const haystack = card.dataset.search.toLowerCase();
+        const matchesQuery = !query || haystack.includes(query);
+        const show = matchesCity && matchesCategory && matchesStatus && matchesPriority && matchesQuery;
+        card.style.display = show ? '' : 'none';
+        if (show) visible += 1;
+      }
+
+      resultsMeta.textContent = `${visible} of 1 businesses shown`;
+      empty.style.display = visible ? 'none' : 'block';
+    }
+
+    function applyTheme(theme) {
+      const nextTheme = theme === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = nextTheme;
+      themeToggle.textContent = nextTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+      themeToggle.setAttribute(
+        'aria-label',
+        nextTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+      );
+      try {
+        localStorage.setItem('signalFoundryTheme', nextTheme);
+      } catch (error) {}
+    }
+
+    function savedTheme() {
+      try {
+        return localStorage.getItem('signalFoundryTheme');
+      } catch (error) {
+        return null;
+      }
+    }
+
+    fillSelect(cityFilter, 'city');
+    fillSelect(categoryFilter, 'category');
+    for (const element of [cityFilter, categoryFilter, statusFilter, priorityFilter, sortControl, search]) {
+      element.addEventListener('input', applyFilters);
+      element.addEventListener('change', applyFilters);
+    }
+    themeToggle.addEventListener('click', () => {
+      applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+    applyTheme(savedTheme() || 'dark');
+    applyFilters();
+  </script>
+</body>
+</html>

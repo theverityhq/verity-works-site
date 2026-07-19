@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>Signal Foundry | Verity Works</title>
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <style>
+      :root {
+        --bg: #0d1211;
+        --paper: #101614;
+        --ink: #f2f5f1;
+        --muted: #9da9a1;
+        --line: rgba(224, 235, 226, 0.16);
+        --surface: #151c19;
+        --surface-soft: #101714;
+        --signal: #1f6470;
+        --signal-bright: #74c8cf;
+        --signal-soft: rgba(116, 200, 207, 0.14);
+        --amber: #d2a85e;
+        --amber-soft: rgba(210, 168, 94, 0.12);
+        --green: #91d1ab;
+        --green-soft: rgba(145, 209, 171, 0.12);
+        --radius: 10px;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(116, 200, 207, 0.18), transparent 30rem),
+          radial-gradient(circle at bottom right, rgba(47, 111, 78, 0.14), transparent 28rem),
+          linear-gradient(180deg, #0d1211 0%, var(--paper) 62%, #0a0e0d 100%);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--signal-bright); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .page {
+        width: min(1220px, calc(100vw - 40px));
+        margin: 0 auto;
+        padding: 30px 0 70px;
+      }
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--ink);
+      }
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        padding: 2px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        border-radius: var(--radius);
+      }
+      .brand-mark img {
+        width: 116%;
+        height: 116%;
+        object-fit: contain;
+      }
+      .brand-text {
+        display: grid;
+        gap: 2px;
+      }
+      .brand-name {
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      .brand-sub {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 650;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
+        gap: 18px;
+        padding: 30px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(24, 33, 29, 0.94), rgba(18, 25, 22, 0.94));
+        box-shadow: var(--shadow);
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--signal-bright);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0;
+        max-width: 760px;
+        font-size: clamp(2.4rem, 6vw, 4.7rem);
+        line-height: 0.96;
+        letter-spacing: -0.04em;
+      }
+      .lead {
+        max-width: 760px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.55;
+      }
+      .status-panel {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .status-panel strong {
+        display: block;
+        font-size: 28px;
+        letter-spacing: -0.04em;
+      }
+      .warning {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border: 1px solid rgba(210, 168, 94, 0.32);
+        border-radius: var(--radius);
+        background: var(--amber-soft);
+        color: var(--amber);
+        font-size: 14px;
+        line-height: 1.45;
+        font-weight: 700;
+      }
+      .section {
+        margin-top: 18px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(21, 28, 25, 0.9);
+        box-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+      }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+      h2 {
+        margin: 0;
+        font-size: clamp(1.55rem, 3vw, 2.35rem);
+        letter-spacing: -0.035em;
+      }
+      .section-copy {
+        max-width: 720px;
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      .scan-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .scan-card {
+        display: grid;
+        gap: 16px;
+        min-height: 260px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+      .scan-card-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+      }
+      .scan-card h3 {
+        margin: 0;
+        font-size: 1.7rem;
+        letter-spacing: -0.04em;
+      }
+      .score {
+        display: grid;
+        place-items: center;
+        min-width: 74px;
+        min-height: 74px;
+        border-radius: 50%;
+        background: var(--signal-soft);
+        color: var(--signal-bright);
+        font-size: 24px;
+        font-weight: 850;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .meta span {
+        display: inline-flex;
+        min-height: 28px;
+        align-items: center;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 750;
+      }
+      .approval-state {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid rgba(210, 168, 94, 0.24);
+        border-radius: 14px;
+        background: rgba(210, 168, 94, 0.08);
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .approval-state strong {
+        color: var(--ink);
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: auto;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--surface-soft);
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .button-primary {
+        border-color: rgba(116, 200, 207, 0.58);
+        background: var(--signal-bright);
+        color: #0b1110;
+      }
+      .button-secondary {
+        border-color: rgba(116, 200, 207, 0.30);
+        color: var(--signal-bright);
+      }
+      .button-email {
+        border-color: rgba(145, 209, 171, 0.34);
+        color: var(--green);
+      }
+      .search-shell {
+        display: grid;
+        gap: 14px;
+      }
+      .search-box {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface-soft);
+      }
+      .search-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: end;
+        justify-content: space-between;
+      }
+      .search-toolbar > div:first-child {
+        flex: 1 1 520px;
+      }
+      .sort-control {
+        display: grid;
+        gap: 8px;
+        min-width: 190px;
+      }
+      .search-label {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .search-input {
+        width: 100%;
+        min-height: 54px;
+        padding: 0 16px;
+        border: 1px solid rgba(116, 200, 207, 0.28);
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.24);
+        color: var(--ink);
+        font: inherit;
+        font-size: 18px;
+        outline: none;
+      }
+      .search-input:focus {
+        border-color: var(--signal-bright);
+        box-shadow: 0 0 0 4px rgba(116, 200, 207, 0.13);
+      }
+      .sort-select {
+        min-height: 40px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.24);
+        color: var(--ink);
+        font: inherit;
+        font-size: 14px;
+      }
+      .search-help {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .filter-button {
+        min-height: 34px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+      .filter-button[aria-pressed="true"] {
+        border-color: var(--signal-bright);
+        background: var(--signal-bright);
+        color: #0b1110;
+      }
+      .result-count {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 750;
+      }
+      .result-list {
+        display: grid;
+        gap: 10px;
+      }
+      .result-card {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+      .result-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+      }
+      .result-card h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        letter-spacing: -0.03em;
+      }
+      .result-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .result-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .result-meta span {
+        display: inline-flex;
+        min-height: 26px;
+        align-items: center;
+        padding: 0 9px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      mark {
+        border-radius: 4px;
+        background: rgba(244, 219, 146, 0.88);
+        color: inherit;
+        padding: 0 2px;
+      }
+      .history {
+        display: grid;
+        gap: 12px;
+      }
+      .history-group {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+        overflow: hidden;
+      }
+      .history-group summary {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        padding: 16px;
+        cursor: pointer;
+        list-style: none;
+      }
+      .history-group summary::-webkit-details-marker { display: none; }
+      .history-group summary strong {
+        font-size: 17px;
+      }
+      .history-group summary span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .history-group-body {
+        display: grid;
+        gap: 10px;
+        padding: 0 16px 16px;
+      }
+      .history-row {
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.035);
+      }
+      .history-row strong { font-size: 14px; }
+      .history-row span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+      @media (max-width: 860px) {
+        .hero,
+        .scan-grid,
+        .history-row {
+          grid-template-columns: 1fr;
+        }
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Verity Works home">
+          <span class="brand-mark"><img src="./favicon-512.png" alt="" /></span>
+          <span class="brand-text">
+            <span class="brand-name">Verity Works</span>
+            <span class="brand-sub">Signal Foundry</span>
+          </span>
+        </a>
+        <span class="pill">Protected workspace</span>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Signal Foundry</p>
+          <h1>Scan control center.</h1>
+          <p class="lead">
+            A working index of Verity Scan outputs, internal workbench locations,
+            and version history. This page is for operator review and project
+            memory, not customer delivery.
+          </p>
+        </div>
+        <aside class="status-panel">
+          <span class="pill">Current state</span>
+          <strong>2 customer scans</strong>
+          <p class="section-copy">
+            Gleason and A to Z are both approved Rubric v1 customer scans. This
+            index is now access-controlled for operator review.
+          </p>
+          <a class="button button-secondary" href="/signalfoundry/docs/rubric-v1">Rubric v1 Reference</a>
+        </aside>
+      </section>
+
+      <div class="warning">
+        Access control is enabled at the Worker layer. Internal reports and
+        customer-related documents may be added here only after confirming they
+        are intended for this protected operator index.
+      </div>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Scans</p>
+            <h2>Customer-facing reports and operator workbench references.</h2>
+            <p class="section-copy">
+              Customer reports remain public. Internal workbenches and review
+              sidecars live under protected Signal Foundry routes.
+            </p>
+          </div>
+        </div>
+
+        <div class="scan-grid">
+          <article class="scan-card">
+            <div class="scan-card-top">
+              <div>
+                <h3>Gleason Orthodontics</h3>
+                <p class="section-copy">
+                  Approved Rubric v1 Verity Scan for customer delivery.
+                </p>
+              </div>
+              <span class="score">75</span>
+            </div>
+            <div class="meta">
+              <span>Clear</span>
+              <span>Rubric v1</span>
+              <span>Approved</span>
+              <span>Orthodontics</span>
+            </div>
+            <p class="local-path">
+              Protected workbench and review sidecar available in this operator index.
+            </p>
+            <div class="approval-state" aria-label="Gleason approval state">
+              <strong>Approval state</strong>
+              <span>Customer delivery: approved.</span>
+              <span>Public report: live customer report.</span>
+              <span>Logo/public proof: not recorded; relationship approval required before case-study use.</span>
+              <span>Takedown/contact: not recorded.</span>
+            </div>
+            <div class="actions">
+              <a class="button button-primary" href="/scans/gleason-orthodontics/">Customer scan</a>
+              <a class="button button-secondary" href="/signalfoundry/docs/gleason-orthodontics/internal-report.html">Internal report</a>
+              <a class="button" href="/signalfoundry/docs/gleason-orthodontics/review-sidecar.json">Review sidecar</a>
+              <a class="button button-email" href="mailto:?subject=Gleason%20Orthodontics%20Verity%20Scan%20is%20ready&body=Hi%20Dr.%20Gleason%2C%0A%0AI%20finished%20your%20Verity%20Scan%20and%20wanted%20to%20send%20over%20the%20customer-facing%20report%3A%0A%0Ahttps%3A%2F%2Fverityworks.dev%2Fscan%2Fgleason-orthodontics%2F%0A%0AIt%20shows%20what%20is%20clear%20today%2C%20where%20the%20site%20is%20harder%20for%20search%20and%20AI%20systems%20to%20understand%2C%20and%20the%20highest-priority%20fixes.%0A%0AI%20recommend%20we%20schedule%20a%2020%E2%80%9330%20minute%20walkthrough%20so%20I%20can%20explain%20the%20findings%20and%20answer%20questions.%0A%0AAnthony">Draft email</a>
+            </div>
+          </article>
+
+          <article class="scan-card">
+            <div class="scan-card-top">
+              <div>
+                <h3>A to Z Sleep Solutions</h3>
+                <p class="section-copy">
+                  Approved Rubric v1 Verity Scan for customer delivery.
+                </p>
+              </div>
+              <span class="score">78</span>
+            </div>
+            <div class="meta">
+              <span>Clear</span>
+              <span>Rubric v1</span>
+              <span>Approved</span>
+              <span>Sleep consulting</span>
+            </div>
+            <p class="local-path">
+              Protected workbench and review sidecar available in this operator index.
+            </p>
+            <div class="approval-state" aria-label="A to Z approval state">
+              <strong>Approval state</strong>
+              <span>Customer delivery: approved.</span>
+              <span>Public report: live customer report.</span>
+              <span>Logo/public proof: not recorded; relationship approval required before case-study use.</span>
+              <span>Takedown/contact: not recorded.</span>
+            </div>
+            <div class="actions">
+              <a class="button button-primary" href="/scans/a-to-z-sleep-solutions/">Customer scan</a>
+              <a class="button button-secondary" href="/signalfoundry/docs/a-to-z-sleep-solutions/internal-report.html">Internal report</a>
+              <a class="button" href="/signalfoundry/docs/a-to-z-sleep-solutions/review-sidecar.json">Review sidecar</a>
+              <a class="button button-email" href="mailto:?subject=A%20to%20Z%20Sleep%20Solutions%20Verity%20Scan%20is%20ready&body=Hi%2C%0A%0AI%20finished%20the%20A%20to%20Z%20Sleep%20Solutions%20Verity%20Scan%20and%20wanted%20to%20send%20over%20the%20customer-facing%20report%3A%0A%0Ahttps%3A%2F%2Fverityworks.dev%2Fscans%2Fa-to-z-sleep-solutions%2F%0A%0AIt%20shows%20what%20is%20clear%20today%2C%20where%20the%20site%20is%20harder%20for%20search%20and%20AI%20systems%20to%20understand%2C%20and%20the%20highest-priority%20fixes.%0A%0AI%20recommend%20we%20schedule%20a%2020%E2%80%9330%20minute%20walkthrough%20so%20I%20can%20explain%20the%20findings%20and%20answer%20questions.%0A%0AAnthony">Draft email</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="search-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Search</p>
+            <h2 id="search-title">Search records.</h2>
+          </div>
+        </div>
+
+        <div class="search-shell">
+          <div class="search-box">
+            <div class="search-toolbar">
+              <div>
+                <label class="search-label" for="sf-search">Search Signal Foundry</label>
+                <input
+                  class="search-input"
+                  id="sf-search"
+                  type="search"
+                  autocomplete="off"
+                  placeholder="Search by business, schema, AI readiness, delivery gate..."
+                />
+              </div>
+              <div class="sort-control">
+                <label class="search-label" for="sf-sort">Sort</label>
+                <select class="sort-select" id="sf-sort">
+                  <option value="date-desc">Newest first</option>
+                  <option value="date-asc">Oldest first</option>
+                  <option value="business-asc">Business A–Z</option>
+                  <option value="type-asc">Type</option>
+                  <option value="score-desc">Score high to low</option>
+                </select>
+              </div>
+            </div>
+            <div class="filter-row" aria-label="Search filters">
+              <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+              <button class="filter-button" type="button" data-filter="customer" aria-pressed="false">Customer</button>
+              <button class="filter-button" type="button" data-filter="internal" aria-pressed="false">Internal</button>
+              <button class="filter-button" type="button" data-filter="reference" aria-pressed="false">Reference</button>
+              <button class="filter-button" type="button" data-filter="review" aria-pressed="false">Review</button>
+              <button class="filter-button" type="button" data-filter="history" aria-pressed="false">History</button>
+              <button class="filter-button" type="button" data-filter="backlog" aria-pressed="false">Backlog</button>
+            </div>
+          </div>
+          <div class="result-count" id="search-count">Showing all indexed records.</div>
+          <div class="result-list" id="search-results" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Version history</p>
+            <h2>Before, after, and delivery trail.</h2>
+            <p class="section-copy">
+              This is the start of the record system: each scan should keep a
+              customer version, internal workbench, review state, and follow-up
+              implementation notes.
+            </p>
+          </div>
+        </div>
+        <div class="history">
+          <details class="history-group" open>
+            <summary>
+              <strong>Gleason Orthodontics</strong>
+              <span>2 versions</span>
+            </summary>
+            <div class="history-group-body">
+              <div class="history-row">
+                <strong>V1</strong>
+                <span>Rubric v1 approved customer report generated after internal workbench review and safety checks.</span>
+                <a class="button" href="/scan/gleason-orthodontics/">Open</a>
+              </div>
+              <div class="history-row">
+                <strong>Preview V1</strong>
+                <span>Local-only customer preview used for red-team before final delivery gate approval.</span>
+                <span class="pill">Local only</span>
+              </div>
+            </div>
+          </details>
+
+          <details class="history-group">
+            <summary>
+              <strong>A to Z Sleep Solutions</strong>
+              <span>2 versions</span>
+            </summary>
+            <div class="history-group-body">
+              <div class="history-row">
+                <strong>V1</strong>
+                <span>Rubric v1 customer report approved and published after copy correction, human approval, and safety checks.</span>
+                <a class="button" href="/scans/a-to-z-sleep-solutions/">Open</a>
+              </div>
+              <div class="history-row">
+                <strong>Pilot</strong>
+                <span>Initial public pilot scan replaced by the approved Rubric v1 customer report.</span>
+                <span class="pill">Replaced</span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+    <script>
+      const searchRecords = [
+        {
+          id: "rubric-v1-reference",
+          title: "Verity Scan Rubric v1 reference",
+          business: "Signal Foundry",
+          type: "reference",
+          status: "Protected",
+          score: "Rubric v1",
+          date: "2026-07-10",
+          href: "/signalfoundry/docs/rubric-v1",
+          approval: "Internal reference. Protected operator-only route. Not customer delivery. Public proof and logo approval not applicable.",
+          summary: "Internal reference for Verity Scan Rubric v1 definitions, scoring weights, scoring bands, evidence states, partial-credit anchors, publishability gates, critical caps, and current reference results.",
+          tags: ["rubric v1", "reference", "scoring", "definitions", "delivery gate", "evidence states", "partial credit", "critical caps", "publishability"],
+        },
+        {
+          id: "gleason-customer-v1",
+          title: "Gleason Orthodontics customer Verity Scan v1",
+          business: "Gleason Orthodontics",
+          type: "customer",
+          status: "Approved",
+          score: "75 Clear",
+          date: "2026-07-09",
+          href: "/scan/gleason-orthodontics/",
+          approval: "Customer delivery approved. Public report is live. Logo/public proof approval not recorded. Takedown/contact not recorded.",
+          summary: "Customer-facing Rubric v1 Verity Scan for Gleason Orthodontics. Strong business clarity, clear search readiness, AI readiness needs work around structured service entities, content depth, and machine-readable context.",
+          tags: ["orthodontics", "customer scan", "rubric v1", "AI readiness", "schema", "service entities", "Webster", "approved", "public report live", "logo approval pending"],
+        },
+        {
+          id: "gleason-internal-v1",
+          title: "Gleason Orthodontics internal workbench",
+          business: "Gleason Orthodontics",
+          type: "internal",
+          status: "Protected",
+          score: "Workbench",
+          date: "2026-07-09",
+          href: "/signalfoundry/docs/gleason-orthodontics/internal-report.html",
+          approval: "Protected operator-only workbench. Do not share externally. Public proof and logo approval not applicable.",
+          summary: "Protected operator workbench with rubric evidence, schema operator brief, current and proposed schema, implementation notes, delivery gate, artifacts, caveats, and fix tasks.",
+          tags: ["internal report", "workbench", "schema operator brief", "current schema", "proposed schema", "JSON-LD", "delivery gate", "fix tasks"],
+        },
+        {
+          id: "gleason-review-sidecar",
+          title: "Gleason Orthodontics Rubric v1 review sidecar",
+          business: "Gleason Orthodontics",
+          type: "review",
+          status: "Approved",
+          score: "75 Clear",
+          date: "2026-07-09",
+          href: "/signalfoundry/docs/gleason-orthodontics/review-sidecar.json",
+          approval: "Protected operator-only review sidecar. Do not share externally. Public proof and logo approval not applicable.",
+          summary: "Structured Rubric v1 review JSON with 32 indicators, reviewer approval, evidence states, partial anchors, critical indicators, and delivery-gate status.",
+          tags: ["review sidecar", "rubric", "JSON", "approval", "critical indicators", "partial credit", "delivery gate"],
+        },
+        {
+          id: "gleason-history",
+          title: "Gleason v1 delivery trail",
+          business: "Gleason Orthodontics",
+          type: "history",
+          status: "Published",
+          score: "75 Clear",
+          date: "2026-07-09",
+          href: "/scan/gleason-orthodontics/",
+          approval: "Customer delivery approved. Public report is live. Logo/public proof approval not recorded. Takedown/contact not recorded.",
+          summary: "Approved customer report generated after internal workbench review, customer-preview red-team, safety checks, and human approval. Logo authorization and broader public proof use still require recorded relationship approval.",
+          tags: ["version history", "delivery trail", "red team", "approval", "published", "customer report", "logo approval pending"],
+        },
+        {
+          id: "atoz-customer-v1",
+          title: "A to Z Sleep Solutions customer Verity Scan v1",
+          business: "A to Z Sleep Solutions",
+          type: "customer",
+          status: "Approved",
+          score: "78 Clear",
+          date: "2026-07-10",
+          href: "/scans/a-to-z-sleep-solutions/",
+          approval: "Customer delivery approved. Public report is live. Logo/public proof approval not recorded. Takedown/contact not recorded.",
+          summary: "Customer-facing Rubric v1 Verity Scan for A to Z Sleep Solutions. Strong human-readable service and pricing content; AI readiness needs work because LocalBusiness, Service, Offer, and service-area signals are not structured clearly.",
+          tags: ["sleep consulting", "customer scan", "rubric v1", "LocalBusiness", "Service", "Offer", "AI readiness", "service area", "approved", "public report live", "logo approval pending"],
+        },
+        {
+          id: "atoz-internal-v1",
+          title: "A to Z Sleep Solutions internal workbench",
+          business: "A to Z Sleep Solutions",
+          type: "internal",
+          status: "Protected",
+          score: "Workbench",
+          date: "2026-07-10",
+          href: "/signalfoundry/docs/a-to-z-sleep-solutions/internal-report.html",
+          approval: "Protected operator-only workbench. Do not share externally. Public proof and logo approval not applicable.",
+          summary: "Protected operator workbench with retained crawl evidence, current schema, proposed schema, rubric details, location-vetting caveats, service package evidence, and implementation tasks.",
+          tags: ["internal report", "workbench", "schema", "current schema", "proposed schema", "location vetting", "service packages", "pricing", "implementation"],
+        },
+        {
+          id: "atoz-review-sidecar",
+          title: "A to Z Sleep Solutions Rubric v1 review sidecar",
+          business: "A to Z Sleep Solutions",
+          type: "review",
+          status: "Approved",
+          score: "78 Clear",
+          date: "2026-07-10",
+          href: "/signalfoundry/docs/a-to-z-sleep-solutions/review-sidecar.json",
+          approval: "Protected operator-only review sidecar. Do not share externally. Public proof and logo approval not applicable.",
+          summary: "Structured Rubric v1 review JSON with 32 indicators, approved reviewer state, evidence descriptions, partial-credit anchors, location caveats, and delivery-gate status.",
+          tags: ["review sidecar", "rubric", "JSON", "approval", "partial credit", "location confidence", "delivery gate"],
+        },
+        {
+          id: "atoz-history",
+          title: "A to Z v1 delivery trail",
+          business: "A to Z Sleep Solutions",
+          type: "history",
+          status: "Published",
+          score: "78 Clear",
+          date: "2026-07-10",
+          href: "/scans/a-to-z-sleep-solutions/",
+          approval: "Customer delivery approved. Public report is live. Logo/public proof approval not recorded. Takedown/contact not recorded.",
+          summary: "Rubric v1 customer report approved and published after red-team copy correction, human approval, safety checks, and replacement of the older pilot scan.",
+          tags: ["version history", "delivery trail", "red team", "copy correction", "published", "replaced pilot", "logo approval pending"],
+        },
+        {
+          id: "press-release-backlog",
+          title: "Optional press release and backlink trust-signal offer",
+          business: "Verity Works",
+          type: "backlog",
+          status: "Needs spec",
+          score: "$850 optional",
+          date: "2026-07-09",
+          href: "#search-title",
+          approval: "Internal backlog only. Do not sell until scope, claims, approval language, and deliverables are defined.",
+          summary: "Backlog note: add backlinks and press releases as an optional Verity Scan service offer. Proposed price point is $850 for a press release. Needs scope, criteria, and scan detection logic before customer rollout.",
+          tags: ["press release", "backlinks", "trust signal", "$850", "optional service", "enhancement", "backlog"],
+        },
+        {
+          id: "protected-index-backlog",
+          title: "Protected Signal Foundry document registry",
+          business: "Signal Foundry",
+          type: "backlog",
+          status: "In progress",
+          score: "Control center",
+          date: "2026-07-10",
+          href: "#search-title",
+          approval: "Internal control-center backlog. Protected operator-only route. Not customer delivery.",
+          summary: "Protected control center should grow into the source of truth for all scanned sites, customer scans, internal reports, version history, before/after records, related docs, and delivery states.",
+          tags: ["control center", "password protected", "document registry", "version history", "before after", "internal docs"],
+        },
+      ];
+
+      const searchInput = document.getElementById("sf-search");
+      const sortSelect = document.getElementById("sf-sort");
+      const resultList = document.getElementById("search-results");
+      const resultCount = document.getElementById("search-count");
+      const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+      let activeFilter = "all";
+
+      let index = buildIndex(searchRecords);
+
+      function tokenize(value) {
+        return String(value || "")
+          .toLowerCase()
+          .replace(/[^a-z0-9$]+/g, " ")
+          .split(/\s+/)
+          .filter((term) => term.length > 1);
+      }
+
+      function recordText(record) {
+        return [
+          record.title,
+          record.business,
+          record.type,
+          record.status,
+          record.score,
+          record.approval,
+          record.summary,
+          record.body,
+          ...(record.tags || []),
+        ].join(" ");
+      }
+
+      function buildIndex(records) {
+        const docs = records.map((record) => {
+          const terms = tokenize(recordText(record));
+          const frequencies = new Map();
+          terms.forEach((term) => frequencies.set(term, (frequencies.get(term) || 0) + 1));
+          return { record, terms, frequencies, length: terms.length || 1 };
+        });
+        const documentFrequency = new Map();
+        docs.forEach((doc) => {
+          new Set(doc.terms).forEach((term) => {
+            documentFrequency.set(term, (documentFrequency.get(term) || 0) + 1);
+          });
+        });
+        const averageLength = docs.reduce((sum, doc) => sum + doc.length, 0) / docs.length;
+        return { docs, documentFrequency, averageLength };
+      }
+
+      function bm25Search(query, filter) {
+        const queryTerms = tokenize(query);
+        const filteredDocs = index.docs.filter(({ record }) => filter === "all" || record.type === filter);
+        if (!queryTerms.length) {
+          return filteredDocs.map((doc) => ({ ...doc, score: 0 }));
+        }
+
+        const k1 = 1.45;
+        const b = 0.72;
+        return filteredDocs
+          .map((doc) => {
+            let score = 0;
+            queryTerms.forEach((term) => {
+              const tf = doc.frequencies.get(term) || 0;
+              if (!tf) return;
+              const df = index.documentFrequency.get(term) || 0;
+              const idf = Math.log(1 + (index.docs.length - df + 0.5) / (df + 0.5));
+              const denominator = tf + k1 * (1 - b + b * (doc.length / index.averageLength));
+              score += idf * ((tf * (k1 + 1)) / denominator);
+            });
+            return { ...doc, score };
+          })
+          .filter((doc) => doc.score > 0)
+          .sort((a, b) => b.score - a.score);
+      }
+
+      function scoreNumber(record) {
+        const match = String(record.score || "").match(/\d+/);
+        return match ? Number(match[0]) : -1;
+      }
+
+      function sortResults(results, query) {
+        const value = sortSelect.value;
+        const withRank = [...results];
+        return withRank.sort((a, b) => {
+          if (value === "date-asc") return String(a.record.date || "").localeCompare(String(b.record.date || ""));
+          if (value === "business-asc") return String(a.record.business || "").localeCompare(String(b.record.business || ""));
+          if (value === "type-asc") return String(a.record.type || "").localeCompare(String(b.record.type || ""));
+          if (value === "score-desc") return scoreNumber(b.record) - scoreNumber(a.record);
+          return String(b.record.date || "").localeCompare(String(a.record.date || ""));
+        });
+      }
+
+      function escapeHtml(value) {
+        return String(value || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function highlight(value, query) {
+        const terms = Array.from(new Set(tokenize(query))).slice(0, 8);
+        let safe = escapeHtml(value);
+        terms.forEach((term) => {
+          safe = safe.replace(new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"), "<mark>$1</mark>");
+        });
+        return safe;
+      }
+
+      function renderResults() {
+        const query = searchInput.value;
+        const results = bm25Search(query, activeFilter);
+        const visible = sortResults(results.length ? results : bm25Search("", activeFilter), query);
+        resultCount.textContent = query
+          ? `${results.length} matching record${results.length === 1 ? "" : "s"}.`
+          : `Showing ${visible.length} indexed record${visible.length === 1 ? "" : "s"}.`;
+        resultList.innerHTML = visible
+          .map(({ record, score }) => {
+            const tags = [record.business, record.type, record.status, record.score, record.date, record.approval]
+              .filter(Boolean)
+              .map((item) => `<span>${escapeHtml(item)}</span>`)
+              .join("");
+            const scoreLabel = score ? `<span>rank ${score.toFixed(2)}</span>` : "";
+            return `<article class="result-card">
+              <div class="result-top">
+                <div>
+                  <h3><a href="${escapeHtml(record.href)}">${highlight(record.title, query)}</a></h3>
+                  <p>${highlight(record.summary, query)}</p>
+                </div>
+                <a class="button" href="${escapeHtml(record.href)}">Open</a>
+              </div>
+              <div class="result-meta">${tags}${scoreLabel}</div>
+            </article>`;
+          })
+          .join("");
+      }
+
+      searchInput.addEventListener("input", renderResults);
+      sortSelect.addEventListener("change", renderResults);
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+          renderResults();
+        });
+      });
+      renderResults();
+      hydrateSearchIndex();
+
+      async function hydrateSearchIndex() {
+        const searchableLinks = searchRecords.filter((record) => record.href.startsWith("/"));
+        const hydrated = await Promise.allSettled(
+          searchableLinks.map(async (record) => {
+            const response = await fetch(record.href, {
+              credentials: "same-origin",
+              cache: "no-store",
+            });
+            if (!response.ok) return;
+            const contentType = response.headers.get("content-type") || "";
+            const text = await response.text();
+            record.body = contentType.includes("text/html") ? htmlToText(text) : text;
+            record.body = record.body.slice(0, 75000);
+          })
+        );
+        const loaded = hydrated.filter((result) => result.status === "fulfilled").length;
+        index = buildIndex(searchRecords);
+        renderResults();
+        resultCount.textContent += ` Full-text loaded for ${loaded} linked document${loaded === 1 ? "" : "s"}.`;
+      }
+
+      function htmlToText(html) {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        return doc.body ? doc.body.innerText : html;
+      }
+    </script>
+  </body>
+</html>

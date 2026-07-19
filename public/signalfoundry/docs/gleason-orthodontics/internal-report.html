@@ -1,0 +1,2186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Gleason Orthodontics Verity Scan - Internal Workbench</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-accent: rgba(0, 113, 227, 0.08);
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-strong: #ffffff;
+      --surface-muted: #fbfbfd;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(29, 29, 31, 0.12);
+      --line-strong: rgba(29, 29, 31, 0.18);
+      --accent: #0071e3;
+      --accent-soft: rgba(0, 113, 227, 0.12);
+      --success: #0b7a34;
+      --success-soft: rgba(11, 122, 52, 0.12);
+      --warn: #9d5600;
+      --warn-soft: rgba(157, 86, 0, 0.12);
+      --bad: #b3261e;
+      --bad-soft: rgba(179, 38, 30, 0.12);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 16px 40px rgba(0, 0, 0, 0.05);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 12px;
+    }
+    [data-theme="dark"] {
+      --bg: #0b0d12;
+      --bg-accent: rgba(64, 156, 255, 0.12);
+      --surface: rgba(28, 31, 38, 0.82);
+      --surface-strong: #1f232b;
+      --surface-muted: #171a21;
+      --ink: #f5f5f7;
+      --muted: #a4a8b2;
+      --line: rgba(245, 245, 247, 0.13);
+      --line-strong: rgba(245, 245, 247, 0.22);
+      --accent: #6aaeff;
+      --accent-soft: rgba(106, 174, 255, 0.16);
+      --success: #5cd184;
+      --success-soft: rgba(92, 209, 132, 0.16);
+      --warn: #ffbd66;
+      --warn-soft: rgba(255, 189, 102, 0.16);
+      --bad: #ff8a80;
+      --bad-soft: rgba(255, 138, 128, 0.16);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.22), 0 18px 46px rgba(0, 0, 0, 0.28);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.92), transparent 32%),
+        radial-gradient(circle at top right, var(--bg-accent), transparent 28%),
+        linear-gradient(180deg, #fafafc 0%, var(--bg) 100%);
+      font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    [data-theme="dark"] body {
+      background:
+        radial-gradient(circle at top left, rgba(82, 92, 116, 0.26), transparent 30%),
+        radial-gradient(circle at top right, var(--bg-accent), transparent 28%),
+        linear-gradient(180deg, #11141b 0%, var(--bg) 100%);
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .shell {
+      width: min(1440px, calc(100vw - 48px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+    .hero,
+    .toolbar,
+    .spotlight,
+    .card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .hero {
+      padding: 32px;
+      border-radius: var(--radius-xl);
+    }
+    .brand-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .brand-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-strong);
+    }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .brand-text {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+    }
+    .brand-name {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .product-name {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .beta-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .theme-toggle {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-strong);
+      color: var(--ink);
+      font: 650 12px/1 "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      cursor: pointer;
+    }
+    .theme-toggle:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-muted);
+    }
+    .theme-toggle:focus-visible {
+      outline: 3px solid rgba(0, 113, 227, 0.24);
+      outline-offset: 2px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .hero-copy {
+      min-width: 0;
+    }
+    .run-summary {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.72);
+    }
+    [data-theme="dark"] .run-summary,
+    [data-theme="dark"] .stat,
+    [data-theme="dark"] .guide,
+    [data-theme="dark"] .card {
+      background: var(--surface);
+    }
+    .run-summary-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--ink);
+    }
+    .run-summary p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .run-summary strong {
+      color: var(--ink);
+      font-weight: 650;
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(2.5rem, 4vw, 4.25rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.96;
+    }
+    .subtitle {
+      width: min(720px, 100%);
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .stat {
+      min-height: 108px;
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+    }
+    .stat-helper {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .guide {
+      margin: 18px 0 14px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow);
+    }
+    .guide h2 {
+      margin: 0 0 6px;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 24px;
+      font-weight: 650;
+      letter-spacing: -0.025em;
+    }
+    .guide-intro {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .score-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .score-guide {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface-strong);
+    }
+    .score-guide strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 15px;
+    }
+    .score-guide p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.48;
+    }
+    .rubric-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .rubric-metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface-strong);
+    }
+    .rubric-metric strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 19px;
+    }
+    .rubric-table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+    .rubric-table {
+      width: 100%;
+      min-width: 940px;
+      border-collapse: collapse;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .rubric-table th,
+    .rubric-table td {
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .rubric-table th {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .rubric-source {
+      display: grid;
+      gap: 5px;
+      min-width: 240px;
+    }
+    .rubric-source a {
+      overflow-wrap: anywhere;
+    }
+    .gate-ready {
+      color: #267044;
+    }
+    .gate-blocked {
+      color: #9b4b22;
+    }
+    .stat-label {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .stat-value {
+      display: block;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 34px;
+      font-weight: 650;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1.8fr repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0 18px;
+      padding: 18px;
+      border-radius: var(--radius-xl);
+    }
+    .control {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .control label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .control input,
+    .control select {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      color: var(--ink);
+      font: 500 15px/1.35 "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      appearance: none;
+    }
+    .control input::placeholder {
+      color: #8e8e93;
+    }
+    .control input:focus-visible,
+    .control select:focus-visible,
+    .artifact-links a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid rgba(0, 113, 227, 0.24);
+      outline-offset: 2px;
+    }
+    .spotlight {
+      margin: 18px 0 14px;
+      padding: 20px;
+      border-radius: var(--radius-xl);
+    }
+    .spotlight-title {
+      margin: 0 0 14px;
+      color: var(--ink);
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .spotlight-note {
+      margin: -6px 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .spotlight-item {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      min-height: 122px;
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+    }
+    .spotlight-rank {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 22px;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+    .spotlight-copy strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+    .spotlight-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .results-meta {
+      margin: 8px 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 20px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.88);
+    }
+    .card-top {
+      display: grid;
+      gap: 14px;
+    }
+    .card-heading {
+      display: grid;
+      gap: 9px;
+    }
+    .card h2 {
+      margin: 0;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 25px;
+      font-weight: 650;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+    }
+    .card-subtitle {
+      margin: -2px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: #f1f2f6;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .chip {
+      background: rgba(245, 245, 247, 0.08);
+    }
+    .status-verified { background: var(--success-soft); color: var(--success); }
+    .status-needs_manual_review { background: var(--warn-soft); color: var(--warn); }
+    .status-no_website { background: var(--bad-soft); color: var(--bad); }
+    .score-stack {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .score {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      text-align: left;
+    }
+    .score-secondary {
+      background: var(--surface-muted);
+    }
+    .score-value {
+      display: block;
+      font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 28px;
+      font-weight: 650;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .score-label {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .score-caption {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    .score-formula {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.3;
+    }
+    .score-text {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1.25;
+    }
+    .summary {
+      padding: 15px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 113, 227, 0.06);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.58;
+    }
+    [data-theme="dark"] .summary,
+    [data-theme="dark"] .section-block-primary {
+      background: rgba(106, 174, 255, 0.12);
+    }
+    .details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .contact-grid {
+      padding: 0 14px 14px;
+    }
+    .detail {
+      padding: 13px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: var(--surface-muted);
+    }
+    .detail-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .detail-value {
+      font-size: 15px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+    .section-block {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: var(--surface-muted);
+    }
+    .section-copy {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.58;
+      color: var(--ink);
+    }
+    .section-block-primary {
+      border-color: rgba(0, 113, 227, 0.18);
+      background: rgba(0, 113, 227, 0.06);
+    }
+    .compact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0 14px 14px;
+    }
+    .compact-grid-tight {
+      padding: 0;
+    }
+    .technical-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 16px;
+    }
+    .technical-column {
+      display: grid;
+      align-content: start;
+      gap: 14px;
+      min-width: 0;
+    }
+    .list-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .list-block-vertical {
+      display: grid;
+      gap: 8px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .pill-text {
+      display: block;
+      width: 100%;
+      min-height: 0;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 13px;
+      line-height: 1.38;
+    }
+    .pill-muted {
+      background: #f1f2f6;
+      color: #636366;
+    }
+    [data-theme="dark"] .pill-muted {
+      background: rgba(245, 245, 247, 0.08);
+      color: var(--muted);
+    }
+    .pill-soft {
+      background: rgba(0, 113, 227, 0.1);
+    }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .code-panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface-muted);
+    }
+    .code-panel summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .code-panel summary::-webkit-details-marker {
+      display: none;
+    }
+    .code-panel summary::after {
+      content: "+";
+      float: right;
+      color: var(--accent);
+      font-size: 15px;
+      line-height: 1;
+    }
+    .code-panel[open] summary::after {
+      content: "-";
+    }
+    .code-panel pre {
+      margin: 0;
+      padding: 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font: 500 12px/1.62 "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      color: var(--ink);
+    }
+    .artifact-links {
+      display: grid;
+      gap: 8px;
+    }
+    .artifact-links a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    details {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--surface-muted);
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    details pre {
+      margin: 0;
+      padding: 0 14px 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font: 500 12px/1.6 "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      color: var(--ink);
+    }
+    .detail-drawer {
+      border-color: var(--line);
+    }
+    .detail-drawer summary {
+      background: var(--surface-strong);
+      color: var(--muted);
+    }
+    .detail-drawer[open] > summary {
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+    }
+    [data-theme="dark"] .detail-drawer summary,
+    [data-theme="dark"] .code-panel summary {
+      background: #20242d;
+      color: #c5cad6;
+    }
+    [data-theme="dark"] .detail-drawer[open] > summary,
+    [data-theme="dark"] .code-panel[open] > summary {
+      background: #252a35;
+      color: var(--ink);
+    }
+    .drawer-body {
+      display: grid;
+      gap: 14px;
+      padding: 0 14px 14px;
+    }
+    .empty {
+      display: none;
+      margin-top: 18px;
+      padding: 28px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.68);
+      color: var(--muted);
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .score-guide-grid {
+        grid-template-columns: 1fr;
+      }
+      .toolbar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 860px) {
+      .toolbar,
+      .details,
+      .compact-grid,
+      .technical-grid,
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-top {
+        grid-template-columns: 1fr;
+      }
+      .score-stack {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 24px, 100%);
+        padding-top: 18px;
+      }
+      .hero,
+      .toolbar,
+      .spotlight,
+      .card {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      .hero {
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+      .spotlight-item {
+        grid-template-columns: 1fr;
+      }
+      .spotlight-rank {
+        width: 42px;
+        height: 42px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .card h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="brand-strip">
+        <div class="brand-lockup">
+          <span class="brand-mark"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEKklEQVR4nO2VfUxbVRTAz3339bVlbeWrH3ytK4UJDbAxkK1DKBjj1BVI1Jdp/NjGFhQ0i4nZH9PMyrZssmgi6iRzajJZttD6hdGZYBAawYVF5pwyFgJujSMwKGwQWPl4fce8VvfBlK8ZYhy/5Nzk3XPOPeeed8+9AIss8t/EwQTl3wMRydy9eCcNCMzDGZE4nU6KiOxc3Ig0KFMKMxX5LxlvVNgaGtgZdyHpnUgDMgVnS4thFvEdgbKzy/JWM5nF/ezTVdX6re/Y7Q5HyM1mDez1qjgYsNnYqb8M0cH+6PWu6Rv17e/1jZ1q6vLkBOfxJjtyaxI8BXD5mdCVDlhb9FpIlhV0avJbfEJ0rZkT3j73+osX3W63MNVLWij34JeRl5kwqzImpjDVZCjckKTUZYji6IDPtzdRpdorBSeEiDMkAASAZ8DWR0irt0Ve8NQKrb2IxiWaIFYc/KrvzM9fdJPQROW55t1nausFjlUYRaUmn0TGPQxLTXkkY7VGHR0KiXpVXfaS0TrDQI9ne/49nzgQmfIpwQPV/psEMDC63QI15r4wfvzTJkEfMeFfpkOfSv1QgjnmaNf5iW2D5uxwtrP8yIQ23Q0aDiBkEsjIaC90tn9uHpaf3qoxG80mY8kVFXMIEakL5oyNlWpBTQ9Ugn4dpu2q8b06hFjRcel4UlX9E+qjHRhSWpkB6vRGWLr+LM0sfoOzbuKLnt+d90330EAzIlb+PnxSWkna/T9Ue1okByaiuEJN737UA0nPiI98UD/+CyK2e7oKuHebm7iKb5vCATRsmv1e3X2P6yWnktZLh7ZcQLS39A7Ff9SYSK4nMA946UACKHNLCmjaJoTcl8de+a5D9COe1O08bFW8+T1ypQcK/jK3HmnOtdS0oeWzTkx9v2G7NGcLdMztYJNaDEC+6slj1LoNYcN7vn2tXkTEx2DjgQ+5Zw/28jxPeaeTana4flLua8SwHTUnAIDywftg2tKTmTOQ+rscjHyZrvvX/rOi3qQWk1YxWx60dEa2N6/b33LlPDvSU8yFRU2OKsKqiXB1nL06tGaytvx0oIIul/82E4BgFdxuQZ5sf27Cr6jCaPMYLF+p0C/Xbu6vPqxFmWIPUJkXl4RF04nBPf6mqp1gc7DgLr/lvphfAgF4CugUmdg8t6jU5hC9SWAMeq85RZ3a8fHXJ0CmTCAypg1HfsiErKxJcLnEay09DSzMGgsCIUjjsktxuOcU+gXwj40YLgzINsJQdxlwmjrKCmXCRc8YeLLobILPg+CBJBHpuyByLYIhf5LE3n9Znro+Hu6ybP7TaB7P7uyRFqeQkCAn6qQ2UCX7QZ2CJGLFW0F1hgwWACoNbGhyDshiELhYhFBLYfARC+oWAjYwclHHgNXW3pjYQkECorGEgyoq8tr3nQi5Y3e+yP+HPwCaIYwTb2dhxAAAAABJRU5ErkJggg==" alt="" loading="lazy"></span>
+          <span class="brand-text">
+            <span class="brand-name">Verity Works</span>
+            <span class="product-name">Signal Foundry</span>
+          </span>
+        </div>
+        <div class="brand-actions">
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">Light Mode</button>
+          <span class="beta-pill">Private beta report</span>
+        </div>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Signal Foundry Private Beta</p>
+          <h1>Gleason Orthodontics Verity Scan - Internal Workbench</h1>
+          <p class="subtitle">Approved Rubric v1 internal workbench with operator-only evidence and schema guidance.</p>
+        </div>
+        <div class="run-summary" aria-label="Run summary">
+          <p class="run-summary-title">How to use this report</p>
+          <p><strong>Start with Best Outreach Targets.</strong> Those are the easiest prospects to review first.</p>
+          <p><strong>Low audit score is not bad news.</strong> It usually means there is a clearer fix to explain.</p>
+          <p><strong>Needs manual review</strong> means the site could not be verified in this run, so do not make schema claims yet.</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="stat-label">Prospects Reviewed</span><span class="stat-value">1</span><span class="stat-helper">Businesses in this beta pass.</span></div>
+        <div class="stat"><span class="stat-label">Verified Audits</span><span class="stat-value">1</span><span class="stat-helper">Sites Signal Foundry could fetch and score.</span></div>
+        <div class="stat"><span class="stat-label">Manual Review</span><span class="stat-value">0</span><span class="stat-helper">Sites that need a human check before claims.</span></div>
+        <div class="stat"><span class="stat-label">Best First</span><span class="stat-value">0</span><span class="stat-helper">High-priority outreach candidates.</span></div>
+        <div class="stat"><span class="stat-label">Avg Site Audit</span><span class="stat-value">80</span><span class="stat-helper">Higher means stronger current setup.</span></div>
+      </div>
+    </section>
+
+    <section class="guide" aria-labelledby="delivery-qa-title">
+      <h2 id="delivery-qa-title">Delivery QA Gate</h2>
+      <p class="guide-intro"><strong>Internal only:</strong> A human reviewer must compare this workbench with the generated customer-facing Verity Scan and the current live website before anything is delivered or published.</p>
+      <div class="score-guide-grid">
+        <div class="score-guide">
+          <strong>Verify the evidence</strong>
+          <p>Confirm business identity, pages scanned, current schema, location signals, and every customer-facing finding against the saved artifacts and live site.</p>
+        </div>
+        <div class="score-guide">
+          <strong>Verify the claims</strong>
+          <p>Remove unsupported precision, comparisons, guarantees, and conclusions that exceed the actual scan scope.</p>
+        </div>
+        <div class="score-guide">
+          <strong>Verify the handoff</strong>
+          <p>Confirm the external report contains no internal paths, raw JSON-LD, formulas, outreach notes, implementation instructions, or unfinished-review language.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide" aria-labelledby="score-guide-title">
+      <h2 id="score-guide-title">How The Scores Work</h2>
+      <p class="guide-intro">The report separates website quality from sales opportunity. A technically weak site can be a strong outreach candidate if the business looks valuable and the gap is easy to explain.</p>
+      <div class="score-guide-grid">
+        <div class="score-guide">
+          <strong>Opportunity Score</strong>
+          <p>0-100 score for who to review first. It combines business fit, visible website gap, and audit confidence.</p>
+        </div>
+        <div class="score-guide">
+          <strong>Site Audit Score</strong>
+          <p>0-100 score for current site strength. Higher means stronger structured signals; lower means the fix is clearer.</p>
+        </div>
+        <div class="score-guide">
+          <strong>Best First</strong>
+          <p>Start with scores 75+. Strong Pitch is 55-74, Secondary is 30-54, and Low Priority is below 30.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Report filters">
+      <div class="control">
+        <label for="search">Search</label>
+        <input id="search" type="search" placeholder="Business, city, category, phone, address">
+      </div>
+      <div class="control">
+        <label for="city-filter">City</label>
+        <select id="city-filter">
+          <option value="">All cities</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="category-filter">Category</label>
+        <select id="category-filter">
+          <option value="">All categories</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="status-filter">Live Audit</label>
+        <select id="status-filter">
+          <option value="">All audit states</option>
+          <option value="verified">Verified</option>
+          <option value="needs_manual_review">Needs manual review</option>
+          <option value="no_website">No website</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="priority-filter">Prospect Fit</label>
+        <select id="priority-filter">
+          <option value="">All fit levels</option>
+          <option value="Good Fit">Good fit</option>
+          <option value="Needs Review">Needs review</option>
+          <option value="Low Fit">Low fit</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="sort-control">Sort</label>
+        <select id="sort-control">
+          <option value="opportunity">Opportunity score</option>
+          <option value="audit-low">Lowest audit score</option>
+          <option value="audit-high">Highest audit score</option>
+          <option value="source">Original order</option>
+          <option value="name">Business name</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="spotlight" aria-labelledby="spotlight-title">
+      <p id="spotlight-title" class="spotlight-title">Best Outreach Targets</p>
+      <p class="spotlight-note">These are ranked for first review, not automatic sending. Confirm the finding, then decide whether the outreach angle feels useful for Nick.</p>
+      <div class="spotlight-grid">
+        <div class="spotlight-item"><div class="spotlight-rank">1</div><div class="spotlight-copy"><strong>Gleason Orthodontics</strong><span>Orthodontist in Webster</span><span>Strong Pitch • Opportunity score 60</span><span>High-value vertical, Phone listed</span></div></div>
+      </div>
+    </section>
+
+    <div id="results-meta" class="results-meta"></div>
+    <section id="card-grid" class="grid">
+      <article class="card" data-city="Webster" data-category="Orthodontist" data-status="verified" data-priority="Good Fit" data-search="Gleason Orthodontics Orthodontist https://gleasonorthodontics.com/ 585-872-3355 246 South Ave. Webster Strong foundation with smaller schema gaps. menu_schema product_schema Article GeoCoordinates ImageObject Organization Orthodontist Person PostalAddress SearchAction VideoObject WebPage WebSite High-value vertical Phone listed Address listed Website present Location verified Good Fit Verified Strong Pitch This orthodontist looks mostly solid; the angle is standardization and strengthening rather than a major fix. Webster include location_match Verified city evidence: Webster. Verified address evidence: 246 South Ave, Webster, NY, 14580. Site location matches input city: Webster." data-opportunity="60" data-audit="80" data-source="1" data-name="gleason orthodontics">
+  <div class="card-top">
+    <div class="card-heading">
+      <div class="meta">
+        <span class="chip">Orthodontist</span>
+        <span class="chip status-verified">Verified</span>
+        <span class="chip status-verified">Include</span>
+        <span class="chip">Good Fit</span>
+        <span class="chip">Strong Pitch</span>
+        <span class="chip">Rubric v1</span>
+        <span class="chip">Outreach #1</span>
+      </div>
+      <h2>Gleason Orthodontics</h2>
+      <p class="card-subtitle">Orthodontist in Webster</p>
+    </div>
+    <div class="score-stack" aria-label="Lead scores">
+      <div class="score">
+        <span class="score-value">60</span>
+        <span class="score-label">Opportunity</span>
+        <span class="score-caption">0-100 review priority</span>
+        <span class="score-formula">Fit 31 + Gap 9 + Confidence 20</span>
+      </div>
+      <div class="score score-secondary">
+        <span class="score-value">80</span>
+        <span class="score-label">Site Audit</span>
+        <span class="score-caption">Lower = clearer gap</span>
+      </div>
+      <div class="score score-secondary">
+        <span class="score-text">Smaller cleanup opportunity</span>
+        <span class="score-label">Main Finding</span>
+        <span class="score-caption">What to explain first</span>
+      </div>
+    </div>
+  </div>
+  <div class="summary">Strong foundation with smaller schema gaps.</div>
+  <details class="detail-drawer" open>
+  <summary>Rubric v1 Calculation</summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Publishable overall</span><strong>75</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Draft calculation</span><strong>75 · Clear</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Delivery gate</span><strong class="gate-ready">Ready</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Final approval</span><strong>Approved</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Rubric</span><strong>v1</strong></div>
+    </div>
+    <div class="compact-grid compact-grid-tight">
+      <div><span class="detail-label">Reviewer</span><div class="detail-value">Anthony</div></div>
+      <div><span class="detail-label">Reviewed at</span><div class="detail-value">2026-07-09T23:47:55Z</div></div>
+      <div><span class="detail-label">Calculated at</span><div class="detail-value">2026-07-09T03:20:53Z</div></div>
+      <div><span class="detail-label">Live-site comparison</span><div class="detail-value">Complete</div></div>
+      <div><span class="detail-label">Customer-report comparison</span><div class="detail-value">Complete</div></div>
+      <div><span class="detail-label">Reviewer notes</span><div class="detail-value">Approved by Anthony for customer delivery after Rubric v1 evidence review, live-site scoped checks, schema/internal workbench red-team, and customer-preview red-team. Public sharing and logo authorization remain separate from this delivery approval.</div></div>
+    </div>
+    <div class="section-block">
+      <span class="detail-label">Gate status</span>
+      <div class="list-block-vertical"><span class="pill pill-muted pill-text">No blocking reasons recorded</span></div>
+    </div>
+    <details class="detail-drawer">
+  <summary>Business Clarity
+    · 100 Strong
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>100 · Strong</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>25%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>100.0 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>25.0 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="Business Clarity indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">Business Clarity indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Business identity</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>20.0 / 20</td><td>The title and visible page copy repeatedly identify Gleason Orthodontics.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/page-01.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-01.html</a></div></td><td>automated extraction + manual artifact review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Primary offer</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>20.0 / 20</td><td>The homepage title and body identify an orthodontic practice offering braces and clear aligners.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/page-01.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-01.html</a></div></td><td>automated extraction + manual artifact review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Intended audience</strong></td><td>Pass</td><td>15.0 / 15</td><td>The About page states that the practice serves patients of all ages and families.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/about-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/about-us/</a><a href="artifacts/gleason-orthodontics/page-02.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-02.html</a></div></td><td>automated extraction + manual artifact review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: High</td></tr><tr><td><strong>Geography and service area</strong></td><td>Pass</td><td>15.0 / 15</td><td>Webster, New York and the South Avenue address are consistently present; the About page also references surrounding areas.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/contact-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/contact-us/</a><a href="artifacts/gleason-orthodontics/page-03.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-03.html</a></div></td><td>automated comparison + manual artifact review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Contact path or CTA</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>15.0 / 15</td><td>The reviewed pages expose the phone, address, contact form, and free-consultation path.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/contact-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/contact-us/</a><a href="artifacts/gleason-orthodontics/page-03.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-03.html</a></div></td><td>automated extraction + manual artifact review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Cross-page consistency</strong></td><td>Pass</td><td>15.0 / 15</td><td>The same practice name, phone, address, Webster location, and orthodontic framing appear across all three reviewed pages.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>automated comparison + manual artifact review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details><details class="detail-drawer">
+  <summary>Search Readiness
+    · 79 Clear
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>79 · Clear</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>20%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>78.75 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>15.8 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="Search Readiness indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">Search Readiness indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Crawl access</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>15.0 / 15</td><td>The homepage, About, and Contact URLs returned HTTP 200 readable HTML without X-Robots-Tag blocks. robots.txt permits public crawling except wp-admin and declares a working sitemap that redirects to sitemap_index.xml.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/robots.txt" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/robots.txt</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>HTTP header, robots.txt, sitemap, and retained-page review<br>2026-07-09T13:34:27Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Indexability and metadata</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>15.0 / 15</td><td>The reviewed pages expose distinct titles, meta descriptions, index/follow directives, and canonical URLs.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>automated HTML metadata extraction + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Identity and location consistency</strong></td><td>Pass</td><td>20.0 / 20</td><td>The visible name, phone, South Avenue address, Webster location, and Orthodontist structured identity agree across the sample.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/contact-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/contact-us/</a><a href="artifacts/gleason-orthodontics/page-03.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-03.html</a></div></td><td>automated comparison + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Appropriate local business schema</strong></td><td>Partial</td><td>10.0 / 20</td><td>Orthodontist, PostalAddress, and GeoCoordinates markup exists, but identity nodes overlap, some records duplicate, and the practice node has an empty identifier. Reviewer note: The 50% anchor applies because a usable business entity exists but duplication and ambiguous relationships remain.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/current-schema.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/current-schema.json</a></div></td><td>JSON-LD extraction + manual schema review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: High</td></tr><tr><td><strong>Service-page coverage</strong></td><td>Partial</td><td>3.75 / 15</td><td>Navigation exposes pages for aligners, braces, all ages, and airway/sleep-apnea services, but those service pages were not fetched in this targeted scan. Reviewer note: The 25% anchor applies because service routes were discovered, but destination status and substantive content were not validated.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/page-01.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-01.html</a></div></td><td>automated link discovery + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Internal linking and discovery</strong></td><td>Pass</td><td>15.0 / 15</td><td>The reviewed pages contain clear internal paths to treatments, doctor information, reviews, financial information, first visits, and contact actions.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>automated internal-link extraction + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details><details class="detail-drawer">
+  <summary>AI Readiness
+    · 53 Needs Work
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>53 · Needs Work</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>20%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>52.5 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>10.6 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="AI Readiness indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">AI Readiness indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Entity and schema specificity</strong> <span title="Critical indicator">Critical</span></td><td>Partial</td><td>12.5 / 25</td><td>Orthodontist and doctor Person entities are present, but the practice and doctor are not cleanly separated and duplicate graphs add ambiguity.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/current-schema.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/current-schema.json</a></div></td><td>JSON-LD extraction + manual schema review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: High</td></tr><tr><td><strong>Structured service meaning</strong></td><td>Fail</td><td>0.0 / 20</td><td>No distinct Service or equivalent treatment-service entities were detected in the reviewed page markup.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/current-schema.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/current-schema.json</a></div></td><td>JSON-LD extraction + manual schema review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Answer-ready content</strong></td><td>Partial</td><td>10.0 / 20</td><td>The sampled pages give concise who, what, and where information and expose a three-step process, but no sampled FAQ or comprehensive question-answer coverage was retained.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>text extraction + manual content review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Factual consistency</strong></td><td>Pass</td><td>15.0 / 15</td><td>Practice name, doctor role, phone, Webster address, and orthodontic identity agree across visible content and captured structured data.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>automated comparison + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Authorship and provenance</strong></td><td>Partial</td><td>5.0 / 10</td><td>Publisher and modified-date signals exist, but sampled content uses generic practice authorship and does not identify a clinician reviewer.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/about-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/about-us/</a><a href="artifacts/gleason-orthodontics/current-schema.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/current-schema.json</a></div></td><td>schema extraction + manual content review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: High</td></tr><tr><td><strong>Machine accessibility</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>10.0 / 10</td><td>Readable HTML, headings, metadata, visible text, and JSON-LD were successfully extracted from all three sampled pages.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>automated fetch and parse + manual spot check<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details><details class="detail-drawer">
+  <summary>Trust Signals
+    · 73 Clear
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>73 · Clear</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>20%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>72.5 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>14.6 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="Trust Signals indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">Trust Signals indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Verifiable contact and location</strong> <span title="Critical indicator">Critical</span></td><td>Pass</td><td>15.0 / 15</td><td>The phone number and complete Webster address are visible and consistent across the reviewed pages and structured data.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/contact-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/contact-us/</a><a href="artifacts/gleason-orthodontics/page-03.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-03.html</a></div></td><td>automated comparison + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>People and credentials</strong></td><td>Partial</td><td>15.0 / 20</td><td>James F. Gleason and his orthodontic specialty and dental education are corroborated by ADA and Healthgrades records; direct NYSED license verification and every claimed membership remain incomplete.</td><td><div class="rubric-source"><a href="https://findadentist.ada.org/dentists/dr-james-francis-gleason-rochester-0038V00002ykB3bQAE-a1C8V00000lY91pUAC" target="_blank" rel="noreferrer">https://findadentist.ada.org/dentists/dr-james-francis-gleason-rochester-0038V00002ykB3bQAE-a1C8V00000lY91pUAC</a><a href="artifacts/gleason-orthodontics/page-03.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-03.html</a></div></td><td>first-party extraction + sampled external discovery<br>2026-07-09T13:30:31Z</td><td>Confirmed With Anchor<br>Confidence: High</td></tr><tr><td><strong>Reviews and testimonials</strong></td><td>Pass</td><td>15.0 / 15</td><td>The About page includes multiple named testimonial videos and a visible path to reviews and testimonials.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/about-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/about-us/</a><a href="artifacts/gleason-orthodontics/page-02.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-02.html</a></div></td><td>schema extraction + manual artifact review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Outcomes and examples</strong></td><td>Fail</td><td>0.0 / 10</td><td>The sampled pages contain general smile claims but no retained concrete case, before-and-after, or outcome example.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>manual sampled-page review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: Medium</td></tr><tr><td><strong>Affiliations and awards</strong></td><td>Partial</td><td>5.0 / 10</td><td>A 2022 PepperPointe marketing award to Dr. Jim Gleason is independently documented; first-party professional membership claims were not independently verified.</td><td><div class="rubric-source"><a href="https://pepperpointe.com/blog/2022-pepperpointe-ignite-awards/" target="_blank" rel="noreferrer">https://pepperpointe.com/blog/2022-pepperpointe-ignite-awards/</a><a href="artifacts/gleason-orthodontics/page-02.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-02.html</a></div></td><td>sampled external discovery + manual source review<br>2026-07-09T13:30:31Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Process and policy clarity</strong></td><td>Partial</td><td>7.5 / 15</td><td>The homepage exposes a three-step path, free consultation, and links to financial, first-visit, privacy, and accessibility information, but those linked pages were not reviewed.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/page-01.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-01.html</a></div></td><td>link extraction + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Third-party corroboration</strong></td><td>Pass</td><td>15.0 / 15</td><td>A defined sampled external check found independent government, community, professional-directory, review, award, and nonprofit sources corroborating the practice. This does not measure backlink authority or completeness. Reviewer note: No conventional press release was found. Backlink counts, authority, follow status, and link quality remain outside this sampled check.</td><td><div class="rubric-source"><a href="https://www.websternytoday.gov/m/newsflash/Home/Detail/2348?arc=2996" target="_blank" rel="noreferrer">https://www.websternytoday.gov/m/newsflash/Home/Detail/2348?arc=2996</a></div></td><td>sampled external discovery + manual source review<br>2026-07-09T13:30:31Z</td><td>Confirmed<br>Confidence: High</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details><details class="detail-drawer">
+  <summary>Content Coverage
+    · 60 Needs Work
+    · 100% coverage · High confidence
+    · 0 unknown
+  </summary>
+  <div class="drawer-body">
+    <div class="rubric-overview">
+      <div class="rubric-metric"><span class="detail-label">Score and band</span><strong>60 · Needs Work</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Overall weight</span><strong>15%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Evidence coverage</span><strong>100%</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Confidence</span><strong>High</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Calculation</span><strong>60.0 / 100 measured</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Weighted contribution</span><strong>9.0 points</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Indicator review</span><strong>0 provisional</strong></div>
+      <div class="rubric-metric"><span class="detail-label">Dimension status</span><strong>Publishable</strong></div>
+    </div>
+    <div class="rubric-table-wrap" tabindex="0" role="region" aria-label="Content Coverage indicator evidence; scroll horizontally to review all columns">
+      <table class="rubric-table">
+        <caption class="detail-label">Content Coverage indicator calculation</caption>
+        <thead><tr><th scope="col">Indicator</th><th scope="col">State</th><th scope="col">Points</th><th scope="col">Evidence</th><th scope="col">Source</th><th scope="col">Collection</th><th scope="col">Indicator evidence review</th></tr></thead>
+        <tbody><tr><td><strong>Core services</strong></td><td>Partial</td><td>12.5 / 25</td><td>The homepage and navigation enumerate braces, aligners, all-ages orthodontics, and airway/sleep-apnea services, but dedicated service-page depth was not reviewed.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/page-01.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-01.html</a></div></td><td>text/link extraction + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Customer decision questions</strong></td><td>Partial</td><td>10.0 / 20</td><td>The sampled pages address consultation, financing, treatment variety, and experience, but do not retain comprehensive FAQ or comparison answers.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/pages.json</a></div></td><td>manual sampled-page review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Process and next steps</strong></td><td>Partial</td><td>7.5 / 15</td><td>The homepage and Contact page expose how-it-works language, three steps, and a free consultation, but detailed process content was not sampled.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/page-01.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-01.html</a></div></td><td>manual sampled-page review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Cost, financing, or insurance expectations</strong></td><td>Partial</td><td>5.0 / 10</td><td>The homepage references easy financing and affordability and links to financial information, but terms and insurance expectations were not reviewed.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a><a href="artifacts/gleason-orthodontics/page-01.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-01.html</a></div></td><td>text/link extraction + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr><tr><td><strong>Geography</strong></td><td>Pass</td><td>10.0 / 10</td><td>Webster, the complete South Avenue address, and surrounding-area language are clear in the reviewed sample.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/contact-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/contact-us/</a><a href="artifacts/gleason-orthodontics/page-03.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-03.html</a></div></td><td>automated extraction + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Audience and scenarios</strong></td><td>Pass</td><td>10.0 / 10</td><td>The site identifies patients of all ages and families and names treatment scenarios including braces, aligners, and airway/sleep-apnea consultations.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/about-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/about-us/</a><a href="artifacts/gleason-orthodontics/page-02.html" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/page-02.html</a></div></td><td>text/link extraction + manual review<br>2026-07-09T03:20:53Z</td><td>Confirmed<br>Confidence: High</td></tr><tr><td><strong>Ownership, authorship, and recency</strong></td><td>Partial</td><td>5.0 / 10</td><td>Publisher/author and recent modified-date signals exist, but authorship remains generic and no visible clinician reviewer is identified.</td><td><div class="rubric-source"><a href="https://gleasonorthodontics.com/about-us/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/about-us/</a><a href="artifacts/gleason-orthodontics/current-schema.json" target="_blank" rel="noreferrer">artifacts/gleason-orthodontics/current-schema.json</a></div></td><td>schema extraction + manual content review<br>2026-07-09T03:20:53Z</td><td>Confirmed With Anchor<br>Confidence: Medium</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</details>
+  </div>
+</details>
+  <div class="section-block">
+    <span class="detail-label">Outreach Angle</span>
+    <p class="section-copy">This orthodontist looks mostly solid; the angle is standardization and strengthening rather than a major fix.</p>
+  </div>
+  <details class="detail-drawer">
+    <summary>Business Details</summary>
+    <div class="details contact-grid">
+      <div class="detail">
+        <span class="detail-label">Website</span>
+        <div class="detail-value"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a></div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Phone</span>
+        <div class="detail-value">585-872-3355</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Address</span>
+        <div class="detail-value">246 South Ave.</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">City</span>
+        <div class="detail-value">Webster</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Verified City</span>
+        <div class="detail-value">Webster</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Verified Address</span>
+        <div class="detail-value">246 South Ave, Webster, NY, 14580</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Location Vetting</span>
+        <div class="detail-value">Include · location match</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Prospect Fit</span>
+        <div class="detail-value">90</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Recommended Type</span>
+        <div class="detail-value">Orthodontist</div>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Live Audit</span>
+        <div class="detail-value">Verified</div>
+      </div>
+    </div>
+  </details>
+  <details class="detail-drawer">
+    <summary>Technical Findings</summary>
+    <div class="drawer-body">
+      <div class="section-block">
+        <span class="detail-label">Schema Gap Summary</span>
+        <p class="section-copy">Schema is present, but the current implementation appears incomplete for local search and AI readability.</p>
+      </div>
+      <div class="technical-grid">
+        <div class="technical-column">
+          <div>
+            <span class="detail-label">Lead Tags</span>
+            <div class="list-block"><span class="pill">High-value vertical</span><span class="pill">Phone listed</span><span class="pill">Address listed</span><span class="pill">Website present</span><span class="pill">Location verified</span></div>
+          </div>
+          <div>
+            <span class="detail-label">Missing Signals</span>
+            <div class="list-block"><span class="pill pill-muted">menu_schema</span><span class="pill pill-muted">product_schema</span></div>
+          </div>
+        </div>
+        <div class="technical-column">
+          <div>
+            <span class="detail-label">Recommendation Reasons</span>
+            <div class="list-block-vertical"><span class="pill pill-muted pill-text">The proposed schema mainly standardizes and strengthens what is already present.</span></div>
+          </div>
+          <details class="detail-drawer">
+            <summary>Schema Types</summary>
+            <div class="compact-grid compact-grid-tight">
+              <div class="list-block"><span class="pill">Article</span><span class="pill">GeoCoordinates</span><span class="pill">ImageObject</span><span class="pill">Organization</span><span class="pill">Orthodontist</span><span class="pill">Person</span><span class="pill">PostalAddress</span><span class="pill">SearchAction</span><span class="pill">VideoObject</span><span class="pill">WebPage</span><span class="pill">WebSite</span></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="detail-drawer">
+    <summary>Page-Level Evidence</summary>
+    <div class="drawer-body">
+      <div class="section-block">
+  <span class="detail-label">Page</span>
+  <p class="section-copy"><a href="https://gleasonorthodontics.com/" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/</a></p>
+  <div class="compact-grid compact-grid-tight">
+    <div><span class="detail-label">Title</span><div class="detail-value">Webster Orthodontist | Braces, Clear Aligners | Gleason Orthodontics</div></div>
+    <div><span class="detail-label">Canonical</span><div class="detail-value">https://gleasonorthodontics.com/</div></div>
+    <div><span class="detail-label">Meta Description</span><div class="detail-value">Welcome to Gleason Orthodontics. We are your Webster orthodontist creating beautiful smiles daily with braces &amp; Invisalign. Free consults!</div></div>
+    <div><span class="detail-label">Robots</span><div class="detail-value">follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large</div></div>
+    <div><span class="detail-label">Schema Types</span><div class="detail-value">Article, GeoCoordinates, ImageObject, Organization, Orthodontist, Person, PostalAddress, SearchAction, WebPage, WebSite</div></div>
+    <div><span class="detail-label">Internal Links</span><div class="detail-value">24</div></div>
+  </div>
+  <span class="detail-label">Headings</span>
+  <p class="section-copy">Confidence. Starts. Here. | Welcome to Gleason Orthodontics | Orthodontics | Dr. Gleason | You Matter | Airways Consultation</p>
+  <span class="detail-label">Captured Text Excerpt</span>
+  <p class="section-copy">Webster Orthodontist | Braces, Clear Aligners | Gleason Orthodontics (585) 872-3355 (585) 872-3355 246 South Ave., Webster, NY 14580 New Patients Free Consult Virtual Consult About Us Who We Are Meet the Team Careers Blog Treatment Options Clear Aligners Clear Ceramic Braces Metal Braces Orthodontics for All Ages Airway and Sleep Apnea Contact Us Free Consult Back New Patients Free Consult Virtual Consult About Us Who We Are Meet the Team Careers Blog Treatment Options Clear Aligners Clear Ceramic Braces Metal Braces Orthodontics for All Ages Airway and Sleep Apnea Contact Us Free Consult 246 South Ave Webster, NY 14580138 585-872-3355 s Confidence. Starts. Here. Free Consultation Webster Braces &amp; Aligners Welcome to Gleason Orthodontics Welcome to Gleason Orthodontics, where we believe in treating you as the remarkable individual you are. We&#x27;re passionate about creating beautiful, healthy smiles for you and your family while building a long-term friendship together. Learn More Easy &amp; Affordable Orthodontics We want you to have the best experience possible. That&#x27;s why we do everything we can to make your experience enjoyable. Learn More Easy Financing Talk to us about an affordable</p>
+</div>
+<div class="section-block">
+  <span class="detail-label">Page</span>
+  <p class="section-copy"><a href="https://gleasonorthodontics.com/about-us" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/about-us</a></p>
+  <div class="compact-grid compact-grid-tight">
+    <div><span class="detail-label">Title</span><div class="detail-value">Orthodontist in Webster | About Us | | Gleason Ortho</div></div>
+    <div><span class="detail-label">Canonical</span><div class="detail-value">https://gleasonorthodontics.com/about-us/</div></div>
+    <div><span class="detail-label">Meta Description</span><div class="detail-value">Gleason Orthodontics is your go-to expert for quality orthodontics in Webster and surrounding areas. Call today!</div></div>
+    <div><span class="detail-label">Robots</span><div class="detail-value">follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large</div></div>
+    <div><span class="detail-label">Schema Types</span><div class="detail-value">Article, GeoCoordinates, ImageObject, Organization, Orthodontist, Person, PostalAddress, VideoObject, WebPage, WebSite</div></div>
+    <div><span class="detail-label">Internal Links</span><div class="detail-value">21</div></div>
+  </div>
+  <span class="detail-label">Headings</span>
+  <p class="section-copy">About Us | Welcome to Gleason Orthodontics | Our Practice | What Sets Us Apart | Why Choose Gleason? | Ample Time With Dr. Gleason</p>
+  <span class="detail-label">Captured Text Excerpt</span>
+  <p class="section-copy">Orthodontist in Webster | About Us | | Gleason Ortho (585) 872-3355 (585) 872-3355 246 South Ave., Webster, NY 14580 New Patients Free Consult Virtual Consult About Us Who We Are Meet the Team Careers Blog Treatment Options Clear Aligners Clear Ceramic Braces Metal Braces Orthodontics for All Ages Airway and Sleep Apnea Contact Us Free Consult Back New Patients Free Consult Virtual Consult About Us Who We Are Meet the Team Careers Blog Treatment Options Clear Aligners Clear Ceramic Braces Metal Braces Orthodontics for All Ages Airway and Sleep Apnea Contact Us Free Consult 246 South Ave Webster, NY 14580138 585-872-3355 About Us Welcome to Gleason Orthodontics Welcome to Gleason Orthodontics, where we believe in treating you as the remarkable individual you are. We&#x27;re passionate about creating beautiful, healthy smiles for you and your family while building a long-term friendship together. We welcome patients of all ages from our surrounding communities to see us for a free consultation at our office in Webster. Dr. Gleason and our team look forward to meeting you and starting you on the path to healthy and straight teeth for years of confident, beautiful smiles! Our Practice At Gl</p>
+</div>
+<div class="section-block">
+  <span class="detail-label">Page</span>
+  <p class="section-copy"><a href="https://gleasonorthodontics.com/contact-us" target="_blank" rel="noreferrer">https://gleasonorthodontics.com/contact-us</a></p>
+  <div class="compact-grid compact-grid-tight">
+    <div><span class="detail-label">Title</span><div class="detail-value">Contact Us | Webster Orthodontics | Gleason Orthodontics</div></div>
+    <div><span class="detail-label">Canonical</span><div class="detail-value">https://gleasonorthodontics.com/contact-us/</div></div>
+    <div><span class="detail-label">Meta Description</span><div class="detail-value">If you&#x27;re looking for quality orthodontic treatment in a pleasant, comfortable atmosphere, contact us at our office today.</div></div>
+    <div><span class="detail-label">Robots</span><div class="detail-value">follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large</div></div>
+    <div><span class="detail-label">Schema Types</span><div class="detail-value">Article, GeoCoordinates, ImageObject, Organization, Orthodontist, Person, PostalAddress, WebPage, WebSite</div></div>
+    <div><span class="detail-label">Internal Links</span><div class="detail-value">20</div></div>
+  </div>
+  <span class="detail-label">Headings</span>
+  <p class="section-copy">Contact Us | Get in Touch | Webster NY Orthodontic Office | Start the Smile of Your Dreams Today</p>
+  <span class="detail-label">Captured Text Excerpt</span>
+  <p class="section-copy">Contact Us | Webster Orthodontics | Gleason Orthodontics (585) 872-3355 (585) 872-3355 246 South Ave., Webster, NY 14580 New Patients Free Consult Virtual Consult About Us Who We Are Meet the Team Careers Blog Treatment Options Clear Aligners Clear Ceramic Braces Metal Braces Orthodontics for All Ages Airway and Sleep Apnea Contact Us Free Consult Back New Patients Free Consult Virtual Consult About Us Who We Are Meet the Team Careers Blog Treatment Options Clear Aligners Clear Ceramic Braces Metal Braces Orthodontics for All Ages Airway and Sleep Apnea Contact Us Free Consult 246 South Ave Webster, NY 14580138 585-872-3355 Contact Us Braces &amp; Clear Aligner Experts in Webster Get in Touch Please reach out and contact our Gleason Orthodontics team with any questions so we can help you take the first steps toward your amazing new smile. We proudly serve patients of all ages from Webster and the surrounding areas, so come in for your first free consultation with our outstanding orthodontist Dr. James Gleason. Free Consultation Webster NY Orthodontic Office We proudly serve orthodontic patients of all ages from Webster and the surrounding areas. James F. Gleason, DDS, MS Gleason Orthod</p>
+</div>
+    </div>
+  </details>
+  <details class="detail-drawer">
+    <summary>Schema & Artifacts</summary>
+    <div class="drawer-body">
+      <div class="compact-grid compact-grid-tight">
+        <div>
+          <span class="detail-label">Notes</span>
+          <div class="list-block-vertical"><span class="pill pill-muted pill-text">Scanned 3 page(s).</span></div>
+        </div>
+        <div>
+          <span class="detail-label">Audit Artifacts</span>
+          <div class="artifact-links"><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/gleason-orthodontics-vnext-staging-2/artifacts/gleason-orthodontics/current-schema.json" target="_blank" rel="noreferrer">current-schema.json</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/gleason-orthodontics-vnext-staging-2/artifacts/gleason-orthodontics/proposed-schema.json" target="_blank" rel="noreferrer">proposed-schema.json</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/gleason-orthodontics-vnext-staging-2/artifacts/gleason-orthodontics/page-01.html" target="_blank" rel="noreferrer">page-01.html</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/gleason-orthodontics-vnext-staging-2/artifacts/gleason-orthodontics/page-02.html" target="_blank" rel="noreferrer">page-02.html</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/gleason-orthodontics-vnext-staging-2/artifacts/gleason-orthodontics/page-03.html" target="_blank" rel="noreferrer">page-03.html</a><a href="file:///Users/dad/Desktop/Projects/signal-foundry/output/gleason-orthodontics-vnext-staging-2/artifacts/gleason-orthodontics/pages.json" target="_blank" rel="noreferrer">pages.json</a></div>
+        </div>
+      </div>
+      <details class="detail-drawer">
+        <summary>Pages Scanned</summary>
+        <div class="drawer-body">
+          <div class="list-block-vertical"><span class="pill pill-muted pill-text">https://gleasonorthodontics.com/</span><span class="pill pill-muted pill-text">https://gleasonorthodontics.com/about-us</span><span class="pill pill-muted pill-text">https://gleasonorthodontics.com/contact-us</span></div>
+        </div>
+      </details>
+      <details class="detail-drawer">
+        <summary>Fetch Failures</summary>
+        <div class="drawer-body">
+          <div class="list-block-vertical"><span class="pill pill-muted pill-text">None</span></div>
+        </div>
+      </details>
+      
+      <div class="section-block section-block-primary">
+        <span class="detail-label">Schema Operator Brief</span>
+        <p class="section-copy">Internal-only schema diagnosis, implementation rationale, and delivery checklist. Keep this detail out of the customer-facing Verity Scan unless translated into plain-language findings.</p>
+        <div class="technical-grid">
+          <div class="technical-column">
+            <div>
+              <span class="detail-label">Diagnosis</span>
+              <div class="list-block-vertical"><span class="pill pill-muted pill-text">Current JSON-LD types detected: Article, GeoCoordinates, ImageObject, Organization, Orthodontist, Person, PostalAddress, SearchAction, VideoObject, WebPage, WebSite.</span><span class="pill pill-muted pill-text">The internal question is not only whether schema exists, but whether the business, website, page, person, and service entities are distinct and connected cleanly.</span><span class="pill pill-muted pill-text">Preserve useful existing entity signals, but reduce ambiguity by keeping one stable practice/business entity and linking related people, pages, and services to it.</span></div>
+            </div>
+            <div>
+              <span class="detail-label">Before / After Rationale</span>
+              <div class="list-block-vertical"><span class="pill pill-muted pill-text">Before: the workbench captured raw current schema and generated a thin starter object that did not fully explain the entity model.</span><span class="pill pill-muted pill-text">After: the proposed schema uses a connected @graph with one canonical business/practice entity, one WebSite entity, one homepage WebPage entity, and service entities where appropriate.</span><span class="pill pill-muted pill-text">The goal is to make the same real-world business easier to reconcile across pages, search systems, and AI answer engines without inventing unverified facts.</span></div>
+            </div>
+          </div>
+          <div class="technical-column">
+            <div>
+              <span class="detail-label">Implementation Notes</span>
+              <div class="list-block-vertical"><span class="pill pill-muted pill-text">Find the theme, plugin, or tag-manager source that currently emits JSON-LD before removing or replacing existing schema.</span><span class="pill pill-muted pill-text">Keep the canonical business @id stable and reuse it anywhere pages, services, reviews, videos, people, or offers need to point back to the business.</span><span class="pill pill-muted pill-text">Do not add sameAs, logo, geo coordinates, licenses, credentials, awards, reviews, or doctor/practitioner claims unless each value is verified from an approved source.</span><span class="pill pill-muted pill-text">For service nodes, include only services that are visible on the live site and preferably supported by a dedicated page or section.</span><span class="pill pill-muted pill-text">Deploy the schema as one clean JSON-LD graph or a small coordinated set of graphs; avoid multiple plugins emitting conflicting LocalBusiness, Organization, or practitioner records.</span></div>
+            </div>
+            <div>
+              <span class="detail-label">Validation Checklist</span>
+              <div class="list-block-vertical"><span class="pill pill-muted pill-text">Validate the final JSON-LD with Schema.org&#x27;s validator and Google Rich Results Test where relevant.</span><span class="pill pill-muted pill-text">Confirm name, address, phone, URL, and business type against the live website before delivery.</span><span class="pill pill-muted pill-text">View page source after deployment and confirm the old duplicate or conflicting schema records are removed or reconciled.</span><span class="pill pill-muted pill-text">Check that every @id reference resolves to another node in the graph or a stable canonical URL.</span><span class="pill pill-muted pill-text">Confirm the customer-facing report stays plain-language and does not expose raw JSON-LD, local paths, or operator implementation notes.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comparison-grid">
+        <details class="code-panel">
+          <summary>Current Schema</summary>
+          <pre>[
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@type&quot;: &quot;Orthodontist&quot;,
+    &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+    &quot;image&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+    &quot;@id&quot;: &quot;&quot;,
+    &quot;url&quot;: &quot;https://gleasonorthodontics.com&quot;,
+    &quot;telephone&quot;: &quot;585-872-3355&quot;,
+    &quot;address&quot;: {
+      &quot;@type&quot;: &quot;PostalAddress&quot;,
+      &quot;streetAddress&quot;: &quot;246 South Ave&quot;,
+      &quot;addressLocality&quot;: &quot;Webster&quot;,
+      &quot;addressRegion&quot;: &quot;NY&quot;,
+      &quot;postalCode&quot;: &quot;14580&quot;,
+      &quot;addressCountry&quot;: &quot;US&quot;
+    },
+    &quot;geo&quot;: {
+      &quot;@type&quot;: &quot;GeoCoordinates&quot;,
+      &quot;latitude&quot;: 43.2049932,
+      &quot;longitude&quot;: -77.4299685
+    }
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org/&quot;,
+    &quot;@type&quot;: &quot;Person&quot;,
+    &quot;name&quot;: &quot;Dr. James Gleason&quot;,
+    &quot;url&quot;: &quot;https://gleasonorthodontics.com/meet-dr-james-gleason/&quot;,
+    &quot;image&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/02/dr-gleason-headshot-crop.jpg&quot;,
+    &quot;jobTitle&quot;: &quot;Orthodontist&quot;,
+    &quot;worksFor&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;Gleason Orthodontics&quot;
+    }
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@graph&quot;: [
+      {
+        &quot;@type&quot;: [
+          &quot;Person&quot;,
+          &quot;Organization&quot;
+        ],
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;logo&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#logo&quot;,
+          &quot;url&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;contentUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;,
+          &quot;width&quot;: &quot;1500&quot;,
+          &quot;height&quot;: &quot;1097&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#logo&quot;,
+          &quot;url&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;contentUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;,
+          &quot;width&quot;: &quot;1500&quot;,
+          &quot;height&quot;: &quot;1097&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;WebSite&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#website&quot;,
+        &quot;url&quot;: &quot;https://gleasonorthodontics.com&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;potentialAction&quot;: {
+          &quot;@type&quot;: &quot;SearchAction&quot;,
+          &quot;target&quot;: &quot;https://gleasonorthodontics.com/?s={search_term_string}&quot;,
+          &quot;query-input&quot;: &quot;required name=search_term_string&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#webpage&quot;,
+        &quot;url&quot;: &quot;https://gleasonorthodontics.com/&quot;,
+        &quot;name&quot;: &quot;Webster Orthodontist | Braces, Clear Aligners | Gleason Orthodontics&quot;,
+        &quot;datePublished&quot;: &quot;2018-04-11T19:06:55+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-05-30T18:42:38+00:00&quot;,
+        &quot;about&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#website&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;Person&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#author&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;image&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://secure.gravatar.com/avatar/e244a263eb2cdae62b34591bf9da0dce1ffc40aad95b9df7a646e07aca452092?s=96&amp;amp;d=mm&amp;amp;r=g&quot;,
+          &quot;url&quot;: &quot;https://secure.gravatar.com/avatar/e244a263eb2cdae62b34591bf9da0dce1ffc40aad95b9df7a646e07aca452092?s=96&amp;amp;d=mm&amp;amp;r=g&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;Article&quot;,
+        &quot;headline&quot;: &quot;Webster Orthodontist | Braces, Clear Aligners | Gleason Orthodontics&quot;,
+        &quot;keywords&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;datePublished&quot;: &quot;2018-04-11T19:06:55+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-05-30T18:42:38+00:00&quot;,
+        &quot;author&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#author&quot;,
+          &quot;name&quot;: &quot;Gleason Orthodontics&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;description&quot;: &quot;Welcome to Gleason Orthodontics. We are your Webster orthodontist creating beautiful smiles daily with braces &amp;amp; Invisalign. Free consults!&quot;,
+        &quot;name&quot;: &quot;Webster Orthodontist | Braces, Clear Aligners | Gleason Orthodontics&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#richSnippet&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#webpage&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#webpage&quot;
+        }
+      }
+    ]
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@type&quot;: &quot;Orthodontist&quot;,
+    &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+    &quot;image&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+    &quot;@id&quot;: &quot;&quot;,
+    &quot;url&quot;: &quot;https://gleasonorthodontics.com&quot;,
+    &quot;telephone&quot;: &quot;585-872-3355&quot;,
+    &quot;address&quot;: {
+      &quot;@type&quot;: &quot;PostalAddress&quot;,
+      &quot;streetAddress&quot;: &quot;246 South Ave&quot;,
+      &quot;addressLocality&quot;: &quot;Webster&quot;,
+      &quot;addressRegion&quot;: &quot;NY&quot;,
+      &quot;postalCode&quot;: &quot;14580&quot;,
+      &quot;addressCountry&quot;: &quot;US&quot;
+    },
+    &quot;geo&quot;: {
+      &quot;@type&quot;: &quot;GeoCoordinates&quot;,
+      &quot;latitude&quot;: 43.2049932,
+      &quot;longitude&quot;: -77.4299685
+    }
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org/&quot;,
+    &quot;@type&quot;: &quot;Person&quot;,
+    &quot;name&quot;: &quot;Dr. James Gleason&quot;,
+    &quot;url&quot;: &quot;https://gleasonorthodontics.com/meet-dr-james-gleason/&quot;,
+    &quot;image&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/02/dr-gleason-headshot-crop.jpg&quot;,
+    &quot;jobTitle&quot;: &quot;Orthodontist&quot;,
+    &quot;worksFor&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;Gleason Orthodontics&quot;
+    }
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@graph&quot;: [
+      {
+        &quot;@type&quot;: [
+          &quot;Person&quot;,
+          &quot;Organization&quot;
+        ],
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;logo&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#logo&quot;,
+          &quot;url&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;contentUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;,
+          &quot;width&quot;: &quot;1500&quot;,
+          &quot;height&quot;: &quot;1097&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#logo&quot;,
+          &quot;url&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;contentUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;,
+          &quot;width&quot;: &quot;1500&quot;,
+          &quot;height&quot;: &quot;1097&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;WebSite&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#website&quot;,
+        &quot;url&quot;: &quot;https://gleasonorthodontics.com&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_1013-Todd-Fleming.jpg&quot;,
+        &quot;url&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_1013-Todd-Fleming.jpg&quot;,
+        &quot;width&quot;: &quot;2000&quot;,
+        &quot;height&quot;: &quot;1335&quot;,
+        &quot;inLanguage&quot;: &quot;en-US&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;,
+        &quot;url&quot;: &quot;https://gleasonorthodontics.com/about-us/&quot;,
+        &quot;name&quot;: &quot;Orthodontist in Webster | About Us | | Gleason Ortho&quot;,
+        &quot;datePublished&quot;: &quot;2019-10-18T16:54:07+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-05-30T18:37:27+00:00&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#website&quot;
+        },
+        &quot;primaryImageOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_1013-Todd-Fleming.jpg&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;Person&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#author&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;image&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://secure.gravatar.com/avatar/e244a263eb2cdae62b34591bf9da0dce1ffc40aad95b9df7a646e07aca452092?s=96&amp;amp;d=mm&amp;amp;r=g&quot;,
+          &quot;url&quot;: &quot;https://secure.gravatar.com/avatar/e244a263eb2cdae62b34591bf9da0dce1ffc40aad95b9df7a646e07aca452092?s=96&amp;amp;d=mm&amp;amp;r=g&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;
+        }
+      },
+      {
+        &quot;headline&quot;: &quot;Orthodontist in Webster | About Us | | Gleason Ortho&quot;,
+        &quot;description&quot;: &quot;Gleason Orthodontics is your go-to expert for quality orthodontics in Webster and surrounding areas. Call today!&quot;,
+        &quot;datePublished&quot;: &quot;2019-10-18T16:54:07+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-05-30T18:37:27+00:00&quot;,
+        &quot;keywords&quot;: &quot;webster orthodontist&quot;,
+        &quot;image&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_1013-Todd-Fleming.jpg&quot;
+        },
+        &quot;author&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#author&quot;,
+          &quot;name&quot;: &quot;Gleason Orthodontics&quot;
+        },
+        &quot;@type&quot;: &quot;Article&quot;,
+        &quot;name&quot;: &quot;Orthodontist in Webster | About Us | | Gleason Ortho&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#schema-33080&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        }
+      },
+      {
+        &quot;headline&quot;: &quot;Orthodontist in Webster | About Us | | Gleason Ortho&quot;,
+        &quot;description&quot;: &quot;Gleason Orthodontics is your go-to expert for quality orthodontics in Webster and surrounding areas. Call today!&quot;,
+        &quot;datePublished&quot;: &quot;2019-10-18T16:54:07+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-05-30T18:37:27+00:00&quot;,
+        &quot;keywords&quot;: &quot;webster orthodontist&quot;,
+        &quot;image&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_1013-Todd-Fleming.jpg&quot;
+        },
+        &quot;author&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#author&quot;,
+          &quot;name&quot;: &quot;Gleason Orthodontics&quot;
+        },
+        &quot;@type&quot;: &quot;Article&quot;,
+        &quot;name&quot;: &quot;Orthodontist in Webster | About Us | | Gleason Ortho&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#schema-33088&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;VideoObject&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics| Testimonial | Elizabeth&quot;,
+        &quot;description&quot;: &quot;Dr. James Gleason is an orthodontist with a practice location in Webster, NY. You\u2019ll love our fun, friendly and relaxed office atmosphere as much as your new...&quot;,
+        &quot;uploadDate&quot;: &quot;2022-12-12T08:26:29-08:00&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2026/05/gleason-orthodontics-testimonial.jpg&quot;,
+        &quot;embedUrl&quot;: &quot;https://www.youtube.com/embed/eVzE3o3mPP0&quot;,
+        &quot;duration&quot;: &quot;PT1M16S&quot;,
+        &quot;width&quot;: &quot;1280&quot;,
+        &quot;height&quot;: &quot;720&quot;,
+        &quot;isFamilyFriendly&quot;: &quot;True&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#schema-33081&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;VideoObject&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics| Testimonial | Roseanna&quot;,
+        &quot;description&quot;: &quot;Dr. James Gleason is an orthodontist with a practice location in Webster, NY. You\u2019ll love our fun, friendly and relaxed office atmosphere as much as your new...&quot;,
+        &quot;uploadDate&quot;: &quot;2022-12-12T08:30:12-08:00&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2026/05/gleason-orthodontics-testimonial-2.jpg&quot;,
+        &quot;embedUrl&quot;: &quot;https://www.youtube.com/embed/nSPq_yZdokI&quot;,
+        &quot;duration&quot;: &quot;PT1M18S&quot;,
+        &quot;width&quot;: &quot;1280&quot;,
+        &quot;height&quot;: &quot;720&quot;,
+        &quot;isFamilyFriendly&quot;: &quot;True&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#schema-33082&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;VideoObject&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics| Testimonial | Yoom&quot;,
+        &quot;description&quot;: &quot;Dr. James Gleason is an orthodontist with a practice location in Webster, NY. You\u2019ll love our fun, friendly and relaxed office atmosphere as much as your new...&quot;,
+        &quot;uploadDate&quot;: &quot;2022-12-12T08:33:01-08:00&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2026/05/gleason-orthodontics-testimonial-4.jpg&quot;,
+        &quot;embedUrl&quot;: &quot;https://www.youtube.com/embed/kuYmLWqM87Y&quot;,
+        &quot;duration&quot;: &quot;PT1M6S&quot;,
+        &quot;width&quot;: &quot;1280&quot;,
+        &quot;height&quot;: &quot;720&quot;,
+        &quot;isFamilyFriendly&quot;: &quot;True&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#schema-33083&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;VideoObject&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics| Testimonial | Elizabeth&quot;,
+        &quot;description&quot;: &quot;Dr. James Gleason is an orthodontist with a practice location in Webster, NY. You\u2019ll love our fun, friendly and relaxed office atmosphere as much as your new...&quot;,
+        &quot;uploadDate&quot;: &quot;2022-12-12T08:26:29-08:00&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2026/05/gleason-orthodontics-testimonial-1.jpg&quot;,
+        &quot;embedUrl&quot;: &quot;https://www.youtube.com/embed/eVzE3o3mPP0&quot;,
+        &quot;duration&quot;: &quot;PT1M16S&quot;,
+        &quot;width&quot;: &quot;1280&quot;,
+        &quot;height&quot;: &quot;720&quot;,
+        &quot;isFamilyFriendly&quot;: &quot;True&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#schema-33089&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;VideoObject&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics| Testimonial | Roseanna&quot;,
+        &quot;description&quot;: &quot;Dr. James Gleason is an orthodontist with a practice location in Webster, NY. You\u2019ll love our fun, friendly and relaxed office atmosphere as much as your new...&quot;,
+        &quot;uploadDate&quot;: &quot;2022-12-12T08:30:12-08:00&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2026/05/gleason-orthodontics-testimonial-3.jpg&quot;,
+        &quot;embedUrl&quot;: &quot;https://www.youtube.com/embed/nSPq_yZdokI&quot;,
+        &quot;duration&quot;: &quot;PT1M18S&quot;,
+        &quot;width&quot;: &quot;1280&quot;,
+        &quot;height&quot;: &quot;720&quot;,
+        &quot;isFamilyFriendly&quot;: &quot;True&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#schema-33090&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;VideoObject&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics| Testimonial | Yoom&quot;,
+        &quot;description&quot;: &quot;Dr. James Gleason is an orthodontist with a practice location in Webster, NY. You\u2019ll love our fun, friendly and relaxed office atmosphere as much as your new...&quot;,
+        &quot;uploadDate&quot;: &quot;2022-12-12T08:33:01-08:00&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2026/05/gleason-orthodontics-testimonial-5.jpg&quot;,
+        &quot;embedUrl&quot;: &quot;https://www.youtube.com/embed/kuYmLWqM87Y&quot;,
+        &quot;duration&quot;: &quot;PT1M6S&quot;,
+        &quot;width&quot;: &quot;1280&quot;,
+        &quot;height&quot;: &quot;720&quot;,
+        &quot;isFamilyFriendly&quot;: &quot;True&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#schema-33091&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/about-us/#webpage&quot;
+        }
+      }
+    ]
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@type&quot;: &quot;Orthodontist&quot;,
+    &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+    &quot;image&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+    &quot;@id&quot;: &quot;&quot;,
+    &quot;url&quot;: &quot;https://gleasonorthodontics.com&quot;,
+    &quot;telephone&quot;: &quot;585-872-3355&quot;,
+    &quot;address&quot;: {
+      &quot;@type&quot;: &quot;PostalAddress&quot;,
+      &quot;streetAddress&quot;: &quot;246 South Ave&quot;,
+      &quot;addressLocality&quot;: &quot;Webster&quot;,
+      &quot;addressRegion&quot;: &quot;NY&quot;,
+      &quot;postalCode&quot;: &quot;14580&quot;,
+      &quot;addressCountry&quot;: &quot;US&quot;
+    },
+    &quot;geo&quot;: {
+      &quot;@type&quot;: &quot;GeoCoordinates&quot;,
+      &quot;latitude&quot;: 43.2049932,
+      &quot;longitude&quot;: -77.4299685
+    }
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org/&quot;,
+    &quot;@type&quot;: &quot;Person&quot;,
+    &quot;name&quot;: &quot;Dr. James Gleason&quot;,
+    &quot;url&quot;: &quot;https://gleasonorthodontics.com/meet-dr-james-gleason/&quot;,
+    &quot;image&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/02/dr-gleason-headshot-crop.jpg&quot;,
+    &quot;jobTitle&quot;: &quot;Orthodontist&quot;,
+    &quot;worksFor&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;Gleason Orthodontics&quot;
+    }
+  },
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@graph&quot;: [
+      {
+        &quot;@type&quot;: [
+          &quot;Person&quot;,
+          &quot;Organization&quot;
+        ],
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;logo&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#logo&quot;,
+          &quot;url&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;contentUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;,
+          &quot;width&quot;: &quot;1500&quot;,
+          &quot;height&quot;: &quot;1097&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#logo&quot;,
+          &quot;url&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;contentUrl&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/09/Gleason_stacked-logo.png&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;,
+          &quot;width&quot;: &quot;1500&quot;,
+          &quot;height&quot;: &quot;1097&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;WebSite&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#website&quot;,
+        &quot;url&quot;: &quot;https://gleasonorthodontics.com&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_0055-Todd-Fleming.jpg&quot;,
+        &quot;url&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_0055-Todd-Fleming.jpg&quot;,
+        &quot;width&quot;: &quot;2000&quot;,
+        &quot;height&quot;: &quot;1333&quot;,
+        &quot;inLanguage&quot;: &quot;en-US&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/contact-us/#webpage&quot;,
+        &quot;url&quot;: &quot;https://gleasonorthodontics.com/contact-us/&quot;,
+        &quot;name&quot;: &quot;Contact Us | Webster Orthodontics | Gleason Orthodontics&quot;,
+        &quot;datePublished&quot;: &quot;2019-10-18T17:03:18+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-06-15T18:32:31+00:00&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#website&quot;
+        },
+        &quot;primaryImageOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_0055-Todd-Fleming.jpg&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;
+      },
+      {
+        &quot;@type&quot;: &quot;Person&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/contact-us/#author&quot;,
+        &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+        &quot;image&quot;: {
+          &quot;@type&quot;: &quot;ImageObject&quot;,
+          &quot;@id&quot;: &quot;https://secure.gravatar.com/avatar/e244a263eb2cdae62b34591bf9da0dce1ffc40aad95b9df7a646e07aca452092?s=96&amp;amp;d=mm&amp;amp;r=g&quot;,
+          &quot;url&quot;: &quot;https://secure.gravatar.com/avatar/e244a263eb2cdae62b34591bf9da0dce1ffc40aad95b9df7a646e07aca452092?s=96&amp;amp;d=mm&amp;amp;r=g&quot;,
+          &quot;caption&quot;: &quot;Gleason Orthodontics&quot;,
+          &quot;inLanguage&quot;: &quot;en-US&quot;
+        }
+      },
+      {
+        &quot;@type&quot;: &quot;Article&quot;,
+        &quot;headline&quot;: &quot;Contact Us | Webster Orthodontics | Gleason Orthodontics&quot;,
+        &quot;keywords&quot;: &quot;Contact Us&quot;,
+        &quot;datePublished&quot;: &quot;2019-10-18T17:03:18+00:00&quot;,
+        &quot;dateModified&quot;: &quot;2026-06-15T18:32:31+00:00&quot;,
+        &quot;author&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/contact-us/#author&quot;,
+          &quot;name&quot;: &quot;Gleason Orthodontics&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/#person&quot;
+        },
+        &quot;description&quot;: &quot;If you&amp;#039;re looking for quality orthodontic treatment in a pleasant, comfortable atmosphere, contact us at our office today.&quot;,
+        &quot;name&quot;: &quot;Contact Us | Webster Orthodontics | Gleason Orthodontics&quot;,
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com/contact-us/#richSnippet&quot;,
+        &quot;isPartOf&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/contact-us/#webpage&quot;
+        },
+        &quot;image&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/wp-content/uploads/2022/12/DSC_0055-Todd-Fleming.jpg&quot;
+        },
+        &quot;inLanguage&quot;: &quot;en-US&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@id&quot;: &quot;https://gleasonorthodontics.com/contact-us/#webpage&quot;
+        }
+      }
+    ]
+  }
+]</pre>
+        </details>
+        <details class="code-panel">
+          <summary>Proposed Schema</summary>
+          <pre>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@graph&quot;: [
+    {
+      &quot;@type&quot;: &quot;Orthodontist&quot;,
+      &quot;@id&quot;: &quot;https://gleasonorthodontics.com#identity&quot;,
+      &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+      &quot;url&quot;: &quot;https://gleasonorthodontics.com/&quot;,
+      &quot;mainEntityOfPage&quot;: {
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com#homepage&quot;
+      },
+      &quot;telephone&quot;: &quot;585-872-3355&quot;,
+      &quot;address&quot;: {
+        &quot;@type&quot;: &quot;PostalAddress&quot;,
+        &quot;streetAddress&quot;: &quot;246 South Ave.&quot;,
+        &quot;addressLocality&quot;: &quot;Webster&quot;
+      },
+      &quot;areaServed&quot;: {
+        &quot;@type&quot;: &quot;City&quot;,
+        &quot;name&quot;: &quot;Webster&quot;
+      },
+      &quot;makesOffer&quot;: [
+        {
+          &quot;@type&quot;: &quot;Offer&quot;,
+          &quot;itemOffered&quot;: {
+            &quot;@id&quot;: &quot;https://gleasonorthodontics.com#service/orthodontic-consultation&quot;
+          }
+        },
+        {
+          &quot;@type&quot;: &quot;Offer&quot;,
+          &quot;itemOffered&quot;: {
+            &quot;@id&quot;: &quot;https://gleasonorthodontics.com#service/braces&quot;
+          }
+        },
+        {
+          &quot;@type&quot;: &quot;Offer&quot;,
+          &quot;itemOffered&quot;: {
+            &quot;@id&quot;: &quot;https://gleasonorthodontics.com#service/clear-aligners&quot;
+          }
+        }
+      ],
+      &quot;medicalSpecialty&quot;: &quot;Orthodontics&quot;
+    },
+    {
+      &quot;@type&quot;: &quot;WebSite&quot;,
+      &quot;@id&quot;: &quot;https://gleasonorthodontics.com#website&quot;,
+      &quot;url&quot;: &quot;https://gleasonorthodontics.com/&quot;,
+      &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+      &quot;publisher&quot;: {
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com#identity&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;WebPage&quot;,
+      &quot;@id&quot;: &quot;https://gleasonorthodontics.com#homepage&quot;,
+      &quot;url&quot;: &quot;https://gleasonorthodontics.com/&quot;,
+      &quot;name&quot;: &quot;Gleason Orthodontics&quot;,
+      &quot;isPartOf&quot;: {
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com#website&quot;
+      },
+      &quot;about&quot;: {
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com#identity&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Service&quot;,
+      &quot;@id&quot;: &quot;https://gleasonorthodontics.com#service/orthodontic-consultation&quot;,
+      &quot;name&quot;: &quot;Orthodontic consultation&quot;,
+      &quot;provider&quot;: {
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com#identity&quot;
+      },
+      &quot;areaServed&quot;: {
+        &quot;@type&quot;: &quot;City&quot;,
+        &quot;name&quot;: &quot;Webster&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Service&quot;,
+      &quot;@id&quot;: &quot;https://gleasonorthodontics.com#service/braces&quot;,
+      &quot;name&quot;: &quot;Braces&quot;,
+      &quot;provider&quot;: {
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com#identity&quot;
+      },
+      &quot;areaServed&quot;: {
+        &quot;@type&quot;: &quot;City&quot;,
+        &quot;name&quot;: &quot;Webster&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Service&quot;,
+      &quot;@id&quot;: &quot;https://gleasonorthodontics.com#service/clear-aligners&quot;,
+      &quot;name&quot;: &quot;Clear aligners&quot;,
+      &quot;provider&quot;: {
+        &quot;@id&quot;: &quot;https://gleasonorthodontics.com#identity&quot;
+      },
+      &quot;areaServed&quot;: {
+        &quot;@type&quot;: &quot;City&quot;,
+        &quot;name&quot;: &quot;Webster&quot;
+      }
+    }
+  ]
+}</pre>
+        </details>
+      </div>
+    </div>
+  </details>
+</article>
+    </section>
+    <div id="empty" class="empty">No businesses match the current filters.</div>
+  </div>
+  <script>
+    const cards = [...document.querySelectorAll('.card')];
+    const cityFilter = document.getElementById('city-filter');
+    const categoryFilter = document.getElementById('category-filter');
+    const statusFilter = document.getElementById('status-filter');
+    const priorityFilter = document.getElementById('priority-filter');
+    const sortControl = document.getElementById('sort-control');
+    const themeToggle = document.getElementById('theme-toggle');
+    const search = document.getElementById('search');
+    const cardGrid = document.getElementById('card-grid');
+    const resultsMeta = document.getElementById('results-meta');
+    const empty = document.getElementById('empty');
+
+    function fillSelect(select, attribute) {
+      const values = [...new Set(cards.map(card => card.dataset[attribute]).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+      for (const value of values) {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value;
+        select.appendChild(option);
+      }
+    }
+
+    function sortCards() {
+      const mode = sortControl.value;
+      const sorted = [...cards].sort((a, b) => {
+        if (mode === 'audit-low') return Number(a.dataset.audit) - Number(b.dataset.audit);
+        if (mode === 'audit-high') return Number(b.dataset.audit) - Number(a.dataset.audit);
+        if (mode === 'source') return Number(a.dataset.source) - Number(b.dataset.source);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return Number(b.dataset.opportunity) - Number(a.dataset.opportunity);
+      });
+      for (const card of sorted) cardGrid.appendChild(card);
+    }
+
+    function applyFilters() {
+      sortCards();
+      const city = cityFilter.value.toLowerCase();
+      const category = categoryFilter.value.toLowerCase();
+      const status = statusFilter.value.toLowerCase();
+      const priority = priorityFilter.value.toLowerCase();
+      const query = search.value.trim().toLowerCase();
+      let visible = 0;
+
+      for (const card of cards) {
+        const matchesCity = !city || card.dataset.city.toLowerCase() === city;
+        const matchesCategory = !category || card.dataset.category.toLowerCase() === category;
+        const matchesStatus = !status || card.dataset.status.toLowerCase() === status;
+        const matchesPriority = !priority || card.dataset.priority.toLowerCase() === priority;
+        const haystack = card.dataset.search.toLowerCase();
+        const matchesQuery = !query || haystack.includes(query);
+        const show = matchesCity && matchesCategory && matchesStatus && matchesPriority && matchesQuery;
+        card.style.display = show ? '' : 'none';
+        if (show) visible += 1;
+      }
+
+      resultsMeta.textContent = `${visible} of 1 businesses shown`;
+      empty.style.display = visible ? 'none' : 'block';
+    }
+
+    function applyTheme(theme) {
+      const nextTheme = theme === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = nextTheme;
+      themeToggle.textContent = nextTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+      themeToggle.setAttribute(
+        'aria-label',
+        nextTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+      );
+      try {
+        localStorage.setItem('signalFoundryTheme', nextTheme);
+      } catch (error) {}
+    }
+
+    function savedTheme() {
+      try {
+        return localStorage.getItem('signalFoundryTheme');
+      } catch (error) {
+        return null;
+      }
+    }
+
+    fillSelect(cityFilter, 'city');
+    fillSelect(categoryFilter, 'category');
+    for (const element of [cityFilter, categoryFilter, statusFilter, priorityFilter, sortControl, search]) {
+      element.addEventListener('input', applyFilters);
+      element.addEventListener('change', applyFilters);
+    }
+    themeToggle.addEventListener('click', () => {
+      applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+    applyTheme(savedTheme() || 'dark');
+    applyFilters();
+  </script>
+</body>
+</html>

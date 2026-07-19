@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>Verity Scan Rubric v1 | Signal Foundry</title>
+    <style>
+      :root {
+        --paper: #f3f5f2;
+        --ink: #151816;
+        --muted: #657067;
+        --line: rgba(21, 24, 22, 0.14);
+        --surface: #ffffff;
+        --signal: #1f6470;
+        --signal-soft: #e4f0ef;
+        --amber: #8a621f;
+        --amber-soft: #f4ead8;
+        --green: #2f6f4e;
+        --green-soft: #e6f1ea;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fbfcfa, var(--paper));
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+      main {
+        width: min(1120px, calc(100vw - 40px));
+        margin: 0 auto;
+        padding: 36px 0 80px;
+      }
+      a { color: var(--signal); }
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      .hero,
+      section {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 16px 44px rgba(12, 18, 14, 0.08);
+      }
+      .hero { padding: 28px; }
+      section {
+        margin-top: 16px;
+        padding: 22px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2.4rem, 6vw, 4.8rem);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        letter-spacing: -0.04em;
+      }
+      h3 { margin: 18px 0 8px; }
+      p { color: var(--muted); }
+      .lead {
+        max-width: 780px;
+        font-size: 18px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .card {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+      }
+      .card strong {
+        display: block;
+        font-size: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      th, td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: var(--signal-soft);
+        color: var(--signal);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+      code {
+        padding: 2px 5px;
+        border-radius: 5px;
+        background: #edf1ec;
+      }
+      .note {
+        padding: 14px 16px;
+        border: 1px solid rgba(138, 98, 31, 0.34);
+        border-radius: 12px;
+        background: var(--amber-soft);
+        color: var(--amber);
+        font-weight: 700;
+      }
+      @media (max-width: 760px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="topbar">
+        <a href="/signalfoundry">← Signal Foundry</a>
+        <span class="pill">Internal reference</span>
+      </header>
+
+      <div class="hero">
+        <span class="pill">Verity Scan Rubric v1</span>
+        <h1>Definitions, scoring, and delivery gates.</h1>
+        <p class="lead">
+          Rubric v1 is the customer-safe scoring model for Verity Scans. It measures observable website clarity and readiness. It does not measure rankings, traffic, leads, conversions, backlinks, Google Business Profile performance, or placement in AI answers unless those surfaces are explicitly added to a future scan version.
+        </p>
+      </div>
+
+      <section>
+        <h2>Current reference results</h2>
+        <table>
+          <thead>
+            <tr><th>Business</th><th>Score</th><th>Band</th><th>Interpretation</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gleason Orthodontics</td>
+              <td>75</td>
+              <td>Clear</td>
+              <td>Stronger local/practice identity; weaker sampled content depth and AI/service specificity.</td>
+            </tr>
+            <tr>
+              <td>A to Z Sleep Solutions</td>
+              <td>78</td>
+              <td>Clear</td>
+              <td>Stronger human-readable service/package content; weaker machine-readable local/service/offer structure.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">Do not lower scores for sales urgency. Adjust scores only when retained evidence and the rubric support it.</p>
+      </section>
+
+      <section>
+        <h2>Overall formula</h2>
+        <div class="grid">
+          <div class="card"><strong>Business Clarity</strong><span>25%</span></div>
+          <div class="card"><strong>Search Readiness</strong><span>20%</span></div>
+          <div class="card"><strong>AI Readiness</strong><span>20%</span></div>
+          <div class="card"><strong>Trust Signals</strong><span>20%</span></div>
+          <div class="card"><strong>Content Coverage</strong><span>15%</span></div>
+        </div>
+        <p>
+          Overall score = Business Clarity × 0.25 + Search Readiness × 0.20 + AI Readiness × 0.20 + Trust Signals × 0.20 + Content Coverage × 0.15. Round once after calculating the weighted score.
+        </p>
+      </section>
+
+      <section>
+        <h2>Bands</h2>
+        <table>
+          <thead><tr><th>Score</th><th>Band</th></tr></thead>
+          <tbody>
+            <tr><td>82–100</td><td>Strong</td></tr>
+            <tr><td>66–81</td><td>Clear</td></tr>
+            <tr><td>46–65</td><td>Needs Work</td></tr>
+            <tr><td>0–45</td><td>Missing / Unclear</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Dimension definitions</h2>
+        <div class="grid">
+          <div class="card">
+            <strong>Business Clarity</strong>
+            <p>Business identity, primary offer, intended audience, geography/service area, contact path, and cross-page consistency.</p>
+          </div>
+          <div class="card">
+            <strong>Search Readiness</strong>
+            <p>Crawl access, metadata/indexability, identity/location consistency, appropriate business schema, service-page coverage, and internal discovery paths.</p>
+          </div>
+          <div class="card">
+            <strong>AI Readiness</strong>
+            <p>Entity/schema specificity, structured service meaning, answer-ready content, factual consistency, authorship/provenance, and machine accessibility.</p>
+          </div>
+          <div class="card">
+            <strong>Trust Signals</strong>
+            <p>Verifiable contact/location, people and credentials, reviews/testimonials, outcomes, affiliations/awards, process/policies, and third-party corroboration.</p>
+          </div>
+          <div class="card">
+            <strong>Content Coverage</strong>
+            <p>Core services, customer decision questions, process/next steps, cost expectations, geography, audience scenarios, and ownership/recency.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Evidence states</h2>
+        <table>
+          <thead><tr><th>State</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>pass</code></td><td>Checked and fully supported by retained evidence.</td></tr>
+            <tr><td><code>partial</code></td><td>Checked and partly supported. Partial credit must use an explicit 25%, 50%, or 75% anchor.</td></tr>
+            <tr><td><code>fail</code></td><td>Checked and absent; zero points.</td></tr>
+            <tr><td><code>not_applicable</code></td><td>Removed from denominator and remaining weights normalized.</td></tr>
+            <tr><td><code>unknown</code></td><td>Not enough evidence; never treated as pass or fail.</td></tr>
+          </tbody>
+        </table>
+        <p>No evidence means no defensible points. Fetch failure creates <code>unknown</code>, not <code>fail</code>.</p>
+      </section>
+
+      <section>
+        <h2>Publishability gates</h2>
+        <ul>
+          <li>Do not publish a dimension score unless at least 80% of applicable indicator weight was measured.</li>
+          <li>Every critical indicator must be checked.</li>
+          <li>Primary evidence must be retained internally.</li>
+          <li>Low-confidence dimensions do not get numeric customer scores.</li>
+          <li>Final customer reports require named human approval, live-site comparison, and customer-report comparison.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Critical caps</h2>
+        <table>
+          <thead><tr><th>Condition</th><th>Cap</th></tr></thead>
+          <tbody>
+            <tr><td>Inaccessible or index-blocked site</td><td>Search Readiness max 30</td></tr>
+            <tr><td>Unclear business identity or primary offer</td><td>Business Clarity max 55</td></tr>
+            <tr><td>No readable service content and no usable entity context</td><td>AI Readiness max 55</td></tr>
+            <tr><td>Unverifiable identity or contact path</td><td>Trust Signals max 45</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Internal report requirements</h2>
+        <ul>
+          <li>Rubric version and score snapshot.</li>
+          <li>Dimension and indicator calculations.</li>
+          <li>Measured-weight coverage and confidence.</li>
+          <li>Exact evidence and source URL for every indicator.</li>
+          <li>Manual reviewer state and delivery-gate status.</li>
+          <li>Current/proposed schema and implementation notes when relevant.</li>
+          <li>Customer-safe explanation used externally.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
