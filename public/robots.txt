@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /signalfoundry/
+Disallow: /signalfoundry.html
+
+Sitemap: https://verityworks.dev/sitemap.xml
