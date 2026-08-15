@@ -17,6 +17,15 @@ export default {
     }
 
     if (
+      url.pathname === "/scan/wright-elder-injury" ||
+      url.pathname === "/scan/wright-elder-injury/" ||
+      url.pathname === "/scan/wright-elder-injury/index.html"
+    ) {
+      url.pathname = "/snapshots/wright-elder-injury/";
+      return Response.redirect(url.toString(), 301);
+    }
+
+    if (
       url.pathname === "/verity-scan" ||
       url.pathname === "/verity-scan/" ||
       url.pathname === "/verity-scan/index.html"
