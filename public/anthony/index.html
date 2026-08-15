@@ -109,7 +109,23 @@ h1{
 .role{
   color:var(--muted);
   font-size:18px;
-  margin-bottom:28px;
+  margin-bottom:12px;
+}
+.contact-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 16px;
+  margin:0 0 28px;
+  color:var(--muted);
+  font-size:15px;
+}
+.contact-links a{
+  color:var(--text);
+  text-decoration:none;
+}
+.contact-links a:hover,.contact-links a:focus-visible{
+  color:var(--accent);
+  text-decoration:underline;
 }
 .lead{
   font-size:clamp(24px,5.6vw,31px);
@@ -236,8 +252,12 @@ h1{
 }
 @media(min-width:640px){
   .wrap{padding-top:36px}
+  .quick-actions{grid-template-columns:repeat(4,1fr)}
   .grid{grid-template-columns:repeat(3,1fr)}
   .item{min-height:200px}
+}
+@media(max-width:420px){
+  .quick-actions{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
@@ -254,15 +274,20 @@ h1{
     <div class="eyebrow">Technology &middot; AI &middot; Practical problem solving</div>
     <h1>Anthony Salvaggio</h1>
     <div class="role">Founder &middot; VerityWorks</div>
+    <div class="contact-links" aria-label="Contact Anthony">
+      <a href="mailto:anthony@verityworks.dev">anthony@verityworks.dev</a>
+      <a href="tel:+15854908601">(585) 490-8601</a>
+    </div>
     <p class="lead">
       I help businesses figure out what's getting in their way and use
       technology and AI to fix it.
     </p>
 
     <div class="quick-actions">
+      <a class="quick" href="mailto:anthony@verityworks.dev">Email</a>
+      <a class="quick" href="tel:+15854908601">Call</a>
       <button class="quick" type="button" id="saveContact">Save Contact</button>
       <button class="quick" type="button" id="shareCard">Share</button>
-      <a class="quick" href="https://verityworks.dev" target="_blank" rel="noopener">Website</a>
     </div>
   </section>
 
@@ -335,6 +360,8 @@ document.getElementById("saveContact").addEventListener("click", () => {
     "FN:Anthony Salvaggio",
     "ORG:VerityWorks",
     "TITLE:Founder",
+    "EMAIL:anthony@verityworks.dev",
+    "TEL;TYPE=CELL,VOICE:+15854908601",
     "URL:https://verityworks.dev",
     "NOTE:Your Business. Found.",
     "END:VCARD"
