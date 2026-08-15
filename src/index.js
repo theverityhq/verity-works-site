@@ -1,8 +1,12 @@
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
     if (url.hostname === "www.verityworks.dev") {
+      trackEvent(ctx, env, request, "redirect", 301, {
+        routeGroup: "canonical",
+        targetPath: url.pathname,
+      });
       url.hostname = "verityworks.dev";
       return Response.redirect(url.toString(), 301);
     }
@@ -13,6 +17,10 @@ export default {
       url.pathname === "/scans/gleason-orthodontics/index.html"
     ) {
       url.pathname = "/scan/gleason-orthodontics/";
+      trackEvent(ctx, env, request, "redirect", 301, {
+        routeGroup: "scan",
+        targetPath: url.pathname,
+      });
       return Response.redirect(url.toString(), 301);
     }
 
@@ -22,6 +30,10 @@ export default {
       url.pathname === "/scan/wright-elder-injury/index.html"
     ) {
       url.pathname = "/snapshots/wright-elder-injury/";
+      trackEvent(ctx, env, request, "redirect", 301, {
+        routeGroup: "snapshot",
+        targetPath: url.pathname,
+      });
       return Response.redirect(url.toString(), 301);
     }
 
@@ -31,28 +43,37 @@ export default {
       url.pathname === "/verity-scan/index.html"
     ) {
       url.pathname = "/free-visibility-snapshot/";
+      trackEvent(ctx, env, request, "redirect", 301, {
+        routeGroup: "marketing",
+        targetPath: url.pathname,
+      });
       return Response.redirect(url.toString(), 301);
     }
 
     if (isWrightSnapshotPath(url.pathname)) {
-      const authResponse = await authorizeWrightSnapshot(request, env);
+      const authResponse = await authorizeWrightSnapshot(request, env, ctx);
       if (authResponse) {
         return authResponse;
       }
 
-      return noStoreAssetResponse(request, env);
+      return noStoreAssetResponse(request, env, ctx, "protected_view");
     }
 
     if (isSignalFoundryPath(url.pathname)) {
       const authResponse = authorizeSignalFoundry(request, env);
       if (authResponse) {
+        trackEvent(ctx, env, request, "auth_required", authResponse.status, {
+          routeGroup: "internal",
+        });
         return authResponse;
       }
 
-      return noStoreAssetResponse(request, env);
+      return noStoreAssetResponse(request, env, ctx, "protected_view");
     }
 
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+    trackAssetResponse(ctx, env, request, response, "page_view");
+    return response;
   },
 };
 
@@ -74,7 +95,7 @@ function isSignalFoundryPath(pathname) {
   );
 }
 
-async function authorizeWrightSnapshot(request, env) {
+async function authorizeWrightSnapshot(request, env, ctx) {
   const expectedPassword = env.WRIGHT_SNAPSHOT_PASSWORD || "wright2026";
   const cookie = request.headers.get("Cookie") || "";
   if (cookie.split(";").some((part) => part.trim() === "wright_snapshot=ok")) {
@@ -87,11 +108,18 @@ async function authorizeWrightSnapshot(request, env) {
       const form = await request.formData();
       suppliedPassword = String(form.get("password") || "");
     } catch {
+      trackEvent(ctx, env, request, "snapshot_unlock_failed", 401, {
+        routeGroup: "snapshot",
+      });
       return snapshotPasswordPage(true);
     }
 
     if (suppliedPassword === expectedPassword) {
       const url = new URL(request.url);
+      trackEvent(ctx, env, request, "snapshot_unlock_success", 303, {
+        routeGroup: "snapshot",
+        targetPath: url.pathname,
+      });
       return new Response(null, {
         status: 303,
         headers: {
@@ -102,10 +130,16 @@ async function authorizeWrightSnapshot(request, env) {
       });
     }
 
+    trackEvent(ctx, env, request, "snapshot_unlock_failed", 401, {
+      routeGroup: "snapshot",
+    });
     return snapshotPasswordPage(true);
   }
 
   if (request.method !== "GET" && request.method !== "HEAD") {
+    trackEvent(ctx, env, request, "method_not_allowed", 405, {
+      routeGroup: "snapshot",
+    });
     return new Response("Method not allowed.", {
       status: 405,
       headers: {
@@ -115,6 +149,9 @@ async function authorizeWrightSnapshot(request, env) {
     });
   }
 
+  trackEvent(ctx, env, request, "snapshot_gate_view", 401, {
+    routeGroup: "snapshot",
+  });
   return snapshotPasswordPage(false);
 }
 
@@ -288,8 +325,9 @@ function snapshotPasswordPage(hasError) {
   });
 }
 
-async function noStoreAssetResponse(request, env) {
+async function noStoreAssetResponse(request, env, ctx, eventName = "page_view") {
   const response = await env.ASSETS.fetch(request);
+  trackAssetResponse(ctx, env, request, response, eventName);
   const headers = new Headers(response.headers);
   headers.set("Cache-Control", "no-store");
   return new Response(response.body, {
@@ -297,4 +335,114 @@ async function noStoreAssetResponse(request, env) {
     statusText: response.statusText,
     headers,
   });
+}
+
+function trackAssetResponse(ctx, env, request, response, eventName) {
+  const contentType = response.headers.get("Content-Type") || "";
+  const routeGroup = routeGroupForPath(new URL(request.url).pathname);
+  const event =
+    eventName === "protected_view" && !contentType.includes("text/html")
+      ? "protected_asset_view"
+      : eventName;
+  if (
+    event === "page_view" &&
+    !contentType.includes("text/html")
+  ) {
+    return;
+  }
+  trackEvent(ctx, env, request, event, response.status, { routeGroup });
+}
+
+function trackEvent(ctx, env, request, eventName, status, options = {}) {
+  if (!env.ANALYTICS_DB || request.method === "HEAD") {
+    return;
+  }
+
+  const url = new URL(request.url);
+  const routeGroup = options.routeGroup || routeGroupForPath(url.pathname);
+  const write = env.ANALYTICS_DB.prepare(
+    `INSERT INTO events (
+      hostname,
+      event_name,
+      path,
+      route_group,
+      status,
+      country,
+      referrer_host,
+      user_agent_class,
+      target_path
+    ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)`
+  )
+    .bind(
+      url.hostname,
+      eventName,
+      url.pathname,
+      routeGroup,
+      Number(status) || 0,
+      countryForRequest(request),
+      referrerHost(request),
+      userAgentClass(request),
+      options.targetPath || ""
+    )
+    .run();
+
+  if (ctx?.waitUntil) {
+    ctx.waitUntil(write);
+    return;
+  }
+
+  write.catch(() => {});
+}
+
+function routeGroupForPath(pathname) {
+  if (pathname === "/" || pathname === "/index.html") {
+    return "homepage";
+  }
+  if (pathname.startsWith("/snapshots/")) {
+    return "snapshot";
+  }
+  if (pathname.startsWith("/scan/") || pathname.startsWith("/scans/")) {
+    return "scan";
+  }
+  if (pathname.startsWith("/signalfoundry")) {
+    return "internal";
+  }
+  if (
+    pathname.startsWith("/free-visibility-snapshot") ||
+    pathname.startsWith("/checkout") ||
+    pathname.startsWith("/anthony")
+  ) {
+    return "marketing";
+  }
+  return "site";
+}
+
+function countryForRequest(request) {
+  return request.cf?.country || "unknown";
+}
+
+function referrerHost(request) {
+  const referrer = request.headers.get("Referer") || "";
+  if (!referrer) {
+    return "direct";
+  }
+  try {
+    return new URL(referrer).hostname;
+  } catch {
+    return "invalid";
+  }
+}
+
+function userAgentClass(request) {
+  const userAgent = (request.headers.get("User-Agent") || "").toLowerCase();
+  if (!userAgent) {
+    return "unknown";
+  }
+  if (/bot|crawl|spider|slurp|preview|facebookexternalhit|linkedinbot|twitterbot/.test(userAgent)) {
+    return "bot";
+  }
+  if (/mobile|android|iphone|ipad/.test(userAgent)) {
+    return "mobile";
+  }
+  return "desktop";
 }
