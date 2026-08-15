@@ -16,6 +16,15 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    if (
+      url.pathname === "/verity-scan" ||
+      url.pathname === "/verity-scan/" ||
+      url.pathname === "/verity-scan/index.html"
+    ) {
+      url.pathname = "/free-visibility-snapshot/";
+      return Response.redirect(url.toString(), 301);
+    }
+
     if (isSignalFoundryPath(url.pathname)) {
       const authResponse = authorizeSignalFoundry(request, env);
       if (authResponse) {
