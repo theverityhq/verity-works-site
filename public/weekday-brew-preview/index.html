@@ -193,5 +193,20 @@
         for in-person preview.
       </footer>
     </main>
+    <script>
+      (() => {
+        const body = JSON.stringify({ path: window.location.pathname });
+        const blob = new Blob([body], { type: "application/json" });
+        if (navigator.sendBeacon && navigator.sendBeacon("/api/track-view", blob)) {
+          return;
+        }
+        fetch("/api/track-view", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body,
+          keepalive: true,
+        }).catch(() => {});
+      })();
+    </script>
   </body>
 </html>
