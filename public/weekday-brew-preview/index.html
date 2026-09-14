@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekday Brew Prototype Preview</title>
+    <meta
+      name="description"
+      content="Preview two Weekday Brew website prototype directions prepared by Verity Works."
+    />
+    <style>
+      :root {
+        --ink: #0d0b09;
+        --paper: #fffaf1;
+        --cream: #f2e7d4;
+        --line: rgba(13, 11, 9, 0.16);
+        --muted: rgba(13, 11, 9, 0.66);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100svh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: clamp(1rem, 4vw, 3rem);
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Avenir Next", "Inter", "SF Pro Display", "Segoe UI", Arial, sans-serif;
+      }
+
+      main {
+        width: min(100%, 980px);
+        display: grid;
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+      }
+
+      header {
+        display: grid;
+        gap: 0.8rem;
+        text-align: center;
+      }
+
+      img {
+        width: clamp(120px, 18vw, 180px);
+        margin: 0 auto;
+      }
+
+      p,
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 0;
+        font-size: clamp(2.4rem, 7vw, 5.4rem);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      header p {
+        max-width: 42rem;
+        margin: 0 auto;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        font-weight: 650;
+      }
+
+      .version-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .version-card {
+        min-height: 280px;
+        display: grid;
+        align-content: space-between;
+        gap: 2rem;
+        padding: clamp(1.25rem, 4vw, 2rem);
+        border: 1px solid var(--line);
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .version-card:first-child {
+        background: var(--cream);
+      }
+
+      .version-card:last-child {
+        background: #fff;
+      }
+
+      .version-card span {
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .version-card h2 {
+        max-width: 8ch;
+        margin-bottom: 0.65rem;
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        line-height: 0.98;
+      }
+
+      .version-card p {
+        max-width: 24rem;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .version-card strong {
+        display: inline-flex;
+        width: fit-content;
+        padding: 0.8rem 0.95rem;
+        color: #fff;
+        background: var(--ink);
+        font-size: 0.9rem;
+        line-height: 1;
+      }
+
+      footer {
+        color: rgba(13, 11, 9, 0.5);
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      @media (max-width: 720px) {
+        body {
+          place-items: start center;
+        }
+
+        .version-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .version-card {
+          min-height: 230px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <img src="/weekday-brew-v2/assets/weekday-brew-logo.png" alt="Weekday Brew" />
+        <h1>Weekday Brew Website Concepts</h1>
+        <p>
+          Two prototype directions prepared for a quick side-by-side review.
+          Both are clickable and ready to view on iPad.
+        </p>
+      </header>
+
+      <section class="version-grid" aria-label="Prototype versions">
+        <a class="version-card" href="/weekday-brew-v1/">
+          <span>Version 1</span>
+          <div>
+            <h2>Warm Coffee Shop</h2>
+            <p>
+              Cream-toned, photo-led, and closer to the original drive-thru coffee
+              mood.
+            </p>
+          </div>
+          <strong>Open Version 1</strong>
+        </a>
+
+        <a class="version-card" href="/weekday-brew-v2/">
+          <span>Version 2</span>
+          <div>
+            <h2>Clean White Brand</h2>
+            <p>
+              Brighter, simpler, and more logo-forward with a tighter first screen.
+            </p>
+          </div>
+          <strong>Open Version 2</strong>
+        </a>
+      </section>
+
+      <footer>Prepared by Verity Works for in-person preview.</footer>
+    </main>
+  </body>
+</html>
