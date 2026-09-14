@@ -55,9 +55,9 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  min-height: 72px;
-  padding: 0.7rem clamp(1rem, 4vw, 2.4rem);
+  gap: 1rem;
+  min-height: 76px;
+  padding: 0.55rem clamp(1rem, 4vw, 2.4rem);
   background: rgba(247, 239, 224, 0.92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(16px);
@@ -66,15 +66,23 @@ textarea {
 .brand {
   display: inline-flex;
   align-items: center;
+  gap: 0.65rem;
   min-width: fit-content;
   padding: 0;
   border: 0;
   background: transparent;
 }
 
+.nav-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(23, 18, 14, 0.12));
+}
+
 .nav-wordmark {
   color: var(--ink);
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 800;
   letter-spacing: 0.02em;
 }
@@ -111,10 +119,15 @@ textarea {
 }
 
 .nav-action {
-  padding: 0.58rem 0.86rem !important;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.65rem 0.9rem !important;
   color: var(--cream-strong);
   background: var(--ink);
   border: 1px solid var(--ink);
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .hero {
