@@ -2,6 +2,10 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    if (url.pathname === "/api/track-view") {
+      return trackWeekdayBrewView(request, env);
+    }
+
     if (url.hostname === "www.verityworks.dev") {
       trackEvent(ctx, env, request, "redirect", 301, {
         routeGroup: "canonical",
@@ -394,9 +398,96 @@ function trackEvent(ctx, env, request, eventName, status, options = {}) {
   write.catch(() => {});
 }
 
+async function trackWeekdayBrewView(request, env) {
+  if (request.method !== "POST") {
+    return new Response("Method not allowed.", {
+      status: 405,
+      headers: { Allow: "POST" },
+    });
+  }
+  if (!env.ANALYTICS_DB) {
+    return new Response(null, { status: 204 });
+  }
+
+  let payload = {};
+  try {
+    payload = await request.json();
+  } catch {
+    return new Response(null, { status: 204 });
+  }
+
+  const path = weekdayBrewTrackPath(payload.path);
+  if (!path) {
+    return new Response(null, { status: 204 });
+  }
+
+  await env.ANALYTICS_DB.prepare(
+    `INSERT INTO events (
+      hostname,
+      event_name,
+      path,
+      route_group,
+      status,
+      country,
+      referrer_host,
+      user_agent_class,
+      target_path,
+      visitor_id,
+      session_id
+    ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)`
+  )
+    .bind(
+      new URL(request.url).hostname,
+      "page_view",
+      path,
+      "weekday_brew_preview",
+      204,
+      countryForRequest(request),
+      referrerHost(request),
+      userAgentClass(request),
+      "",
+      privacySafeId(payload.visitor_id),
+      privacySafeId(payload.session_id)
+    )
+    .run();
+
+  return new Response(null, {
+    status: 204,
+    headers: { "Cache-Control": "no-store" },
+  });
+}
+
+function weekdayBrewTrackPath(path) {
+  const normalized = String(path || "").replace(/\/index\.html$/, "/");
+  if (
+    normalized === "/" ||
+    normalized === "/weekday-brew-v1/" ||
+    normalized === "/weekday-brew-v2/" ||
+    normalized === "/weekday-brew-preview/"
+  ) {
+    return normalized;
+  }
+  return "";
+}
+
+function privacySafeId(value) {
+  const id = String(value || "").trim();
+  if (!/^[a-zA-Z0-9._:-]{1,128}$/.test(id)) {
+    return "";
+  }
+  return id;
+}
+
 function routeGroupForPath(pathname) {
   if (pathname === "/" || pathname === "/index.html") {
     return "homepage";
+  }
+  if (
+    pathname.startsWith("/weekday-brew-preview") ||
+    pathname.startsWith("/weekday-brew-v1") ||
+    pathname.startsWith("/weekday-brew-v2")
+  ) {
+    return "weekday_brew_preview";
   }
   if (pathname.startsWith("/snapshots/")) {
     return "snapshot";
