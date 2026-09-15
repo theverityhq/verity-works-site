@@ -30,6 +30,7 @@ body {
   color: var(--ink);
   font-family: "Avenir Next", "Inter", "SF Pro Display", "Segoe UI", Arial, sans-serif;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 a {
@@ -322,8 +323,10 @@ h3 {
 }
 
 .social-strip p {
+  min-width: 0;
   margin: 0;
   color: rgba(255, 248, 236, 0.78);
+  overflow-wrap: anywhere;
 }
 
 .social-strip a {
@@ -465,6 +468,8 @@ h3 {
 .story-section,
 .inquiry-section,
 .visit-section,
+.local-signals,
+.faq-section,
 .order-section,
 .site-footer {
   width: min(calc(100% - 2rem), var(--container));
@@ -476,6 +481,8 @@ h3 {
 .story-section,
 .inquiry-section,
 .visit-section,
+.local-signals,
+.faq-section,
 .order-section {
   padding: clamp(3.5rem, 7vw, 6rem) 0;
 }
@@ -493,6 +500,44 @@ h3 {
   margin-bottom: 0;
   color: rgba(23, 18, 14, 0.66);
   font-size: 1.02rem;
+}
+
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.signal-grid article,
+.faq-list details {
+  border: 1px solid var(--line);
+  background: var(--cream-strong);
+  box-shadow: 0 10px 24px rgba(23, 18, 14, 0.07);
+}
+
+.signal-grid article {
+  display: grid;
+  gap: 0.65rem;
+  padding: clamp(1.15rem, 2.8vw, 1.65rem);
+}
+
+.signal-grid span {
+  color: var(--rust);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.signal-grid strong {
+  font-size: clamp(1.25rem, 2.25vw, 1.85rem);
+  line-height: 1.08;
+}
+
+.signal-grid p,
+.faq-list p {
+  margin-bottom: 0;
+  color: rgba(23, 18, 14, 0.72);
 }
 
 .section-heading .eyebrow,
@@ -809,6 +854,28 @@ h3 {
   text-transform: uppercase;
 }
 
+.faq-section {
+  border-top: 1px solid var(--line);
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.faq-list details {
+  padding: 1.15rem 1.25rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.faq-list p {
+  padding-top: 0.75rem;
+}
+
 .order-section {
   justify-content: space-between;
   padding-top: 1rem;
@@ -918,7 +985,8 @@ h3 {
 
   .split-section,
   .story-section,
-  .visit-section {
+  .visit-section,
+  .signal-grid {
     grid-template-columns: 1fr;
   }
 
@@ -947,16 +1015,33 @@ h3 {
 }
 
 @media (max-width: 680px) {
+  .section,
+  .split-section,
+  .story-section,
+  .inquiry-section,
+  .visit-section,
+  .local-signals,
+  .faq-section,
+  .order-section,
+  .site-footer,
+  .insta-feed,
+  .social-strip {
+    width: min(calc(100vw - 2rem), var(--container));
+  }
+
   .site-header {
     min-height: auto;
   }
 
   .site-nav {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
     gap: 0.8rem;
     font-size: 0.86rem;
   }
 
   .nav-action {
+    grid-column: 1 / -1;
     width: 100%;
     text-align: center;
   }
@@ -972,8 +1057,42 @@ h3 {
   }
 
   h1 {
-    max-width: 9.5ch;
-    font-size: clamp(2.35rem, 10vw, 3.45rem);
+    max-width: min(9.5ch, 100%);
+    font-size: clamp(2.1rem, 9vw, 2.85rem);
+  }
+
+  .hero-content {
+    width: min(calc(100vw - 2rem), 620px);
+    margin-inline: auto;
+  }
+
+  .hero-kicker {
+    max-width: 100%;
+    letter-spacing: 0.07em;
+    line-height: 1.35;
+  }
+
+  .hero-line,
+  .section-note,
+  .social-strip p {
+    width: 100%;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .ticker {
+    justify-content: flex-start;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .social-strip {
+    overflow: visible;
   }
 
   .hero-line {
@@ -1019,6 +1138,7 @@ h3 {
   .site-footer p {
     text-align: left;
   }
+}
 
   .footer-info {
     justify-items: start;

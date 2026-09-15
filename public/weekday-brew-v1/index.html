@@ -9,6 +9,83 @@
       content="Weekday Brew is a Williamson, NY drive-thru for hot coffee, cold coffee, refreshers, teas, dirty soda, catering, and wholesale coffee."
     />
     <meta name="theme-color" content="#17120e" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": ["LocalBusiness", "CafeOrCoffeeShop"],
+            "@id": "https://verityworks.dev/weekday-brew-v1/#business",
+            "name": "Weekday Brew",
+            "url": "https://verityworks.dev/weekday-brew-v1/",
+            "description": "Weekday Brew is a drive-thru coffee shop in Williamson, New York serving hot coffee, cold coffee, refreshers, teas, dirty soda, catering, and wholesale coffee.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "3856 NY-104",
+              "addressLocality": "Williamson",
+              "addressRegion": "NY",
+              "postalCode": "14589",
+              "addressCountry": "US"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Williamson"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Wayne County"
+              }
+            ],
+            "openingHours": "Mo-Su 06:30-16:00",
+            "servesCuisine": ["Coffee", "Tea", "Breakfast drinks", "Refreshers"],
+            "sameAs": [
+              "https://www.instagram.com/weekday_brew/",
+              "https://www.facebook.com/people/Weekday-Brew/61588841343064/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://verityworks.dev/weekday-brew-v1/#website",
+            "url": "https://verityworks.dev/weekday-brew-v1/",
+            "name": "Weekday Brew",
+            "publisher": {
+              "@id": "https://verityworks.dev/weekday-brew-v1/#business"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://verityworks.dev/weekday-brew-v1/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Where is Weekday Brew located?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Weekday Brew is located at 3856 NY-104 in Williamson, New York."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are Weekday Brew's hours?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Weekday Brew is listed as open daily from 6:30am to 4:00pm."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Weekday Brew offer catering?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Weekday Brew includes catering and wholesale inquiry options for coffee, refreshers, and group drink setups."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -25,6 +102,7 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#menu">Menu</a>
         <a href="#catering">Catering</a>
+        <a href="#faq">FAQ</a>
         <a href="#visit">Visit</a>
         <a
           class="nav-action"
@@ -79,6 +157,36 @@
           target="_blank"
           rel="noopener"
         >Follow for specials</a>
+      </section>
+
+      <section class="local-signals" aria-labelledby="local-signals-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Williamson, NY</p>
+            <h2 id="local-signals-heading">Easy answers before the first sip.</h2>
+          </div>
+          <p class="section-note">
+            Quick drive-thru coffee on Route 104 with daily hours, social specials,
+            catering, wholesale, and a menu built for regular weekday stops.
+          </p>
+        </div>
+        <div class="signal-grid" aria-label="Weekday Brew quick facts">
+          <article>
+            <span>Location</span>
+            <strong>3856 NY-104, Williamson</strong>
+            <p>Easy stop for Wayne County mornings, errands, office runs, and the afternoon reset.</p>
+          </article>
+          <article>
+            <span>Menu</span>
+            <strong>Coffee, refreshers, teas, dirty soda</strong>
+            <p>Hot, iced, energy, and flavor options are organized so regulars can find their go-to fast.</p>
+          </article>
+          <article>
+            <span>Group Orders</span>
+            <strong>Catering and wholesale inquiries</strong>
+            <p>Built for meetings, local shelves, events, offices, and staff days.</p>
+          </article>
+        </div>
       </section>
 
       <section class="insta-feed" aria-labelledby="instagram-heading">
@@ -321,6 +429,36 @@
             target="_blank"
             rel="noopener"
           >Open in Maps</a>
+        </div>
+      </section>
+
+      <section id="faq" class="faq-section" aria-labelledby="faq-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">FAQ</p>
+            <h2 id="faq-heading">Before you pull in.</h2>
+          </div>
+          <p class="section-note">
+            The fast answers regulars and first-time visitors usually need.
+          </p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Where is Weekday Brew?</summary>
+            <p>Weekday Brew is at 3856 NY-104 in Williamson, NY.</p>
+          </details>
+          <details>
+            <summary>What are the hours?</summary>
+            <p>Weekday Brew is listed as open daily from 6:30am to 4:00pm.</p>
+          </details>
+          <details>
+            <summary>What can I order?</summary>
+            <p>Hot coffee, cold coffee, lattes, matcha, teas, refreshers, lotus energy, dirty soda, and flavor add-ons.</p>
+          </details>
+          <details>
+            <summary>Can I ask about catering or wholesale?</summary>
+            <p>Yes. Use the catering and wholesale inquiry form to start a group order or local wholesale conversation.</p>
+          </details>
         </div>
       </section>
 
