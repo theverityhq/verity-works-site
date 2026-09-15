@@ -427,7 +427,24 @@
     </footer>
     <script>
       (() => {
-        const body = JSON.stringify({ path: window.location.pathname });
+        const makeId = () =>
+          crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
+        const getStoredId = (storage, key) => {
+          try {
+            const existing = storage.getItem(key);
+            if (existing) return existing;
+            const next = makeId();
+            storage.setItem(key, next);
+            return next;
+          } catch {
+            return "";
+          }
+        };
+        const body = JSON.stringify({
+          path: window.location.pathname,
+          visitor_id: getStoredId(localStorage, "weekday_brew_visitor_id"),
+          session_id: getStoredId(sessionStorage, "weekday_brew_session_id"),
+        });
         const blob = new Blob([body], { type: "application/json" });
         if (navigator.sendBeacon && navigator.sendBeacon("/api/track-view", blob)) {
           return;
