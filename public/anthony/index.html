@@ -127,44 +127,98 @@ h1{
   max-width:660px;
   text-wrap:balance;
 }
-.quick-actions{
+.contact-card{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin:0 0 34px;
-}
-.quick{
-  appearance:none;
+  grid-template-columns:auto 1fr;
+  align-items:center;
+  gap:16px;
+  margin:-6px 0 34px;
+  padding:14px;
   border:1px solid var(--line);
+  border-radius:20px;
   background:rgba(18,23,32,.72);
-  color:var(--text);
-  text-decoration:none;
+  box-shadow:0 16px 42px rgba(0,0,0,.18);
+}
+.contact-qr{
+  display:block;
+  width:116px;
+  height:116px;
+  padding:7px;
+  border-radius:12px;
+  background:#fff;
+  flex:0 0 auto;
+}
+.contact-kicker{
+  color:var(--accent);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.35;
+  margin:0 0 5px;
+}
+.contact-title{
+  margin:0 0 12px;
+  font-size:18px;
+  line-height:1.25;
+  font-weight:740;
+}
+.contact-actions{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px 14px;
+}
+.contact-primary{
+  appearance:none;
+  border:1px solid var(--text);
+  background:var(--text);
+  color:#0b0e12;
   border-radius:14px;
-  padding:14px 12px;
+  padding:12px 16px;
   text-align:center;
   cursor:pointer;
   transition:.18s ease;
-  min-height:52px;
+  min-height:46px;
   display:flex;
   align-items:center;
   justify-content:center;
+  font-weight:740;
   line-height:1.2;
 }
-.quick:hover,.quick:focus-visible{
+.contact-primary:hover,.contact-primary:focus-visible{
   transform:translateY(-1px);
-  border-color:#3a465a;
-  background:#151c27;
-}
-.quick-primary{
-  grid-column:1 / -1;
-  background:var(--text);
-  color:#0b0e12;
-  border-color:var(--text);
-  font-weight:700;
-}
-.quick-primary:hover,.quick-primary:focus-visible{
   background:#dfe7f2;
   color:#0b0e12;
+}
+.contact-links{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.4;
+}
+.contact-links a,
+.contact-links button{
+  appearance:none;
+  border:0;
+  background:transparent;
+  color:#d9e0e9;
+  cursor:pointer;
+  font:inherit;
+  padding:4px 0;
+  text-decoration:none;
+}
+.contact-links a:hover,
+.contact-links a:focus-visible,
+.contact-links button:hover,
+.contact-links button:focus-visible{
+  color:var(--text);
+  text-decoration:underline;
+}
+.contact-links span{
+  color:#576275;
+  padding:0 8px;
 }
 .proof-line{
   margin:-8px 0 26px;
@@ -174,36 +228,6 @@ h1{
   max-width:620px;
 }
 .proof-line strong{color:var(--text)}
-.qr-share{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin:-16px 0 34px;
-  padding:12px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:rgba(18,23,32,.72);
-}
-.qr-share img{
-  display:block;
-  width:104px;
-  height:104px;
-  padding:6px;
-  border-radius:10px;
-  background:#fff;
-  flex:0 0 auto;
-}
-.qr-share b{
-  display:block;
-  font-size:16px;
-  margin-bottom:4px;
-}
-.qr-share span{
-  display:block;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.45;
-}
 .section-label{
   margin:0 0 12px 2px;
   color:var(--muted);
@@ -306,28 +330,38 @@ h1{
 }
 @media(min-width:640px){
   .wrap{padding-top:36px}
-  .quick-actions{grid-template-columns:1.4fr repeat(4,1fr)}
-  .quick-primary{grid-column:auto}
   .grid{grid-template-columns:repeat(3,1fr)}
   .item{min-height:200px}
-}
-@media(max-width:639px){
-  #shareCard{grid-column:1 / -1}
 }
 @media(max-width:420px){
   .wrap{padding-inline:16px}
   h1{font-size:clamp(38px,13vw,48px)}
   .lead{font-size:clamp(23px,7vw,28px)}
-  .qr-share{align-items:flex-start}
-  .qr-share img{
-    width:92px;
-    height:92px;
+  .contact-card{
+    grid-template-columns:1fr;
+    justify-items:center;
+    text-align:center;
+    padding:16px;
+  }
+  .contact-qr{
+    width:132px;
+    height:132px;
+  }
+  .contact-actions{
+    justify-content:center;
+    width:100%;
+  }
+  .contact-primary{
+    width:100%;
+  }
+  .contact-links{
+    justify-content:center;
   }
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .quick,.btn,.toast{transition:none}
-  .quick:hover,.quick:focus-visible,.btn:hover,.btn:focus-visible{transform:none}
+  .contact-primary,.btn,.toast{transition:none}
+  .contact-primary:hover,.contact-primary:focus-visible,.btn:hover,.btn:focus-visible{transform:none}
 }
 </style>
 </head>
@@ -353,19 +387,23 @@ h1{
       dashboards, websites, and lightweight custom tools.
     </p>
 
-    <div class="quick-actions">
-      <a class="quick quick-primary" href="mailto:anthony@verityworks.dev">Email Anthony</a>
-      <a class="quick" href="tel:+15854908601">Call</a>
-      <a class="quick" href="sms:+15854908601">Text</a>
-      <button class="quick" type="button" id="saveContact">Save</button>
-      <button class="quick" type="button" id="shareCard">Share</button>
-    </div>
-
-    <div class="qr-share">
-      <img src="./anthony-qr.png" alt="QR code for Anthony Salvaggio's VerityWorks page">
-      <div>
-        <b>Open this page on your phone</b>
-        <span>Scan the code to visit verityworks.dev/anthony.</span>
+    <div class="contact-card">
+      <img class="contact-qr" src="./anthony-qr.png" alt="QR code for Anthony Salvaggio's VerityWorks page">
+      <div class="contact-copy">
+        <p class="contact-kicker">Anthony Salvaggio</p>
+        <p class="contact-title">Scan my card or save my contact details.</p>
+        <div class="contact-actions" aria-label="Contact options">
+          <button class="contact-primary" type="button" id="saveContact">Save Contact</button>
+          <div class="contact-links">
+            <a href="sms:+15854908601">Text</a>
+            <span aria-hidden="true">/</span>
+            <a href="tel:+15854908601">Call</a>
+            <span aria-hidden="true">/</span>
+            <a href="mailto:anthony@verityworks.dev">Email</a>
+            <span aria-hidden="true">/</span>
+            <button type="button" id="shareCard">Share</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
